@@ -83,30 +83,38 @@ h4 {
     line-height: 2;
 }
 
+
 .barra {
-    padding-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 
 .barra img {
     width: 300px;
 }
 
-@media (min-width: 768px) {
-    .barra {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-}
 
 
 /** Navegacion **/
-
+.navegacion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
 .navegacion a {
     color: #ffffff;
     text-decoration: none;
     font-size: 2.2rem;
     display: block;
+}
+
+.nav-items{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -124,6 +132,48 @@ h4 {
 .navegacion a:hover {
     color: #0079b1;
 }
+
+.hamburger{
+    margin-left: 3vw;
+    background: none;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+
+.hamburger span {
+    border-radius: 5px;
+    width: 2.5rem;
+    height: .3rem;
+    margin: .3rem auto;
+    background-color: #ffffff;
+    float: right;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.hamburger.open .top-line{
+    animation-name: top-line-animation;
+}
+.hamburger.open .middle-line{
+    animation-name: middle-line-animation;
+}
+.hamburger.open .bottom-line{
+    animation-name: bottom-line-animation;
+}
+.hamburger .top-line{
+    animation-name: top-line-animation-close;
+}
+.hamburger .middle-line{
+    width: 2.25rem;
+    animation-name: middle-line-animation-close;
+}
+.hamburger .bottom-line{
+    animation-name: bottom-line-animation-close;
+}
+
+
 
 
 /** Mobile Menu **/
@@ -151,3 +201,75 @@ h4 {
         display: block;
     }
 }
+
+
+
+
+
+
+
+
+
+/*Animaciones*/
+
+@keyframes top-line-animation{
+    50%, 100%{
+        margin: 0 auto;
+        transform: translateY(.6rem) rotate(-45deg);
+    }
+}
+@keyframes middle-line-animation{
+    20%, 100%{
+        opacity: 0;
+    }
+}
+@keyframes bottom-line-animation{
+    50%, 100%{
+        margin: 0 auto;
+        transform: translateY(-.6rem) rotate(45deg);
+    }
+}
+
+@keyframes top-line-animation-close{
+    0%{
+        margin: 0 auto;
+        transform: translateY(.6rem) rotate(-45deg);
+    }
+    50%,100%{
+        margin: .3rem auto;
+        transform: translateY(0rem) rotate(0deg);
+    }
+}
+@keyframes middle-line-animation-close{
+    0%{
+        opacity: 0;
+    }
+    20%,100%{
+        margin: .3rem auto;
+        opacity: 1;
+    }
+}
+@keyframes bottom-line-animation-close{
+    0%{
+        margin: 0 auto;
+        transform: translateY(-.5rem) rotate(45deg);
+    }
+    50%,100%{
+        margin: .3rem auto;
+        transform: translateY(0rem) rotate(0deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
