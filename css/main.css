@@ -134,12 +134,14 @@ h4 {
 }
 
 .hamburger{
+    position: relative;
     margin-left: 3vw;
     background: none;
     border: none;
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
+    z-index: 1;
 }
 
 .hamburger span {
@@ -149,50 +151,62 @@ h4 {
     margin: .3rem auto;
     background-color: #ffffff;
     float: right;
-    animation-duration: 1s;
+    animation-duration: 1200ms;
     animation-fill-mode: forwards;
 }
 
 .hamburger.open .top-line{
     animation-name: top-line-animation;
+    animation-delay: 200ms;
+    animation-timing-function: ease-in;
 }
 .hamburger.open .middle-line{
     animation-name: middle-line-animation;
+    animation-delay: 200ms;
+    animation-timing-function: ease-in;
 }
 .hamburger.open .bottom-line{
     animation-name: bottom-line-animation;
+    animation-delay: 200ms;
+    animation-timing-function: ease-in;
 }
 .hamburger .top-line{
     animation-name: top-line-animation-close;
+    animation-timing-function: ease-out;
 }
 .hamburger .middle-line{
-    width: 2.25rem;
     animation-name: middle-line-animation-close;
+    animation-timing-function: ease-out;
 }
 .hamburger .bottom-line{
     animation-name: bottom-line-animation-close;
+    animation-timing-function: ease-out;
 }
-
-
-
 
 /** Side Panel **/
 
 .side-panel{
-    position: absolute;
+    position: fixed;
     margin: 0;
     padding: 0;
     width: 40%;
     height: 100%;
     top: 0;
-    right: 0;
+    right: -40%;  
+    animation-name: side-panel-animation-close;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+}
+
+.side-panel.open{
+    animation-name: side-panel-animation-open;
 }
 
 .side-panel-menu{
     position: relative;
     height: 100%;
     margin: 0;
-    padding-top: 80px;
+    padding-top: 100px;
     padding-left: 80px;
     background: linear-gradient(90deg, #002B4C 6.25%, #032239 58.85%);
 }
@@ -257,65 +271,90 @@ h4 {
     }
 }
 
-
-
-
-
-
-
-
-
 /*Animaciones*/
 
+/* Menu hamburguesa */
 @keyframes top-line-animation{
+    0%{
+        margin: 0 auto;
+        transform: translateX(0)
+    }
     50%, 100%{
         margin: 0 auto;
-        transform: translateY(.6rem) rotate(-45deg);
+        transform: translateX(-400px) translateY(.6rem) rotate(-45deg);
     }
 }
 @keyframes middle-line-animation{
-    20%, 100%{
+    0%{
+        transform: translateX(0);
+    }
+    50%, 100%{
         opacity: 0;
+        transform: translateX(-400px);
     }
 }
 @keyframes bottom-line-animation{
+    0%{
+        margin: 0 auto;
+        transform: translateX(0)
+    }
     50%, 100%{
         margin: 0 auto;
-        transform: translateY(-.6rem) rotate(45deg);
+        transform: translateX(-400px) translateY(-.6rem) rotate(45deg);
     }
 }
 
 @keyframes top-line-animation-close{
     0%{
         margin: 0 auto;
-        transform: translateY(.6rem) rotate(-45deg);
+        transform: translateX(-400px) translateY(.6rem) rotate(-45deg);
     }
-    50%,100%{
+    50%, 100%{
         margin: .3rem auto;
-        transform: translateY(0rem) rotate(0deg);
+        transform: translateX(0) translateY(0rem) rotate(0deg);
     }
 }
 @keyframes middle-line-animation-close{
     0%{
         opacity: 0;
+        transform: translateX(-400px);
     }
-    20%,100%{
+    50%, 100%{
         margin: .3rem auto;
         opacity: 1;
+        transform: translateX(0px);
     }
 }
 @keyframes bottom-line-animation-close{
     0%{
         margin: 0 auto;
-        transform: translateY(-.5rem) rotate(45deg);
+        transform: translateX(-400px) translateY(-.5rem) rotate(45deg);
     }
-    50%,100%{
+    50%, 100%{
         margin: .3rem auto;
-        transform: translateY(0rem) rotate(0deg);
+        transform: translateX(0) translateY(0rem) rotate(0deg);
     }
 }
 
+/* Menu lateral */
 
+@keyframes side-panel-animation-open{
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes side-panel-animation-close{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
 
 
 
