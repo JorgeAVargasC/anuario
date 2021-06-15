@@ -1,55 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Anuario Rama Estudiantil IEEE Unicauca</title>
-</head>
-
-<body>
-    <header class="site-header inicio">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                    <img src="img/iconos/rama.png" alt="Logotipo Rama">
-                </a>
-
-                <div class="mobile-menu">
-                    <a href="#navegacion">
-                        <img src="img/barras.svg" alt="Icono Menu">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <title>Anuario Rama Estudiantil IEEE Unicauca</title>
+    </head>
+    <body>
+        <header class="site-header inicio">
+            <div class="contenedor contenido-header">
+                <div class="barra">
+                    <a href="/">
+                        <img src="img/iconos/rama.png" alt="Logotipo Rama">
                     </a>
+                    <div class="nav-items">
+                        <nav id="navegacion" class="navegacion">
+                            <a href="nosotros.html">Nosotros</a>
+                            <a href="anuncios.html">Anuncios</a>
+                            <a href="blog.html">Blog</a>
+                            <a href="contacto.html">Contacto</a>
+                        </nav>
+                        <button class="hamburger" id="hamburger">
+                            <span class="top-line"></span>
+                            <span class="middle-line"></span>
+                            <span class="bottom-line"></span>
+                        </button>
+                    </div>
+
                 </div>
-
-                <nav id="navegacion" class="navegacion">
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
-                </nav>
             </div>
+            <!-- contenedor -->
+        </header>
+        <div class="side-panel">
+            <ul class="side-panel-menu">
+                <img src="img/iconos/logo-rama.png" height="10%" alt="Logotipo Rama">
+                <li>Inicio
+                    <hr>
+                </li>
+                <li>
+                    <ul>
+                        <li>Grupo
+                            <hr>
+                        </li>
+                        <li>Capitulo
+                            <hr>
+                        </li>
+                    </ul>
+                </li>
+                <li>Objetivos
+                    <hr>
+                </li>
+                <li>Anuario
+                    <hr>
+                </li>
+                <li>TET
+                    <hr>
+                </li>
+            </ul>
         </div>
-        <!-- contenedor -->
-    </header>
-    <div class="side-panel">
-        <ul class="side-panel-menu">
-            <img src="img/iconos/logo-rama.png" height="10%" alt="Logotipo Rama">
-            <li>Inicio<hr></li>
-            <li>
-                <ul>
-                    <li>Grupo<hr></li>
-                    <li>Capitulo<hr></li>
-                </ul>
-            </li>
-            <li>Objetivos<hr></li>
-            <li>Anuario<hr></li>
-            <li>TET<hr></li>
-        </ul>
-    </div>
-</body>
-
+        <script src="js/hamburger.js"></script>
+    </body>
 </html>
