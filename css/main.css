@@ -16,7 +16,6 @@ body {
     line-height: 2;
 }
 
-
 /** Globales **/
 
 img {
@@ -141,7 +140,7 @@ h4 {
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
-    z-index: 1;
+    z-index: 3;
 }
 
 .hamburger span {
@@ -192,14 +191,34 @@ h4 {
     width: 40%;
     height: 100%;
     top: 0;
-    right: -40%;  
+    right: -40%;
     animation-name: side-panel-animation-close;
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
+    box-shadow: -3px 0px 8px 0px #070707;
+    z-index: 2;
 }
 
 .side-panel.open{
     animation-name: side-panel-animation-open;
+}
+
+.empty-panel{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+.empty-panel.open{
+    display: block;
+    backdrop-filter: grayscale(0.8) blur(2px); /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
+    animation-name: empty-panel-animation-open;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
 }
 
 .side-panel-menu{
@@ -217,6 +236,7 @@ h4 {
     font-size: 24px;
     color: #9E9E9E;
     list-style-type: none;
+    transition-duration: 400ms;
 }
 
 .side-panel-menu hr{
@@ -226,6 +246,7 @@ h4 {
     border-width: 0;
     height: 2px;
     width: 400px;
+    transition-duration: 400ms;
     background: linear-gradient(90deg, rgba(8, 64, 106, 1) 0%, rgba(8, 64, 106, 0) 100%);
 }
 
@@ -238,12 +259,28 @@ h4 {
 .side-panel-menu li:hover > hr{
     background: white;
     cursor: pointer;
+    transform: translateX(-5px);
 }
+
 .side-panel-menu li:hover{
     color: white;
     cursor: pointer;
+    transform: translateX(-5px);
 }
 
+.sublist-item{
+    display: none;
+    animation: remove-sublist-items 500ms ease forwards;
+}
+
+.sublist-item > hr{
+    left: -12px;
+}
+
+.sublist-item.open{
+    display: block;
+    animation: show-sublist-items 500ms ease forwards;
+}
 
 /** Mobile Menu **/
 
@@ -356,6 +393,38 @@ h4 {
     }
 }
 
+/* Mostrar subitems */
+
+@keyframes show-sublist-items {
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes remove-sublist-items {
+    0%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-100%); 
+    }
+}
+
+@keyframes empty-panel-animation-open {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 
 
 
