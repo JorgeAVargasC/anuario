@@ -11,10 +11,11 @@ html {
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Kiwi+Maru';
     font-size: 1.6rem;
     line-height: 2;
 }
+
 
 /** Globales **/
 
@@ -65,7 +66,8 @@ h4 {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
@@ -82,21 +84,19 @@ h4 {
     line-height: 2;
 }
 
-
 .barra {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #062034;
     opacity: 0.75;
-    border-radius: 0px 0px 50px 50px;
+    border-radius: 0px 0px 30px 30px;
     position: absolute;
+    min-height: 10vh;
     width: 100%;
-    height: 15%;
     left: 0px;
     top: 0px;
 }
-
 
 .barra img {
     width: 200px;
@@ -104,14 +104,15 @@ h4 {
 }
 
 
-
 /** Navegacion **/
-.navegacion{
+
+.navegacion {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }
+
 .navegacion a {
     color: #ffffff;
     text-decoration: none;
@@ -121,7 +122,7 @@ h4 {
     transition-duration: 180ms;
 }
 
-.nav-items{
+.nav-items {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -144,10 +145,9 @@ h4 {
 .navegacion a:hover {
     /* color: #0079b1; */
     transform: scale(1.2);
-
 }
 
-.hamburger{
+.hamburger {
     position: relative;
     margin-left: 3vw;
     background: none;
@@ -169,40 +169,82 @@ h4 {
     animation-fill-mode: forwards;
 }
 
-.hamburger.open .top-line{
+.hamburger.open .top-line {
     animation-name: top-line-animation;
     animation-delay: 200ms;
     animation-timing-function: ease-in;
 }
-.hamburger.open .middle-line{
+
+.hamburger.open .middle-line {
     animation-name: middle-line-animation;
     animation-delay: 200ms;
     animation-timing-function: ease-in;
 }
-.hamburger.open .bottom-line{
+
+.hamburger.open .bottom-line {
     animation-name: bottom-line-animation;
     animation-delay: 200ms;
     animation-timing-function: ease-in;
 }
-.hamburger .top-line{
+
+.hamburger .top-line {
     animation-name: top-line-animation-close;
     animation-timing-function: ease-out;
 }
-.hamburger .middle-line{
+
+.hamburger .middle-line {
     animation-name: middle-line-animation-close;
     animation-timing-function: ease-out;
 }
-.hamburger .bottom-line{
+
+.hamburger .bottom-line {
     animation-name: bottom-line-animation-close;
     animation-timing-function: ease-out;
 }
 
+
+/** Decadas **/
+
+.decadas {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+}
+
+.img-decada {
+    margin-right: 40px;
+}
+
+.img-decada img {
+    width: 312px;
+    height: 456px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    filter: brightness(0.6);
+}
+
+.img-decada img:hover {
+    filter: brightness(1);
+    transform: scale(1.05);
+    transition-duration: 1s;
+}
+
+.img-decada:last-of-type {
+    margin-right: 0px;
+}
+
+@media (min-width:768px) {
+    .decada {
+        flex-direction: column;
+    }
+}
+
+
 /** Side Panel **/
 
-.side-panel{
+.side-panel {
     position: fixed;
-    margin: 0;
-    padding: 0;
     width: 45%;
     height: 100%;
     top: 0;
@@ -214,11 +256,11 @@ h4 {
     z-index: 2;
 }
 
-.side-panel.open{
+.side-panel.open {
     animation-name: side-panel-animation-open;
 }
 
-.empty-panel{
+.empty-panel {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -228,74 +270,76 @@ h4 {
     display: none;
 }
 
-.empty-panel.open{
+.empty-panel.open {
     display: block;
-    backdrop-filter: grayscale(0.8) blur(2px); /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
+    backdrop-filter: grayscale(0.8) blur(2px);
+    /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
     animation-name: empty-panel-animation-open;
     animation-duration: 1000ms;
     animation-fill-mode: forwards;
 }
 
-.side-panel-menu{
+.side-panel-menu {
     position: relative;
     height: 100%;
     margin: 0;
-    padding-top: 100px;
-    padding-left: 80px;
+    padding-top: 15rem;
+    padding-left: 10rem;
     background: linear-gradient(90deg, #002B4C 6.25%, #032239 58.85%);
 }
 
-.side-panel-menu li{
+.side-panel-menu li {
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 3rem;
     color: #9E9E9E;
     list-style-type: none;
     transition-duration: 400ms;
 }
 
-.side-panel-menu hr{
-    position: relative;
-    top: -20px;
-    left: -35px;
-    border-width: 0;
-    height: 2px;
-    width: 400px;
-    transition-duration: 400ms;
+.side-panel-menu span {
+    content: " ";
+    display: flex;
+    width: 35vw;
+    height: .3rem;
+    margin-bottom: 2.5vh;
     background: linear-gradient(90deg, rgba(8, 64, 106, 1) 0%, rgba(8, 64, 106, 0) 100%);
 }
 
-.side-panel-menu img{
+.side-panel-menu img {
     position: absolute;
+    height: 10rem;
+    width: auto;
     top: 2%;
     left: 5%;
 }
 
-.side-panel-menu li:hover > hr{
-    background: white;
+.side-panel-menu li:hover>span {
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(8, 64, 106, 0) 100%);
     cursor: pointer;
-    transform: translateX(-5px);
+    transform: translateX(-.5rem);
 }
 
-.side-panel-menu li:hover{
+.side-panel-menu li:hover {
     color: white;
     cursor: pointer;
-    transform: translateX(-5px);
+    transform: translateX(-.5rem);
 }
 
-.sublist-item{
+.sublist-item {
     display: none;
     animation: remove-sublist-items 500ms ease forwards;
 }
 
-.sublist-item > hr{
+.sublist-item>hr {
     left: -12px;
 }
 
-.sublist-item.open{
+.sublist-item.open {
     display: block;
     animation: show-sublist-items 500ms ease forwards;
 }
+
 
 /** Mobile Menu **/
 
@@ -323,125 +367,128 @@ h4 {
     }
 }
 
+
 /*Animaciones*/
 
+
 /* Menu hamburguesa */
-@keyframes top-line-animation{
-    0%{
+
+@keyframes top-line-animation {
+    0% {
         margin: 0 auto;
     }
-    50%, 100%{
+    50%,
+    100% {
         margin: 0 auto;
         transform: translateY(.6rem) rotate(-45deg);
     }
 }
-@keyframes middle-line-animation{
-    0%{
-    }
-    50%, 100%{
+
+@keyframes middle-line-animation {
+    0% {}
+    50%,
+    100% {
         opacity: 0;
     }
 }
-@keyframes bottom-line-animation{
-    0%{
+
+@keyframes bottom-line-animation {
+    0% {
         margin: 0 auto;
     }
-    50%, 100%{
+    50%,
+    100% {
         margin: 0 auto;
         transform: translateY(-.6rem) rotate(45deg);
     }
 }
 
-@keyframes top-line-animation-close{
-    0%{
+@keyframes top-line-animation-close {
+    0% {
         margin: 0 auto;
         transform: translateY(.6rem) rotate(-45deg);
     }
-    50%, 100%{
+    50%,
+    100% {
         margin: .3rem auto;
         transform: translateY(0rem) rotate(0deg);
     }
 }
-@keyframes middle-line-animation-close{
-    0%{
+
+@keyframes middle-line-animation-close {
+    0% {
         opacity: 0;
     }
-    50%, 100%{
+    50%,
+    100% {
         margin: .3rem auto;
         opacity: 1;
     }
 }
-@keyframes bottom-line-animation-close{
-    0%{
+
+@keyframes bottom-line-animation-close {
+    0% {
         margin: 0 auto;
         transform: translateY(-.5rem) rotate(45deg);
     }
-    50%, 100%{
+    50%,
+    100% {
         margin: .3rem auto;
         transform: translateY(0rem) rotate(0deg);
     }
 }
 
+
 /* Menu lateral */
 
-@keyframes side-panel-animation-open{
-    0%{
+@keyframes side-panel-animation-open {
+    0% {
         transform: translateX(0%);
     }
-    100%{
+    100% {
         transform: translateX(-100%);
     }
 }
 
-@keyframes side-panel-animation-close{
-    0%{
+@keyframes side-panel-animation-close {
+    0% {
         transform: translateX(-100%);
     }
-    100%{
+    100% {
         transform: translateX(0%);
     }
 }
+
 
 /* Mostrar subitems */
 
 @keyframes show-sublist-items {
-    0%{
+    0% {
         opacity: 0;
         transform: translateY(-100%);
     }
-    100%{
+    100% {
         opacity: 1;
         transform: translateY(0%);
     }
 }
 
 @keyframes remove-sublist-items {
-    0%{
+    0% {
         opacity: 1;
         transform: translateY(0%);
     }
-    100%{
+    100% {
         opacity: 0;
-        transform: translateY(-100%); 
+        transform: translateY(-100%);
     }
 }
 
 @keyframes empty-panel-animation-open {
-    0%{
+    0% {
         opacity: 0;
     }
-    100%{
+    100% {
         opacity: 1;
     }
 }
-
-
-
-
-
-
-
-
-
-
-

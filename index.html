@@ -1,79 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <title>Anuario Rama Estudiantil IEEE Unicauca</title>
-    </head>
-    <body>
-        <header class="site-header inicio">
-            <div class="contenedor contenido-header">
-                <div class="barra">
-                    <a href="/">
-                        <img src="img/iconos/rama.png" alt="Logotipo Rama">
-                    </a>
-                    <div class="nav-items">
-                        <nav id="navegacion" class="navegacion">
-                            <a href="inicio.html">Inicio</a>
-                            <a href="objetivos.html">Objetivos</a>
-                            <a href="anuario.html">Anuario</a>
-                            <a href="TET.html">TET</a>
-                            <a href="nosotros.html">Nosotros</a>
-                        </nav>
-                        <button class="hamburger" id="hamburger">
-                            <span class="top-line"></span>
-                            <span class="middle-line"></span>
-                            <span class="bottom-line"></span>
-                        </button>
-                    </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Anuario Rama Estudiantil IEEE Unicauca</title>
+</head>
+
+<body>
+    <header class="site-header inicio">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <a href="/">
+                    <img src="img/iconos/rama.png" alt="Logotipo Rama">
+                </a>
+                <div class="nav-items">
+                    <nav id="navegacion" class="navegacion">
+                        <a href="inicio.html">Inicio</a>
+                        <a href="objetivos.html">Objetivos</a>
+                        <a href="anuario.html">Anuario</a>
+                        <a href="TET.html">TET</a>
+                        <a href="nosotros.html">Nosotros</a>
+                    </nav>
+                    <button class="hamburger" id="hamburger">
+                        <span class="top-line"></span>
+                        <span class="middle-line"></span>
+                        <span class="bottom-line"></span>
+                    </button>
                 </div>
+
             </div>
-            <!-- contenedor -->
-        </header>
-        <div class="side-panel">
-            <ul class="side-panel-menu">
-                <img src="img/iconos/logo-rama.png" height="10%" alt="Logotipo Rama">
-                <li class="list-item">Inicio
-                    <hr>
-                </li>
-                <li class="list-item">
-                    Sublista
-                    <hr>
-                    <ul>
-                        <li class="sublist-item">Grupo
-                            <hr>
-                        </li>
-                        <li class="sublist-item">Capitulo
-                            <hr>
-                        </li>
-                    </ul>
-                </li>
-                <li class="list-item">Objetivos
-                    <hr>
-                </li>
-                <li class="list-item">Anuario
-                    <hr>
-                </li>
-                <li class="list-item">TET
-                    <hr>
-                    <ul>
-                        <li class="sublist-item">Grupo
-                            <hr>
-                        </li>
-                        <li class="sublist-item">Capitulo
-                            <hr>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+
+            <div class="decadas">
+
+                <div class="img-decada">
+                    <img src="img/decadas/22.jpg" alt="">
+                </div>
+                <div class="img-decada">
+                    <img src="img/decadas/22.jpg" alt="">
+                </div>
+                <div class="img-decada">
+                    <img src="img/decadas/22.jpg" alt="">
+                </div>
+
+
+            </div>
+
         </div>
-        <div class="empty-panel">
-            <!-- No borrar, es el div que opaca la pantalla -->
-        </div>
-        <script src="js/hamburger.js"></script>
-    </body>
+        <!-- contenedor -->
+    </header>
+
+    <div class="side-panel">
+        <ul class="side-panel-menu">
+            <img src="img/iconos/logo-rama.png" height="10%" alt="Logotipo Rama">
+            <li class="list-item">Inicio
+                <span></span>
+            </li>
+            <li class="list-item">
+                Sublista
+                <span></span>
+                <ul>
+                    <li class="sublist-item">Grupo
+                        <span></span>
+                    </li>
+                    <li class="sublist-item">Capitulo
+                        <span></span>
+                    </li>
+                </ul>
+            </li>
+            <li class="list-item">Objetivos
+                <span></span>
+            </li>
+            <li class="list-item">Anuario
+                <span></span>
+            </li>
+            <li class="list-item">TET
+                <span></span>
+                <ul>
+                    <li class="sublist-item">Grupo
+                        <span></span>
+                    </li>
+                    <li class="sublist-item">Capitulo
+                        <span></span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="empty-panel">
+        <!-- No borrar, es el div que opaca la pantalla -->
+    </div>
+    <script src="js/hamburger.js"></script>
+</body>
+
 </html>
