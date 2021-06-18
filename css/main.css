@@ -101,6 +101,7 @@ h4 {
 .barra img {
     width: 200px;
     margin-left: 20%;
+    margin-top: 5%;
 }
 
 
@@ -118,8 +119,8 @@ h4 {
     text-decoration: none;
     font-size: 2.2rem;
     display: block;
-    padding: 0 3rem;
-    transition-duration: 180ms;
+    padding: 0 2rem;
+    transition-duration: 200ms;
 }
 
 .nav-items {
@@ -144,7 +145,7 @@ h4 {
 
 .navegacion a:hover {
     /* color: #0079b1; */
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .hamburger {
@@ -208,16 +209,26 @@ h4 {
 .decadas {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    height: 70vh;
+    justify-content: space-around;
     position: absolute;
+    background-color: aqua;
+    top: 20vh;
 }
 
 .img-decada {
-    margin-right: 40px;
+    /* margin-right: 20px; */
+    /* display: block; */
+    text-align: center;
+    background-color: brown;
 }
 
 .img-decada img {
-    width: 312px;
-    height: 456px;
+    /* width: 312px;
+    height: 456px; */
+    width: 12vw;
+    height: 70%;
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
@@ -226,8 +237,17 @@ h4 {
 
 .img-decada img:hover {
     filter: brightness(1);
+    cursor: pointer;
     transform: scale(1.05);
-    transition-duration: 1s;
+    transition-duration: 1000ms;
+}
+
+.img-decada span{
+    display: block;
+    width: .4rem;
+    height: 5rem;
+    margin: 0 auto;
+    background: yellow;
 }
 
 .img-decada:last-of-type {
@@ -238,6 +258,32 @@ h4 {
     .decada {
         flex-direction: column;
     }
+}
+
+.flechas{
+    width: 6vw;
+    height: 70%;
+    position: absolute;
+    z-index: 1;
+    background-color: blueviolet;
+}
+
+.flecha-derecha{
+    right: 0;
+}
+
+.flecha-derecha:hover{
+    /* dispara el evento */
+    cursor: pointer;
+}
+
+.flecha-izquierda{
+    left: 0;
+}
+
+.flecha-izquierda:hover{
+    /* dispara el evento */
+    cursor: pointer;
 }
 
 
@@ -298,10 +344,10 @@ h4 {
 }
 
 .side-panel-menu span {
-    content: " ";
     display: flex;
     width: 30vw;
     height: .3rem;
+    margin-top: -1.5vh;
     margin-bottom: 2.5vh;
     background: linear-gradient(90deg, rgba(8, 64, 106, 1) 0%, rgba(8, 64, 106, 0) 100%);
 }
@@ -330,10 +376,6 @@ h4 {
     animation: remove-sublist-items 500ms ease forwards;
 }
 
-.sublist-item>hr {
-    left: -12px;
-}
-
 .sublist-item.open {
     display: block;
     animation: show-sublist-items 500ms ease forwards;
@@ -341,7 +383,6 @@ h4 {
 
 @media (max-width: 768px) {
     .side-panel {
-    
         width: 100%;
         height: 100%;
         top: 0;
@@ -358,6 +399,10 @@ h4 {
     .side-panel-menu span {        
         width: 75vw;
         height: .3rem;       
+    }
+
+    .empty-panel.open{
+        display: none;
     }
 }
 
