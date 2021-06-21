@@ -15,7 +15,7 @@
     --primario: #002B4C;
     --secundario: #00467B;
     --gris-c: #757575;
-    --gris-o: #444444;
+    --gris-o: #1f1f1f;
 }
 
 
@@ -59,26 +59,413 @@ h4 {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background-image: url(../img/timeline/2.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.img-filter {
+    height: 100vh;
+    background-color: #21212177;
 }
 
 
 /*Header*/
 
 .header {
-    height: 8vh;
-    background-color: lightskyblue;
+    min-height: 4rem;
+    background-color: #002b4caf;
+    border-radius: 0 0 2.3rem 2.3rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 1.5rem 2rem;
+    color: var(--blanco);
+}
+
+.rama-logo img {
+    height: 10vh;
+    width: auto;
+}
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem;
+    width: 60%;
+}
+
+.nav-links {
+    display: none;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-right: 6vw;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+}
+
+.nav-links a {
+    color: var(--blanco);
+    font-size: 1.6rem;
+    text-decoration: none;
+    transition-duration: 400ms;
+}
+
+.nav-links a:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 1000px) {
+    .nav-links a {
+        font-size: 2rem;
+    }
+}
+
+.nav-links a:last-of-type {
+    margin-right: 0;
+}
+
+.hamburger {
+    position: relative;
+    background: none;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.hamburger span {
+    border-radius: 5px;
+    width: 2.5rem;
+    height: .3rem;
+    margin: .3rem auto;
+    background-color: #ffffff;
+    float: right;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+.hamburger.open .top-line {
+    animation-name: top-line-animation;
+    animation-delay: 200ms;
+    animation-timing-function: ease-in;
+}
+
+.hamburger.open .middle-line {
+    animation-name: middle-line-animation;
+    animation-delay: 200ms;
+    animation-timing-function: ease-in;
+}
+
+.hamburger.open .bottom-line {
+    animation-name: bottom-line-animation;
+    animation-delay: 200ms;
+    animation-timing-function: ease-in;
+}
+
+.hamburger .top-line {
+    animation-name: top-line-animation-close;
+    animation-timing-function: ease-out;
+}
+
+.hamburger .middle-line {
+    animation-name: middle-line-animation-close;
+    animation-timing-function: ease-out;
+}
+
+.hamburger .bottom-line {
+    animation-name: bottom-line-animation-close;
+    animation-timing-function: ease-out;
+}
+
+
+/* Animaciones Menu hamburguesa */
+
+@keyframes top-line-animation {
+    0% {
+        margin: 0 auto;
+    }
+    50%,
+    100% {
+        margin: 0 auto;
+        transform: translateY(.6rem) rotate(-45deg);
+    }
+}
+
+@keyframes middle-line-animation {
+    0% {
+        opacity: 1
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes bottom-line-animation {
+    0% {
+        margin: 0 auto;
+    }
+    50%,
+    100% {
+        margin: 0 auto;
+        transform: translateY(-.6rem) rotate(45deg);
+    }
+}
+
+@keyframes top-line-animation-close {
+    0% {
+        margin: 0 auto;
+        transform: translateY(.6rem) rotate(-45deg);
+    }
+    50%,
+    100% {
+        margin: .3rem auto;
+        transform: translateY(0rem) rotate(0deg);
+    }
+}
+
+@keyframes middle-line-animation-close {
+    0% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        margin: .3rem auto;
+        opacity: 1;
+    }
+}
+
+@keyframes bottom-line-animation-close {
+    0% {
+        margin: 0 auto;
+        transform: translateY(-.5rem) rotate(45deg);
+    }
+    50%,
+    100% {
+        margin: .3rem auto;
+        transform: translateY(0rem) rotate(0deg);
+    }
+}
+
+
+/** Side Panel **/
+
+.side-menu {
+    position: fixed;
+    width: 40%;
+    height: 100%;
+    top: 0%;
+    right: -40%;
+    overflow-y: auto;
+    background: linear-gradient(90deg, #002B4C 6.25%, #032239 58.85%);
+    animation-name: side-panel-animation-close;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    box-shadow: -3px 0px 8px 0px #070707;
+    z-index: 2;
+}
+
+.side-menu.open {
+    animation-name: side-panel-animation-open;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+}
+
+.empty-panel {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+.empty-panel.open {
+    display: block;
+    backdrop-filter: grayscale(0.8) blur(2px);
+    /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
+    animation-name: empty-panel-animation-open;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+.side-menu-options {
+    position: relative;
+    height: 100%;
+    padding-top: 25%;
+    padding-left: 10.5%;
+}
+
+.side-menu-options li:not(.sublist-item) {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 3rem;
+    /* line-height: 5rem; */
+    margin-bottom: 4vh;
+    color: #9E9E9E;
+    list-style-type: none;
+    transition-duration: 400ms;
+}
+
+.side-menu-options span {
+    display: flex;
+    width: 80%;
+    height: .3rem;
+    background: linear-gradient(90deg, rgba(8, 64, 106, 1) 0%, rgba(8, 64, 106, 0) 100%);
+}
+
+.side-menu-options img {
+    position: absolute;
+    height: 8rem;
+    width: auto;
+    top: 4%;
+}
+
+.side-menu-options li:hover>span {
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(8, 64, 106, 0) 100%);
+    cursor: pointer;
+    animation-name: filling-line;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+}
+
+.side-menu-options li:hover {
+    color: white;
+    cursor: pointer;
+    transform: translateX(-.5rem);
+}
+
+.side-menu-options li:last-child {
+    padding-bottom: 3%;
+}
+
+.sublist-item {
+    padding-left: 6%;
+    margin: 3vh 0vh;
+    animation: remove-sublist-items 500ms ease forwards;
+    display: none;
+}
+
+.sublist-item.open {
+    display: block;
+    animation: show-sublist-items 500ms ease forwards;
+}
+
+
+/** Side Panel Movil**/
+
+@media (max-width: 768px) {
+    .side-menu {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: -100%;
+        z-index: 2;
+    }
+    .side-menu-options {
+        padding-top: 15rem;
+        padding-left: 15%;
+        background: linear-gradient(90deg, #002B4C 6.25%, #032239 58.85%);
+    }
+    .side-menu-options span {
+        width: 75vw;
+        height: .3rem;
+    }
+    .empty-panel.open {
+        display: none;
+    }
+}
+
+
+/** Side Panel Animaciones**/
+
+
+/* Deslizamiento del menu lateral */
+
+@keyframes side-panel-animation-open {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes side-panel-animation-close {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+
+/* Desplegar subitems */
+
+@keyframes show-sublist-items {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes remove-sublist-items {
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes empty-panel-animation-open {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Linea aparece de izquierda a derecha */
+
+@keyframes filling-line {
+    0% {
+        width: 0%;
+    }
+    100% {
+        /* @media(max-width: 768px) {
+        width: 75vw;
+    }
+    @media(min-width: 768px) {
+        width: 30vw;
+    } */
+        width: 80%;
+    }
 }
 
 
 /*Timeline*/
 
 .timeline {
-    min-height: 84vh;
-    background-color: lightgreen;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -86,7 +473,6 @@ h4 {
 }
 
 .time-interval {
-    background-color: mediumpurple;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -118,7 +504,7 @@ h4 {
 }
 
 .time-interval .vertical-line {
-    width: 0.3rem;
+    width: 0.2rem;
     background-color: white;
     filter: opacity(0.5);
     height: 4rem;
@@ -126,17 +512,20 @@ h4 {
 
 .time-interval span {
     color: white;
-    filter: opacity(0.5);
+    filter: opacity(0.9);
     font-size: 2rem;
 }
 
 
 /*Footer*/
 
+
+/*
 .footer {
-    background-color: khaki;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 8vh;
+background-color: khaki;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 8vh;
 }
+*/

@@ -13,39 +13,108 @@
 
 <body>
     <div class="main-page">
-        <div class="header">
-            <h1>Header Rama</h1>
+        <div class="img-filter">
+            <div class="header">
+                <div class="rama-logo">
+                    <span><img src="img/icons/logoIEEE.svg" alt="rama-logo"></span>
+                </div>
+                <div class="navigation">
+                    <div class="nav-links">
+                        <a href="#">Inicio</a>
+                        <a href="#">Objetivos</a>
+                        <a href="#">Capitulos</a>
+                        <a href="#">Historia</a>
+                    </div>
+
+                    <button class="hamburger" id="hamburger">
+                        <span class="top-line"></span>
+                        <span class="middle-line"></span>
+                        <span class="bottom-line"></span>
+                    </button>
+
+                </div>
+
+
+                <div class="side-menu" id="side-menu">
+                    <ul class="side-menu-options">
+                        <img src="img/icons/logoIEEEBasic.svg" height="10%" alt="Logotipo Rama">
+                        <li class="list-item">Inicio
+                            <span></span>
+                        </li>
+                        <li class="list-item">
+                            Sublista
+                            <span></span>
+                            <ul>
+                                <li class="sublist-item">Grupo
+                                    <span></span>
+                                </li>
+                                <li class="sublist-item">Capitulo
+                                    <span></span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-item">Objetivos
+                            <span></span>
+                        </li>
+                        <li class="list-item">Anuario
+                            <span></span>
+                        </li>
+                        <li class="list-item">TET
+                            <span></span>
+                            <ul>
+                                <li class="sublist-item">Grupo
+                                    <span></span>
+                                </li>
+                                <li class="sublist-item">Capitulo
+                                    <span></span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="empty-panel" id="empty-panel">
+                    <!-- No borrar, es el div que opaca la pantalla -->
+                </div>
+
+            </div>
+
+            <div class="timeline">
+                <div class="time-interval">
+                    <img src="img/timeline/1.jpg" alt="1-range">
+                    <div class="vertical-line"></div>
+                    <span>2010s</span>
+                </div>
+                <div class="time-interval">
+                    <img src="img/timeline/2.jpg" alt="2-range">
+                    <div class="vertical-line"></div>
+                    <span>2010s</span>
+                </div>
+                <div class="time-interval">
+                    <img src="img/timeline/3.jpg" alt="3-range">
+                    <div class="vertical-line"></div>
+                    <span>2010s</span>
+                </div>
+                <div class="time-interval">
+                    <img src="img/timeline/1.jpg" alt="4-range">
+                    <div class="vertical-line"></div>
+                    <span>2010s</span>
+                </div>
+                <div class="time-interval">
+                    <img src="img/timeline/5.jpg" alt="5-range">
+                    <div class="vertical-line"></div>
+                    <span>2010s</span>
+                </div>
+            </div>
+            <!--
+            <div class="footer">
+                <h1>Footer</h1>
+            </div>
+            -->
         </div>
-        <div class="timeline">
-            <div class="time-interval">
-                <img src="img/timeline/1.jpg" alt="1-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </div>
-            <div class="time-interval">
-                <img src="img/timeline/2.jpg" alt="2-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </div>
-            <div class="time-interval">
-                <img src="img/timeline/3.jpg" alt="3-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </div>
-            <div class="time-interval">
-                <img src="img/timeline/4.jpg" alt="4-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </div>
-            <div class="time-interval">
-                <img src="img/timeline/5.jpg" alt="5-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </div>
-        </div>
-        <div class="footer">
-            <h1>Footer</h1>
-        </div>
+    </div>
+
+    <div class="scripts">
+        <script src="js/main.js"></script>
     </div>
 </body>
 
