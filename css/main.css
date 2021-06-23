@@ -74,6 +74,7 @@ h4 {
 
 .header {
     height: 14%;
+    min-height: 7rem;
     background-color: #002b4ccc;
     border-radius: 0 0 2.3rem 2.3rem;
     display: flex;
@@ -85,6 +86,7 @@ h4 {
 
 .rama-logo img {
     height: 10vh;
+    min-height: 6rem;
     width: auto;
 }
 
@@ -138,7 +140,7 @@ h4 {
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
-    z-index: 3;
+    z-index: 30;
 }
 
 .hamburger span {
@@ -270,7 +272,7 @@ h4 {
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
     box-shadow: -3px 0px 8px 0px #070707;
-    z-index: 2;
+    z-index: 20;
 }
 
 .side-menu.open {
@@ -285,7 +287,7 @@ h4 {
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 15;
     display: none;
 }
 
@@ -369,7 +371,7 @@ h4 {
         height: 100%;
         top: 0;
         right: -100%;
-        z-index: 2;
+        z-index: 15;
     }
     .side-menu-options {
         padding-top: 15rem;
@@ -472,10 +474,14 @@ h4 {
     overflow-x: scroll;
 }
 
+.flex-1 {
+    flex: 1 1 0%;
+}
+
 .time-interval {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 25rem;
     height: 44rem;
@@ -492,21 +498,38 @@ h4 {
     border-radius: 1rem;
     object-fit: cover;
     object-position: center;
-    height: 36rem;
     filter: brightness(0.7);
+    z-index: 10;
+}
+
+.time-interval:nth-child(even) img {
+    height: 25rem;
+    width: 30rem;
+}
+
+.time-interval:nth-child(odd) img {
+    height: 35rem;
+    width: 30rem;
 }
 
 .time-interval img:hover {
     filter: brightness(1);
     cursor: pointer;
-    transform: scale(1.025);
+    transform: scale(1.075);
     transition-duration: 0.5s;
 }
 
 .time-interval .vertical-line {
-    width: 0.2rem;
+    width: 0.1rem;
     background-color: white;
     filter: opacity(0.5);
+}
+
+.time-interval:nth-child(even) .vertical-line {
+    height: 9rem;
+}
+
+.time-interval:nth-child(odd) .vertical-line {
     height: 4rem;
 }
 
