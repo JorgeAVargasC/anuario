@@ -453,25 +453,31 @@ h4 {
         width: 0%;
     }
     100% {
-        /* @media(max-width: 768px) {
-        width: 75vw;
-    }
-    @media(min-width: 768px) {
-        width: 30vw;
-    } */
         width: 80%;
     }
 }
 
+/* Page content */
+
+.page-content {
+    position: relative;
+    height: 86%;
+}
 
 /*Timeline*/
 
-.timeline {
-    height: 86%;
+.timeline { 
+    /* background-color: white; */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    overflow-x: scroll;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.timeline::-webkit-scrollbar {
+    display: none;
 }
 
 .flex-1 {
@@ -537,6 +543,30 @@ h4 {
     color: white;
     filter: opacity(0.9);
     font-size: 2rem;
+}
+
+.arrow{
+    position: absolute;
+    display: table;
+    padding: 3% 0;
+    height: 100%;
+    width: 8%;
+    z-index: 15;
+}
+
+.left-arrow{
+    left: 0;
+}
+
+.right-arrow{
+    right: 0;
+}
+
+.center-arrow{
+    display: table-cell;
+    vertical-align: middle;
+    /* background-color: darkgreen; */
+    z-index: 15;
 }
 
 
