@@ -509,6 +509,7 @@ h4 {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    text-decoration: none;
     width: 25rem;
     height: 44rem;
     min-width: 25rem;
