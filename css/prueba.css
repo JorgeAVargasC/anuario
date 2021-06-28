@@ -1,0 +1,28 @@
+.vertical-timeline{
+    background-color: darkmagenta;
+    position: fixed;
+    left: 0;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-cards-layout {
+    background-color: darkred;
+    position: absolute;
+    right: 0;
+    width: 90%;
+    padding: 3%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-column-gap: 4%;
+    grid-row-gap: 5vh;
+}
+
+.mini-card {
+    width: 25rem;
+    height: 30rem;
+    background-color: darkturquoise;
+}
+
