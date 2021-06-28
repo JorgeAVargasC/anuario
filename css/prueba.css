@@ -1,17 +1,32 @@
-.vertical-timeline{
-    background-color: darkmagenta;
-    position: fixed;
-    left: 0;
-    width: 10%;
+.grid-layout {
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.vertical-timeline-layout {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 86vh;
+    position: sticky;
+    top: 14vh;
+}
+
+.vertical-timeline {
+    background-color: dodgerblue;
+    position: sticky;
+    top: 14vh;
+    height: fit-content;
+}
+
+.year-interval {
+    margin: 10% 0%;
+    border-style: solid;
+    border-color: green;
+    border-width: 2px;
 }
 
 .mini-cards-layout {
-    background-color: darkred;
-    position: absolute;
-    right: 0;
-    width: 90%;
     padding: 3%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

@@ -65,7 +65,10 @@ h4 {
 
 .img-filter {
     background-color: #21212177;
-    height: 100vh;
+    position: sticky;
+    top: 0;
+    /* Cuando la clase padre (.main-page) es mas pequeña que la pantalla, se daña el filtro */
+    /* Esto solo sucede en index.html por lo que se le puso un tamaño de 100vh como inline-style */
 }
 
 /*Header*/
