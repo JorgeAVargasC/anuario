@@ -44,17 +44,18 @@
             <div id="miModal" class="modal">
 
 
-                <div class="big-card-container">
-                    <div class="big-horizontal-flex">
-                        <div class="big-content">
-                            <div class="big-bg-blue">
-                                <img src="img/members/GG.png" alt="" class="back-img">
+                <div class="flip-container">
+
+                    <div class="card-face front-face-flex">
+                        <div class="front-content">
+                            <div class="front-bg-blue">
+                                <img src="img/members/GG.png" alt="" class="front-img">
                                 <h1>Gigi Virginia Muñoz</h1>
                                 <span class="big-content-line"></span>
                                 <p>Vice-presidente 2021-2022</p>
                             </div>
                         </div>
-                        <div class="big-insignias">
+                        <div class="front-insignias">
                             <a href="#"><i class="fas fa-times"></i></a>
 
                             <span class="big-content-line"></span>
@@ -63,12 +64,14 @@
                             <i class="fab fa-linkedin fa-2x"></i>
                             <i class="fas fa-medal fa-2x"></i>
                             <div class="flex-1"></div>
-                            <i id="flip" class="fas fa-redo-alt fa-2x"></i>
+                            <i id="flip-icon" class="fas fa-redo-alt fa-2x"></i>
                         </div>
                     </div>
-                    <div class="big-horizontal-flex-back">
 
+                    <div class="card-face back-face-flex">
+                        <i id="flip-icon" class="fas fa-redo-alt fa-2x"></i>
                     </div>
+
                 </div>
 
 
@@ -83,7 +86,12 @@
 
 
 
-
+    <script>
+        var flipContainer = document.querySelector('.flip-container');
+        flipContainer.addEventListener('click', function() {
+            flipContainer.classList.toggle('is-flipped');
+        });
+    </script>
 
 
     <div class="scripts">
