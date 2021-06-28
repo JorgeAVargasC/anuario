@@ -624,6 +624,14 @@ height: 8vh;
     align-items: center;
 }
 
+.img-filter-card {
+    height: 100vh;
+    background-color: #21212177;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .bg-blue {
     display: flex;
     flex-direction: column;
