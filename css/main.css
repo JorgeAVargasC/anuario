@@ -615,16 +615,11 @@ height: 8vh;
 
 /*PAGINA MINI CARDS*/
 
-.modal-contenido {
-    background-color: aqua;
-    width: 300px;
-    padding: 10px 20px;
-    margin: 20% auto;
-    position: relative;
-}
-
 .modal {
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0, 0, 0, 0.527);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     right: 0;
@@ -632,7 +627,7 @@ height: 8vh;
     left: 0;
     opacity: 0;
     pointer-events: none;
-    transition: all 1s;
+    transition: all 0.6s;
 }
 
 #miModal:target {
@@ -683,6 +678,11 @@ height: 8vh;
 
 .img-container:hover .glass-hover {
     opacity: 0.5;
+}
+
+.img-container a {
+    color: var(--blanco);
+    text-decoration: none;
 }
 
 .img-container p {
@@ -740,7 +740,7 @@ height: 8vh;
 
 /*BAAAAAAAAAAAAAAAAAAAAAAAAAAACK*/
 
-.back-card-container {
+.big-card-container {
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -750,7 +750,12 @@ height: 8vh;
     margin: 10rem;
 }
 
-.back-horizontal-flex {
+.big-card-container a {
+    text-decoration: none;
+    color: var(--blanco);
+}
+
+.big-horizontal-flex {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -759,7 +764,7 @@ height: 8vh;
     height: 45rem;
 }
 
-.back-content {
+.big-content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -770,7 +775,7 @@ height: 8vh;
     background-color: var(--blanco);
 }
 
-.back-bg-blue {
+.big-bg-blue {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -782,7 +787,7 @@ height: 8vh;
     border-radius: 3.9rem 0% 100% 100% / 3.9rem 0% 10% 10%;
 }
 
-.back-bg-blue .back-img {
+.big-bg-blue .back-img {
     height: 19rem;
     width: 19rem;
     object-fit: cover;
@@ -790,23 +795,23 @@ height: 8vh;
     border-radius: 1rem;
 }
 
-.back-bg-blue h1 {
+.big-bg-blue h1 {
     font-size: 2rem;
     color: var(--blanco);
 }
 
-.back-content-line {
+.big-content-line {
     background-color: var(--blanco);
     height: .1rem;
     width: 60%;
 }
 
-.back-bg-blue p {
+.big-bg-blue p {
     font-size: 1.5rem;
     color: var(--blanco);
 }
 
-.back-insignias {
+.big-insignias {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -818,6 +823,56 @@ height: 8vh;
     color: var(--blanco);
 }
 
-.back-insignias * {
+.big-insignias * {
     margin-top: 1rem;
 }
+
+#flip {
+    margin-bottom: 1rem;
+}
+
+
+/*
+.big-horizontal-flex-back {
+    height: 45rem;
+    width: 35rem;
+    background-color: var(--blanco);
+}
+
+
+*/
+
+.card {
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+
+/*
+.big-card-container:hover {
+    -webkit-animation: back-card-container 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: back-card-container 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes back-card-container {
+    0% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+    }
+}
+
+@keyframes back-card-container {
+    0% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+    }
+}
+*/
