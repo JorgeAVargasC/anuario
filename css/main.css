@@ -67,9 +67,6 @@ h4 {
 .img-filter {
     height: 100vh;
     background-color: #21212177;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 
