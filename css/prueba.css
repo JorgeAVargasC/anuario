@@ -1,9 +1,10 @@
 .grid-layout {
     display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 15% 85%;
 }
 
 .vertical-timeline-layout {
+    background-color: hotpink;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,20 +25,31 @@
     border-style: solid;
     border-color: green;
     border-width: 2px;
+    text-align: center;
 }
 
 .mini-cards-layout {
-    padding: 3%;
+    padding: 4%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-auto-rows: auto;
-    grid-column-gap: 4%;
+    grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 5vh;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
 }
 
 .mini-card {
-    width: 25rem;
-    height: 30rem;
+    width: 17.32rem;
+    height: 23rem;
+    /* Los datos de arriba fueron calculados con regla de tres, siguiendo la relacion de la tarjeta ya hecha */
     background-color: darkturquoise;
+}
+
+.year-title {
+    grid-column: 1/-1;
+    color: white;
+    font-size: 3rem;
+    font-weight: 500;
 }
 
