@@ -4,7 +4,6 @@
 }
 
 .vertical-timeline-layout {
-    background-color: hotpink;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +13,7 @@
 }
 
 .vertical-timeline {
-    background-color: dodgerblue;
+    /* background-color: dodgerblue; */
     position: sticky;
     top: 14vh;
     height: fit-content;
@@ -22,10 +21,25 @@
 
 .year-interval {
     margin: 10% 0%;
-    border-style: solid;
-    border-color: green;
-    border-width: 2px;
+    color: white;
     text-align: center;
+    font-size: 2rem;
+    transition-duration: 100ms;
+}
+
+.year-interval:not(.year-interval-icon)::after {
+    content: 's';
+}
+
+.year-interval:not(.year-interval-icon):hover {
+    transform: scale(1.04);
+    cursor: pointer;
+    margin-left: 10%;
+}
+
+.year-interval-icon {
+    width: 80%;
+    margin: 10% auto;
 }
 
 .mini-cards-layout {
@@ -39,11 +53,38 @@
     align-items: center;
 }
 
+@media (max-width: 1040px) {
+    .mini-cards-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 780px) {
+    .mini-cards-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .mini-cards-layout {
+        grid-template-columns: 1fr;
+    }
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+}
+
 .mini-card {
     width: 17.32rem;
     height: 23rem;
+    background-color: white;
+    border-radius: 6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* Los datos de arriba fueron calculados con regla de tres, siguiendo la relacion de la tarjeta ya hecha */
-    background-color: darkturquoise;
+    /*background-color: darkturquoise;*/
 }
 
 .year-title {
@@ -52,4 +93,3 @@
     font-size: 3rem;
     font-weight: 500;
 }
-
