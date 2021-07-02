@@ -314,8 +314,8 @@ h4 {
 .side-menu-options {
     position: relative;
     height: 100%;
-    padding-top: 25%;
-    padding-left: 10.5%;
+    padding-top: 25vh;
+    padding-left: 10.5vh;
 }
 
 .side-menu-options li:not(.sublist-item) {
@@ -386,19 +386,16 @@ h4 {
         height: 100%;
         top: 0;
         right: -100%;
-        z-index: 15;
+        z-index: 25;
     }
     .side-menu-options {
-        padding-top: 15rem;
-        padding-left: 15%;
+        padding-top: 25vh;
+        padding-left: 10.5vh;
         background: linear-gradient(90deg, #002B4C 6.25%, #032239 58.85%);
     }
     .side-menu-options span {
         width: 75vw;
         height: .3rem;
-    }
-    .empty-panel.open {
-        display: none;
     }
 }
 
@@ -622,31 +619,6 @@ height: 8vh;
 
 /*PAGINA MINI CARDS*/
 
-.card-view {
-    background-color: rgba(0, 0, 0, 0.527);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    transition: all 0.6s;
-    /* display: none; */
-}
-
-.card-container {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    background-color: white;
-    border-radius: 5%;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
 .img-filter-card {
     height: 100vh;
     background-color: #21212177;
@@ -680,7 +652,6 @@ height: 8vh;
 
 .img-container:hover .glass-hover {
     opacity: 0.6;
-    width: 100%;
 }
 
 .img-container a {
@@ -753,10 +724,17 @@ height: 8vh;
 /*BAAAAAAAAAAAAAAAAAAAAAAAAAAACK*/
 
 .flip-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -22.5rem;
+    margin-left: -17.5rem;
     width: 35rem;
     height: 45rem;
     transition: transform 1s;
     transform-style: preserve-3d;
+    z-index: 35;
+    display: none;
 }
 
 .flip-container.is-flipped {
@@ -854,7 +832,7 @@ height: 8vh;
     cursor: pointer;
 }
 
-#flip-icon {
+.flip-icon {
     margin-bottom: 1rem;
     cursor: pointer;
 }
