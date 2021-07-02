@@ -3,6 +3,13 @@
     grid-template-columns: 15% 85%;
 }
 
+@media (max-width: 768px) {
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+}
+
 .vertical-timeline-layout {
     display: flex;
     flex-direction: column;
@@ -13,7 +20,6 @@
 }
 
 .vertical-timeline {
-    /* background-color: dodgerblue; */
     position: sticky;
     top: 14vh;
     height: fit-content;
@@ -83,8 +89,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Los datos de arriba fueron calculados con regla de tres, siguiendo la relacion de la tarjeta ya hecha */
-    /*background-color: darkturquoise;*/
 }
 
 .year-title {

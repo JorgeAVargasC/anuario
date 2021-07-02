@@ -304,9 +304,9 @@ h4 {
 
 .empty-panel.open {
     display: block;
-    backdrop-filter: blur(2px);
+    /* backdrop-filter: blur(2px); */
     /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
-    background-color: rgba(22, 21, 21, 0.4);
+    background-color: rgba(24, 23, 23, 0.8);
     animation-name: empty-panel-animation-open;
     animation-duration: 1000ms;
     animation-fill-mode: forwards;
@@ -620,12 +620,104 @@ height: 8vh;
 
 /*PAGINA MINI CARDS*/
 
-.img-filter-card {
-    height: 100vh;
-    background-color: #21212177;
+.grid-layout {
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+@media (max-width: 768px) {
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+}
+
+.vertical-timeline-layout {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    height: 86vh;
+    position: sticky;
+    top: 14vh;
+}
+
+.vertical-timeline {
+    position: sticky;
+    top: 14vh;
+    height: fit-content;
+}
+
+.year-interval {
+    margin: 10% 0%;
+    color: var(--blanco);
+    text-align: center;
+    font-size: 2rem;
+    transition-duration: 100ms;
+}
+
+.year-interval:not(.year-interval-icon)::after {
+    content: 's';
+}
+
+.year-interval:not(.year-interval-icon):hover {
+    transform: scale(1.04);
+    cursor: pointer;
+    margin-left: 10%;
+}
+
+.year-interval-icon {
+    width: 80%;
+    margin: 10% auto;
+}
+
+.mini-cards-layout {
+    padding: 4%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 5vh;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+}
+
+@media (max-width: 1040px) {
+    .mini-cards-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 780px) {
+    .mini-cards-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .mini-cards-layout {
+        grid-template-columns: 1fr;
+    }
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+}
+
+.mini-card {
+    width: 17.32rem;
+    height: 23rem;
+    background-color: var(--blanco);
+    border-radius: 6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.year-title {
+    grid-column: 1/-1;
+    color: var(--blanco);
+    font-size: 3rem;
+    font-weight: 500;
 }
 
 .bg-blue {
