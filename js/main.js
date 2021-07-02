@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             sidePanel.classList.toggle('open');
         }else{
             hamburger.style.zIndex = 30;
-            document.querySelector('#flip-container').style.display = 'none';
+            document.querySelector('#card-view').classList.toggle('open');
         }
         event.target.classList.toggle('open');
     })
@@ -33,13 +33,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 o.classList.toggle('open');
             })
         })
-    })
-
-    document.querySelectorAll('.sublist-item.open').forEach(e =>{
-        console.log(e);
-        e.addEventListener("webkitAnimationEnd", (event)=>{
-            event.target.style.display = 'none';
-        });
-    });
-    
+    })    
 })
