@@ -304,8 +304,9 @@ h4 {
 
 .empty-panel.open {
     display: block;
-    backdrop-filter: grayscale(0.8) blur(2px);
+    backdrop-filter: blur(2px);
     /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
+    background-color: rgba(22, 21, 21, 0.4);
     animation-name: empty-panel-animation-open;
     animation-duration: 1000ms;
     animation-fill-mode: forwards;
