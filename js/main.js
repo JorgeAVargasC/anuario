@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     // Para desplegar menu lateral
     const sidePanel = document.querySelector('#side-menu');
-    const emptyPanel = document.querySelector('#empty-panel');
+    const sideMenuEmptyPanel = document.querySelector('#side-menu-empty-panel');
     const hamburger = document.querySelector('#hamburger');
 
     // Funcionalidad del boton hamburguesa
@@ -10,19 +10,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
         sidePanel.style.display = 'block';
         hamburger.classList.toggle('open');
         sidePanel.classList.toggle('open');
-        emptyPanel.classList.toggle('open');
+        sideMenuEmptyPanel.style.display = 'flex';
+        sideMenuEmptyPanel.classList.toggle('open');
     })
 
     // Funcionalidad del panel vacío
-    emptyPanel.addEventListener('click', (event) => {
-        if(sidePanel.classList.contains('open')){
-            hamburger.classList.toggle('open');
-            sidePanel.classList.toggle('open');
-        }else{
-            hamburger.style.zIndex = 30;
-            document.querySelector('#card-view').classList.toggle('open');
-        }
-        event.target.classList.toggle('open');
+    sideMenuEmptyPanel.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        sidePanel.classList.toggle('open');
+        sideMenuEmptyPanel.classList.toggle('open');
     })
 
     // Para desplegar subopciones

@@ -1,30 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const emptyPanel = document.querySelector('#empty-panel');
+    const cardViewEmptyPanel = document.querySelector('#card-view-empty-panel');
     const hamburger = document.querySelector('#hamburger');
     const flipContainer = document.querySelector('#flip-container');
+    const flipIcon = document.querySelectorAll('.flip-icon');
+    const cardViewLayout = document.querySelector('#card-view-layout');
     const cardView = document.querySelector('#card-view');
+    const closeCard = document.querySelector('#close-card');
     const miniCards = document.querySelectorAll('.glass-hover');
+
     miniCards.forEach((obj) => {
-        obj.addEventListener('click', (event) => {
+        obj.addEventListener('click', () => {
             // let cardView = event.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling;
-            // cardView.style.display = 'block';
+            cardViewLayout.style.display = 'flex';
+            cardViewEmptyPanel.style.display = 'block';
             cardView.style.display = 'block';
+            cardViewEmptyPanel.classList.toggle('open');
+            cardViewLayout.classList.toggle('open');
             cardView.classList.toggle('open');
-            emptyPanel.classList.toggle('open');
             hamburger.style.zIndex = 15;
         })
     });
-    const flipIcon = document.querySelectorAll('.flip-icon');
+
+    // Funcionalidad del panel vacío
+    cardViewEmptyPanel.addEventListener('click', () => {
+        hamburger.style.zIndex = 30;
+        cardView.classList.toggle('open');
+        cardViewEmptyPanel.classList.toggle('open');
+        cardViewLayout.classList.toggle('open');
+    })
+
     flipIcon.forEach((obj)=>{
         obj.addEventListener('click', function() {
             flipContainer.classList.toggle('is-flipped');
         });
     })
     
-    const closeCard = document.querySelector('#close-card');
     closeCard.addEventListener('click', ()=>{
         hamburger.style.zIndex = 30;
         cardView.classList.toggle('open');
-        emptyPanel.classList.toggle('open');
+        cardViewEmptyPanel.classList.toggle('open');
+        cardViewLayout.classList.toggle('open');
     })
 })

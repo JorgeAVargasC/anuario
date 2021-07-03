@@ -303,17 +303,15 @@ h4 {
     top: 0;
     left: 0;
     z-index: 20;
+    animation: empty-panel-animation-close 500ms ease forwards;
     display: none;
 }
 
 .empty-panel.open {
-    display: block;
     /* backdrop-filter: blur(2px); */
     /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
+    animation: empty-panel-animation-open 500ms ease forwards;
     background-color: rgba(24, 23, 23, 0.8);
-    animation-name: empty-panel-animation-open;
-    animation-duration: 1000ms;
-    animation-fill-mode: forwards;
 }
 
 .side-menu-options {
@@ -468,6 +466,21 @@ h4 {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes empty-panel-animation-close {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    95% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
     }
 }
 
@@ -821,15 +834,27 @@ height: 8vh;
 /*BAAAAAAAAAAAAAAAAAAAAAAAAAAACK*/
 
 .flip-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -22.5rem;
-    margin-left: -17.5rem;
     width: 35rem;
     height: 45rem;
-    transition: transform 1s;
+    transition: transform 1000ms;
     transform-style: preserve-3d;
+}
+
+.card-view-layout {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    animation: card-closing 500ms ease-in forwards;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.card-view-layout.open {
+    animation: card-opening 1ms ease-in forwards;
 }
 
 .card-view {
