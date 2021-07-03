@@ -30,7 +30,7 @@ html {
 body {
     font-family: 'Kiwi Maru';
     font-size: 1.6rem;
-    background-image: url(../img/timeline/2.jpg);
+    background-image: url(../img/backgrounds/popayan5.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -65,9 +65,10 @@ h4 {
 }
 
 .img-filter {
-    background-color: #21212177;
+    background-color: #21212180;
     position: sticky;
     top: 0;
+    display: flex;
     /* Cuando la clase padre (.main-page) es mas pequeña que la pantalla, se daña el filtro */
     /* Esto solo sucede en index.html por lo que se le puso un tamaño de 100vh como inline-style */
 }
@@ -150,7 +151,7 @@ h4 {
 }
 
 .hamburger:focus {
-	outline: none;
+    outline: none;
 }
 
 .hamburger span {
@@ -637,6 +638,7 @@ height: 8vh;
 
 /*PAGINA MINI CARDS*/
 
+
 /* Layout */
 
 .grid-layout {
@@ -674,7 +676,8 @@ height: 8vh;
     transition-duration: 100ms;
 }
 
-.year-interval:not(.year-interval-icon)::after, .year-title::after {
+.year-interval:not(.year-interval-icon)::after,
+.year-title::after {
     content: 's';
 }
 
@@ -734,6 +737,7 @@ height: 8vh;
     font-size: 3rem;
     font-weight: 500;
 }
+
 
 /* Tarjetas */
 
@@ -874,7 +878,6 @@ height: 8vh;
     100% {
         transform: scale(1);
     }
-
 }
 
 @keyframes card-closing {
@@ -884,7 +887,6 @@ height: 8vh;
     100% {
         transform: scale(0);
     }
-
 }
 
 .flip-container.is-flipped {
@@ -909,8 +911,6 @@ height: 8vh;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
-
-.front-face-flex {}
 
 .back-face-flex {
     background-color: var(--blanco);
