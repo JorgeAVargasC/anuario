@@ -982,6 +982,10 @@ height: 8vh;
     cursor: pointer;
 }
 
+.front-insignias i:first-of-type {
+    margin-top: 1.7rem;
+}
+
 .flip-icon {
     margin-bottom: 1rem;
     cursor: pointer;
