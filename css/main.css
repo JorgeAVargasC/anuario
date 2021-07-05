@@ -33,8 +33,7 @@ body {
     background-image: url(../img/backgrounds/popayan5.jpg);
     background-attachment: fixed;
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: 200%;
+    background-size: cover;
 }
 
 img {
