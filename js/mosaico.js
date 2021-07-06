@@ -23,10 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Funcionalidad del panel vacío
     cardViewEmptyPanel.addEventListener('click', () => {
-        hamburger.style.zIndex = 30;
-        cardView.classList.toggle('open');
-        cardViewEmptyPanel.classList.toggle('open');
-        cardViewLayout.classList.toggle('open');
+        closingCard();
     })
 
     flipIcon.forEach((obj)=>{
@@ -36,9 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     closeCard.addEventListener('click', ()=>{
+        closingCard();
+    })
+
+    function closingCard(){
         hamburger.style.zIndex = 30;
         cardView.classList.toggle('open');
         cardViewEmptyPanel.classList.toggle('open');
         cardViewLayout.classList.toggle('open');
-    })
+        if(flipContainer.classList.contains('is-flipped')){
+            flipContainer.classList.toggle('is-flipped');
+        }
+    }
 })
