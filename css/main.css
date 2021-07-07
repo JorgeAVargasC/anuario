@@ -689,7 +689,7 @@ height: 8vh;
 }
 
 .year-interval-icon {
-    width: 80%;
+    width: 35%;
     margin: 10% auto;
 }
 
@@ -794,6 +794,7 @@ height: 8vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .glass-hover i {
