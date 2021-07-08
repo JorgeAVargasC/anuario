@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
             cardViewLayout.classList.toggle('open');
             cardView.classList.toggle('open');
             hamburger.style.zIndex = 15;
+            id = obj.parentElement.parentElement.parentElement.dataset.id;
+            fetch(`https://dummyapi.io/data/api/user/${id}`, {
+                method: 'GET',
+                headers: {
+                    'app-id': '60e7087c66d25e6ae07f1998'
+                }
+            }).then(res => res.json()).then(data => {
+                cardView.querySelector('.front-bg-blue h1').innerHTML = `${data.firstName} ${data.lastName}`;
+                cardView.querySelector('.front-bg-blue p').innerHTML = `${data.email}`;
+            })
         })
     });
 
