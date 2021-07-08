@@ -837,7 +837,9 @@ height: 8vh;
 }
 
 
-/*BAAAAAAAAAAAAAAAAAAAAAAAAAAACK*/
+/*Big Card*/
+
+
 
 .flip-container {
     width: 35rem;
@@ -857,6 +859,14 @@ height: 8vh;
     justify-content: center;
     align-items: center;
     display: none;
+}
+
+.loading-face-flex {
+    position: relative;
+    z-index: 999;
+    background-color: var(--blanco);
+    border-radius: 2rem;
+    /*transition-duration: 1s;*/
 }
 
 .card-view-layout.open {
