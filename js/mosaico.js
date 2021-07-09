@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardView.classList.toggle('open');
                 hamburger.style.zIndex = 15;
                 id = obj.parentElement.parentElement.parentElement.dataset.id;
-                let loadingImg = `<div class="card-face loading-face-flex" id="card-loading"><img src="img/icons/loading.gif" width="30%" alt="loading"></div>`;
+                let loadingImg = `<div class="card-face loading-face-flex" id="card-loading"><img src="/img/icons/loading.gif" width="30%" alt="loading"></div>`;
                 flipContainer.innerHTML = loadingImg;
                 fetch(`https://dummyapi.io/data/api/user/${id}`, {
                     method: 'GET',
