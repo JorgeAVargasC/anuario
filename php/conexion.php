@@ -2,5 +2,5 @@
     $host = "localhost";
     $user = "root";
     $pw = "";
-    $db = "miembrosRamaIEEE";
+    $db = "examenes_unicauca";
 ?>
