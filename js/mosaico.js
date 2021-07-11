@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardView = document.querySelector('#card-view');
     const miniCardsLayout = document.querySelector('#mini-cards-layout');
 
-    fetch('/anuario/php/consultarUsuarios.php')
-    .then(res => res.json()).then(data => {
-        for (let user of data) {
-            let newMiniCard = document.createElement('div');
-            newMiniCard.className = 'mini-card';
-            newMiniCard.dataset.id = user.id;
-            newMiniCard.innerHTML = `
+    fetch("../functions/consultarUsuarios.php")
+        .then(res => res.json()).then(data => {
+            for (let user of data) {
+                let newMiniCard = document.createElement('div');
+                newMiniCard.className = 'mini-card';
+                newMiniCard.dataset.id = user.id;
+                newMiniCard.innerHTML = `
                 <div class="bg-blue">
                     <div class="img-container">
                         <img class="member-img" src="${user.primerNombre}">
@@ -31,28 +31,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fas fa-medal"></i>
                 </div>
             `;
-            miniCardsLayout.appendChild(newMiniCard);
-        }
-        const miniCards = document.querySelectorAll('.glass-hover');
-        miniCards.forEach((obj) => {
-            obj.addEventListener('click', () => {
-                cardViewLayout.style.display = 'flex';
-                cardViewEmptyPanel.style.display = 'block';
-                cardView.style.display = 'block';
-                cardViewEmptyPanel.classList.toggle('open');
-                cardViewLayout.classList.toggle('open');
-                cardView.classList.toggle('open');
-                hamburger.style.zIndex = 15;
-                id = obj.parentElement.parentElement.parentElement.dataset.id;
-                let loadingImg = `<div class="card-face loading-face-flex" id="card-loading"><img src="/anuario/img/icons/loading.gif" width="30%" alt="loading"></div>`;
-                flipContainer.innerHTML = loadingImg;
-                fetch(`https://dummyapi.io/data/api/user/${id}`, {
-                    method: 'GET',
-                    headers: {
-                        'app-id': '60e72af47ebffc797f73b482'
-                    }
-                }).then(res => res.json()).then(data => {
-                    let result = `
+                miniCardsLayout.appendChild(newMiniCard);
+            }
+            const miniCards = document.querySelectorAll('.glass-hover');
+            miniCards.forEach((obj) => {
+                obj.addEventListener('click', () => {
+                    cardViewLayout.style.display = 'flex';
+                    cardViewEmptyPanel.style.display = 'block';
+                    cardView.style.display = 'block';
+                    cardViewEmptyPanel.classList.toggle('open');
+                    cardViewLayout.classList.toggle('open');
+                    cardView.classList.toggle('open');
+                    hamburger.style.zIndex = 15;
+                    id = obj.parentElement.parentElement.parentElement.dataset.id;
+                    let loadingImg = `<div class="card-face loading-face-flex" id="card-loading"><img src="/anuario/img/icons/loading.gif" width="30%" alt="loading"></div>`;
+                    flipContainer.innerHTML = loadingImg;
+                    fetch(`https://dummyapi.io/data/api/user/${id}`, {
+                        method: 'GET',
+                        headers: {
+                            'app-id': '60e72af47ebffc797f73b482'
+                        }
+                    }).then(res => res.json()).then(data => {
+                        let result = `
                             <div class="card-face front-face-flex">
                                 <div class="front-content">
                                     <div class="front-bg-blue">
@@ -90,21 +90,21 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                         `;
-                    flipContainer.innerHTML = result;
-                    const flipIcon = document.querySelectorAll('.flip-icon');
-                    flipIcon.forEach((obj) => {
-                        obj.addEventListener('click', function() {
-                            flipContainer.classList.toggle('is-flipped');
-                        });
-                    })
-                    const closeCard = document.querySelector('#close-card');
-                    closeCard.addEventListener('click', () => {
-                        closingCard();
+                        flipContainer.innerHTML = result;
+                        const flipIcon = document.querySelectorAll('.flip-icon');
+                        flipIcon.forEach((obj) => {
+                            obj.addEventListener('click', function() {
+                                flipContainer.classList.toggle('is-flipped');
+                            });
+                        })
+                        const closeCard = document.querySelector('#close-card');
+                        closeCard.addEventListener('click', () => {
+                            closingCard();
+                        })
                     })
                 })
-            })
-        });
-    })
+            });
+        })
 
     // Funcionalidad del panel vacío
     cardViewEmptyPanel.addEventListener('click', () => {

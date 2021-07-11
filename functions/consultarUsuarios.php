@@ -1,11 +1,14 @@
 <?php
-    include 'conexion.php';
+    include_once("../connection/db_connection.php");
+    
     $conection = mysqli_connect($host, $user, $pw, $db);
     $query = "SELECT * from miembros";
     $result = mysqli_query($conection, $query);
     $jsonArray = array();
+    
     while($row = mysqli_fetch_assoc($result)){
         $jsonArray[] = $row;
     }
     print_r(json_encode($jsonArray))
+
 ?>
