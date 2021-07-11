@@ -6,26 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardView = document.querySelector('#card-view');
     const miniCardsLayout = document.querySelector('#mini-cards-layout');
 
-    fetch('https://dummyapi.io/data/api/user?limit=30', {
-        method: 'GET',
-        headers: {
-            'app-id': '60e72af47ebffc797f73b482'
-        }
-    }).then(res => res.json()).then(data => {
-        for (let user of data.data) {
+    fetch('/anuario/php/consultarUsuarios.php')
+    .then(res => res.json()).then(data => {
+        for (let user of data) {
             let newMiniCard = document.createElement('div');
             newMiniCard.className = 'mini-card';
             newMiniCard.dataset.id = user.id;
             newMiniCard.innerHTML = `
                 <div class="bg-blue">
                     <div class="img-container">
-                        <img class="member-img" src="${user.picture}">
+                        <img class="member-img" src="${user.primerNombre}">
                         <div class="glass-hover">
                             <i class="fas fa-arrow-circle-right fa-3x"></i>
                             <p>Ver Más</p>
                         </div>
                     </div>
-                    <p class="member-name">${user.firstName} ${user.lastName}</p>
+                    <p class="member-name">${user.primerNombre} ${user.primerApellido}</p>
                 </div>
                 <div class="insignias">
                     <i class="fab fa-facebook-square"></i>
@@ -48,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardView.classList.toggle('open');
                 hamburger.style.zIndex = 15;
                 id = obj.parentElement.parentElement.parentElement.dataset.id;
-                let loadingImg = `<div class="card-face loading-face-flex" id="card-loading"><img src="/img/icons/loading.gif" width="30%" alt="loading"></div>`;
+                let loadingImg = `<div class="card-face loading-face-flex" id="card-loading"><img src="/anuario/img/icons/loading.gif" width="30%" alt="loading"></div>`;
                 flipContainer.innerHTML = loadingImg;
                 fetch(`https://dummyapi.io/data/api/user/${id}`, {
                     method: 'GET',

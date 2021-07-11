@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     // Para desplegar menu lateral
     const sidePanel = document.querySelector('#side-menu');
-    const sideMenuEmptyPanel = document.querySelector('#side-menu-empty-panel');
+    const sideMenuEmptyPanel = document.querySelector('#empty-panel');
     const hamburger = document.querySelector('#hamburger');
 
     // Funcionalidad del boton hamburguesa
