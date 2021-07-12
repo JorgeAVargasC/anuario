@@ -1,7 +1,7 @@
 <?php
-include_once("connection/db_connection.php");
-include_once("templates/header.php");
-include_once("templates/navigation.php");
+    include_once("connection/db_connection.php");
+    include_once("templates/header.php");
+    include_once("templates/navigation.php");
 ?>
 
 <div class="page-content">
@@ -74,5 +74,5 @@ include_once("templates/navigation.php");
 </div>
 
 <?php
-include_once("templates/footer.php");
+    include_once("templates/footer.php");
 ?>

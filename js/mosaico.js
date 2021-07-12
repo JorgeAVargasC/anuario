@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const flipContainer = document.querySelector('#flip-container');
     const cardViewLayout = document.querySelector('#card-view-layout');
     const cardView = document.querySelector('#card-view');
-    // const miniCardsLayout = document.querySelector('#mini-cards-layout');
 
     const miniCards = document.querySelectorAll('.glass-hover');
     miniCards.forEach((obj) => {
@@ -20,17 +19,29 @@ document.addEventListener('DOMContentLoaded', () => {
             let loadingImg = `<div class="card-face loading-face-flex" id="card-loading"><img src="/anuario/img/icons/loading.gif" width="30%" alt="loading"></div>`;
             flipContainer.innerHTML = loadingImg;
             fetch(`/anuario/functions/members.php?id=${id}`)
-            .then(res => res.json()).then(member => {
-                let nombre = member.nombrePreferido == 1 ? `<h1>${member.primerNombre} ${member.primerApellido}</h1>` : `<h1>${member.segundoNombre} ${member.primerApellido}</h1>`;
+            .then(res => res.json()).then(data => {
+                let member = data[0];
+                let cargos = data[1];
+                console.log(member);
+                let nombre = member.nombrePreferido == 1 ? `${member.primerNombre} ${member.primerApellido}` : `${member.segundoNombre} ${member.primerApellido}`;
+                let aportes = ''; 
+                for(let cargo of cargos){
+                    aportes += `<li><p>${cargo.cargo}</p></li>`;
+                }
                 let result = `
                     <div class="card-face front-face-flex">
                         <div class="front-content">
                             <div class="front-bg-blue">
                                 <img src="${member.urlFoto}" alt="" class="front-img">
-                                ${nombre}
+                                <h1>${nombre}</h1>
                                 <span class="big-content-line"></span>
-                                <p>${member.correo}</p>
+                                <p>Voluntario ${member.anioIngresoRama}-${member.anioSalidaRama}</p>
                             </div>
+                            <h4>Aportes</h4>
+                            <ul>
+                                ${aportes}
+                            </ul>
+                            
                         </div>
                         <div class="front-insignias">
                             <i id="close-card" class="fas fa-times"></i>
