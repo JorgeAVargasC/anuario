@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 12, 2021 at 05:23 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-07-2021 a las 18:51:45
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `miembros_rama_ieee`
+-- Base de datos: `miembros_rama_ieee`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cargos`
+-- Estructura de tabla para la tabla `cargos`
 --
 
 CREATE TABLE `cargos` (
@@ -33,7 +33,7 @@ CREATE TABLE `cargos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cargos`
+-- Volcado de datos para la tabla `cargos`
 --
 
 INSERT INTO `cargos` (`id`, `cargo`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `cargos` (`id`, `cargo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cargos_de_miembros`
+-- Estructura de tabla para la tabla `cargos_de_miembros`
 --
 
 CREATE TABLE `cargos_de_miembros` (
@@ -62,7 +62,7 @@ CREATE TABLE `cargos_de_miembros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cargos_de_miembros`
+-- Volcado de datos para la tabla `cargos_de_miembros`
 --
 
 INSERT INTO `cargos_de_miembros` (`id`, `miembro`, `cargo`, `comite`) VALUES
@@ -86,7 +86,7 @@ INSERT INTO `cargos_de_miembros` (`id`, `miembro`, `cargo`, `comite`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comites`
+-- Estructura de tabla para la tabla `comites`
 --
 
 CREATE TABLE `comites` (
@@ -95,7 +95,7 @@ CREATE TABLE `comites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `comites`
+-- Volcado de datos para la tabla `comites`
 --
 
 INSERT INTO `comites` (`id`, `comite`) VALUES
@@ -108,7 +108,7 @@ INSERT INTO `comites` (`id`, `comite`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `miembros`
+-- Estructura de tabla para la tabla `miembros`
 --
 
 CREATE TABLE `miembros` (
@@ -129,31 +129,31 @@ CREATE TABLE `miembros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `miembros`
+-- Volcado de datos para la tabla `miembros`
 --
 
 INSERT INTO `miembros` (`id`, `primerNombre`, `segundoNombre`, `nombrePreferido`, `primerApellido`, `segundoApellido`, `nombreEnRama`, `anioIngresoRama`, `anioSalidaRama`, `correo`, `celular`, `frase`, `urlFoto`, `urlLinkedin`) VALUES
-(1, 'Jhon', 'Fredy', 2, 'Romero', 'Núñez', 'Fredy', 2021, 2022, 'jhonrom@unicauca.edu.com', '3014822371', 'Mi mamá me dio la vida y la rama IEEE las ganas de vivirla', '', 'https://www.linkedin.com/in/jhon-fredy-romero-n%C3%BA%C3%B1ez-25b4b9174/'),
-(2, 'Jorge', 'Andrés', 1, 'Vargas', 'Cordoba', 'Jorge', 2020, 2022, 'javargas216@unicauca.edu.co', '3143097657', 'Bla bla bla', '', 'https://www.linkedin.com/in/jhon-fredy-romero-n%C3%BA%C3%B1ez-25b4b9174/'),
-(3, 'Johan ', 'Santiago ', 2, 'Yangana ', 'Montoya', 'Santi', 2021, 2022, 'johanyangana@unicauca.edu.co', '3122275035', 'Aunque me cueste morir no dejare la bebida', '', ''),
-(4, 'Santiago', 'de Jesús', 1, 'Martinez', 'Semanate', 'Santi', 2018, 2022, 'santimartinez@unicauca.edu.co', '3124285279', 'Nose', '', ''),
+(1, 'Jhon', 'Fredy', 2, 'Romero', 'Núñez', 'Fredy', 2021, 2022, 'jhonrom@unicauca.edu.com', '3014822371', 'Mi mamá me dio la vida y la rama IEEE las ganas de vivirla', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/48383175_1989141267869104_6153743641794838528_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=upvBfaWOr_AAX8r2UYu&_nc_ht=scontent.fbog11-1.fna&oh=90fa7987e4e98019b7087336d3f41267&oe=60F1B200', 'https://www.linkedin.com/in/jhon-fredy-romero-n%C3%BA%C3%B1ez-25b4b9174/'),
+(2, 'Jorge', 'Andrés', 1, 'Vargas', 'Cordoba', 'Jorge', 2020, 2022, 'javargas216@unicauca.edu.co', '3143097657', 'Primero muerto antes que perder la vida', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/169342125_4021209251257984_4760993059613347327_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=1iScoUqo74cAX9fTZJF&tn=hlhndVaddNSeA_1I&_nc_ht=scontent.fbog11-1.fna&oh=d9e1eda01743670fd486d601fe68c81e&oe=60F1F744', 'https://www.linkedin.com/in/jorge-vargas-349a5b173/'),
+(3, 'Johan ', 'Santiago ', 2, 'Yangana ', 'Montoya', 'Santi', 2021, 2022, 'johanyangana@unicauca.edu.co', '3122275035', 'Aunque me cueste morir no dejare la bebida', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/60079521_2498972156779463_6976517598837997568_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=174925&_nc_ohc=lDUfJiroFpMAX_tzCTU&tn=hlhndVaddNSeA_1I&_nc_ht=scontent.fbog11-1.fna&oh=318328e267761131e5af8b28ec354693&oe=60F20704', ''),
+(4, 'Santiago', 'de Jesús', 1, 'Martinez', 'Semanate', 'Santi', 2018, 2022, 'santimartinez@unicauca.edu.co', '3124285279', 'Nose', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/71961728_10220419499493213_5092383615803719680_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=WUwXUOoTO4wAX_XHcIc&tn=hlhndVaddNSeA_1I&_nc_ht=scontent.fbog11-1.fna&oh=28b9ceff98e7cd8098876970a9c1e2cd&oe=60F0EE21', ''),
 (5, 'Angel', 'Gabriel', 1, 'Pasaje', 'Erazo', 'Angel', 2021, 2022, 'apasaje@unicauca.edu.co', '3204391332', 'si', '', ''),
-(6, 'Jose', 'Miguel', 1, 'Betancourt', 'Chaves', 'Betan', 2020, 2022, 'josebetancourt@unicauca.edu.co', '3046076944', 'Bla bla bla', '', ''),
-(7, 'Daniel', '', 1, 'Gomez', 'Mendez', 'Negru', 2021, 2022, 'dgomez216@unicauca.edu.co', '3218933997', 'Bla bla bla', '', ''),
-(8, 'Valentina', '', 1, 'Solano', 'Mogollón', 'Valen', 2019, 2022, 'smvalentina@unicauca.edu.co', '3207775660', 'La Rama me enseño a potenciar habilidades como el liderazgo y la organización de proyectos', '', '');
+(6, 'Jose', 'Miguel', 1, 'Betancourt', 'Chaves', 'Betan', 2020, 2022, 'josebetancourt@unicauca.edu.co', '3046076944', 'Bla bla bla', 'https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/52597958_10215573045017727_5337622464539131904_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=kVSHm7UvGYoAX-vL7se&_nc_ht=scontent.fbog10-1.fna&oh=e03314c06cabc5ef7c62c241acbd3b71&oe=60F19758', ''),
+(7, 'Daniel', '', 1, 'Gomez', 'Mendez', 'Negru', 2021, 2022, 'dgomez216@unicauca.edu.co', '3218933997', 'Bla bla bla', 'https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/183589837_4155850617798436_1924416984467454886_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=BjDtD3q2sBUAX8nQRtb&_nc_ht=scontent.fbog10-1.fna&oh=9e2df2adf322806355d2d53bedbb11d5&oe=60F1A79D', ''),
+(8, 'Valentina', '', 1, 'Solano', 'Mogollón', 'Valen', 2019, 2022, 'smvalentina@unicauca.edu.co', '3207775660', 'La Rama me enseño a potenciar habilidades como el liderazgo y la organización de proyectos', 'https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/116284688_10223462839622887_23811892771767785_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=GkRYTcBnHrEAX9gZ33W&_nc_ht=scontent.fbog10-1.fna&oh=72329e0de464362244eeabfae69c7b2e&oe=60F097E0', '');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `cargos`
+-- Indices de la tabla `cargos`
 --
 ALTER TABLE `cargos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cargos_de_miembros`
+-- Indices de la tabla `cargos_de_miembros`
 --
 ALTER TABLE `cargos_de_miembros`
   ADD PRIMARY KEY (`id`),
@@ -162,51 +162,51 @@ ALTER TABLE `cargos_de_miembros`
   ADD KEY `comite` (`comite`);
 
 --
--- Indexes for table `comites`
+-- Indices de la tabla `comites`
 --
 ALTER TABLE `comites`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `miembros`
+-- Indices de la tabla `miembros`
 --
 ALTER TABLE `miembros`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `cargos`
+-- AUTO_INCREMENT de la tabla `cargos`
 --
 ALTER TABLE `cargos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `cargos_de_miembros`
+-- AUTO_INCREMENT de la tabla `cargos_de_miembros`
 --
 ALTER TABLE `cargos_de_miembros`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `comites`
+-- AUTO_INCREMENT de la tabla `comites`
 --
 ALTER TABLE `comites`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `miembros`
+-- AUTO_INCREMENT de la tabla `miembros`
 --
 ALTER TABLE `miembros`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `cargos_de_miembros`
+-- Filtros para la tabla `cargos_de_miembros`
 --
 ALTER TABLE `cargos_de_miembros`
   ADD CONSTRAINT `cargos_de_miembros_ibfk_1` FOREIGN KEY (`miembro`) REFERENCES `miembros` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

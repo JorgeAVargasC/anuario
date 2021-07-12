@@ -15,7 +15,7 @@
     --primario: #002B4C;
     --secundario: #00467B;
     --gris-c: #757575;
-    --gris-o: #1f1f1f;
+    --gris-o: #3a3a3a;
 }
 
 
@@ -935,11 +935,26 @@ height: 8vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: left;
     height: 100%;
     width: 80%;
     border-radius: 2rem 0 0 2rem;
     background-color: var(--blanco);
+}
+
+.front-content h4,
+ul {
+    color: var(--gris-o);
+    margin-left: 5rem;
+}
+
+.front-content h4 {
+    font-size: 2.2rem;
+    margin-top: 1rem;
+}
+
+.front-content ul {
+    margin-top: .5rem;
 }
 
 .front-bg-blue {
@@ -996,7 +1011,8 @@ height: 8vh;
 }
 
 .front-insignias i:first-of-type {
-    margin-top: 1.7rem;
+    margin-top: 2.2rem;
+    margin-bottom: .5rem;
 }
 
 .flip-icon {
