@@ -674,6 +674,10 @@ height: 8vh;
     justify-content: space-around;
 }
 
+.vertical-timeline a {
+    text-decoration: none;
+}
+
 .year-interval {
     color: var(--blanco);
     text-align: center;
