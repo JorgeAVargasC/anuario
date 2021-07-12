@@ -1,6 +1,7 @@
 <?php
     include_once("../connection/db_connection.php");
     $conection = mysqli_connect($host, $user, $pw, $db);
+    mysqli_set_charset($conection,"utf8");
 
     // Traigo los datos del miembro
     $id = $_GET["id"];

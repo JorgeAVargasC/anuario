@@ -668,11 +668,13 @@ height: 8vh;
 .vertical-timeline {
     position: sticky;
     top: 14vh;
-    height: fit-content;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .year-interval {
-    margin: 10% 0%;
     color: var(--blanco);
     text-align: center;
     font-size: 2rem;
@@ -692,7 +694,7 @@ height: 8vh;
 
 .year-interval-icon {
     width: 40%;
-    margin: 10% auto;
+    margin: 5% auto;
 }
 
 .mini-cards-layout {

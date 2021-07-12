@@ -14,62 +14,22 @@
         </div>
     </div>
     <div class="timeline" id="timeline">
+        <?php 
+            include "templates/auto-time-line.php";
+            for($i=$anioInicio; $i<=$anioFinal; $i=$i+$intervalo){
+        ?>
         <div class="time-interval">
             <a href="/anuario/views/mosaico.php">
                 <div class="flex-1"></div>
-                <img src="/anuario/img/timeline/5.jpg" alt="1-range">
+                <img src="/anuario/img/timeline/<?php echo $img ?>.jpg" alt="<?php echo $i ?>-Image">
                 <div class="vertical-line"></div>
-                <span>2010s</span>
+                <span><?php echo $i ?>s</span>
             </a>
         </div>
-        <div class="time-interval">
-            <a href="/anuario/views/mosaico.php">
-                <div class="flex-1"></div>
-                <img src="/anuario/img/timeline/7.jpg" alt="2-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </a>
-        </div>
-        <div class="time-interval">
-            <a href="/anuario/views/mosaico.php">
-                <div class="flex-1"></div>
-                <img src="/anuario/img/timeline/8.jpeg" alt="3-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </a>
-        </div>
-        <div class="time-interval">
-            <a href="/anuario/views/mosaico.php">
-                <div class="flex-1"></div>
-                <img src="/anuario/img/timeline/6.jpg" alt="4-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </a>
-        </div>
-        <div class="time-interval">
-            <a href="/anuario/views/mosaico.php">
-                <div class="flex-1"></div>
-                <img src="/anuario/img/timeline/1.jpg" alt="5-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </a>
-        </div>
-        <div class="time-interval">
-            <a href="/anuario/views/mosaico.php">
-                <div class="flex-1"></div>
-                <img src="/anuario/img/timeline/3.jpg" alt="1-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </a>
-        </div>
-        <div class="time-interval">
-            <a href="/anuario/views/mosaico.php">
-                <div class="flex-1"></div>
-                <img src="/anuario/img/timeline/4.jpg" alt="1-range">
-                <div class="vertical-line"></div>
-                <span>2010s</span>
-            </a>
-        </div>
+        <?php 
+            $img++;
+            }
+        ?>
     </div>
 </div>
 

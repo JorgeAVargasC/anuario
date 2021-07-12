@@ -11,20 +11,30 @@
                 <div class="year-interval year-interval-icon">
                     <a href="/anuario/index.php"><img src="/anuario/img/icons/year-interval-icon.svg" alt="year-icon"></a>
                 </div>
-                <div class="year-interval">1990</div>
-                <div class="year-interval">1990</div>
-                <div class="year-interval">1990</div>
-                <div class="year-interval">1990</div>
-                <div class="year-interval">1990</div>
-                <div class="year-interval">1990</div>
+                <?php 
+                    include "../templates/auto-time-line.php";
+                    for($i=$anioInicio; $i<=$anioFinal; $i=$i+$intervalo){
+                ?>
+                <a href="?anio=<?php echo $i ?>">
+                    <div class="year-interval"><?php echo $i ?></div>
+                </a>
+                <?php 
+                    }
+                ?>
             </div>
         </div>
         <div class="mini-cards-layout" id="mini-cards-layout">
-            <div class="year-title">2010</div>
-            <!-- Javascript agrega las tarjetas -->
             <?php
                 $conection = mysqli_connect($host, $user, $pw, $db);
-                $query = "SELECT * from miembros";
+                if (isset($_GET['anio'])){
+                    $anio = $_GET['anio'];
+                }else{
+                    $anio = $anioFinal - $cantidadAnios%4;
+                } 
+            ?>
+            <div class="year-title"><?php echo $anio ?></div>
+            <?php 
+                $query = "SELECT * from miembros WHERE anioIngresoRama>=$anio AND anioIngresoRama<$anio+$intervalo";
                 $result = mysqli_query($conection, $query);
                 $contador = 0;
                 while($row = $result->fetch_array(MYSQLI_NUM)){
