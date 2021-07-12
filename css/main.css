@@ -70,7 +70,8 @@ h4 {
     position: sticky;
     top: 0;
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     /* Cuando la clase padre (.main-page) es mas pequeña que la pantalla, se daña el filtro */
     /* Esto solo sucede en index.html por lo que se le puso un tamaño de 100vh como inline-style */
 }
