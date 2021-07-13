@@ -322,13 +322,13 @@ h4 {
     position: relative;
     height: 100%;
     padding-top: 25vh;
-    padding-left: 10.5vh;
+    padding-left: 1.5vw;
 }
 
 .side-menu-options li:not(.sublist-item) {
     font-style: normal;
     font-weight: normal;
-    font-size: 3rem;
+    font-size: 2.2rem;
     /* line-height: 5rem; */
     margin-bottom: 4vh;
     color: #9E9E9E;
@@ -347,7 +347,7 @@ h4 {
     position: absolute;
     height: 8rem;
     width: auto;
-    top: 4%;
+    top: 7%;
 }
 
 .side-menu-options li:hover>span {
@@ -397,7 +397,7 @@ h4 {
     }
     .side-menu-options {
         padding-top: 25vh;
-        padding-left: 10.5vh;
+        padding-left: 1.5vw;
         background: linear-gradient(90deg, #002B4C 6.25%, #032239 58.85%);
     }
     .side-menu-options span {
