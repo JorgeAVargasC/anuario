@@ -39,42 +39,43 @@
 </head>
 <body>
     <h1>Añade un nuevo miembro</h1>
-    <form action="" method="post">
+    <form action="/anuario/functions/add-member.php" method="post" enctype="multipart/form-data">
         <label for="primerNombre">Primer Nombre:</label>
-        <input id="primerNombre" name="primerNombre" type="text">
+        <input id="primerNombre" name="primerNombre" type="text" required>
         <br>
         <label for="segundoNombre">Segundo Nombre:</label>
         <input id="segundoNombre" name="segundoNombre" type="text" placeholder="No es obligatorio">
         <br>
         <label for="nombrePreferido">Nombre Preferido:</label>
-        <input id="nombrePreferido" name="nombrePreferido" type="number" placeholder="1 ó 2" min="1" max="2">
+        <input id="nombrePreferido" name="nombrePreferido" type="number" placeholder="1 ó 2" min="1" max="2" required>
         <br>
         <label for="primerApellido">Primer Apellido:</label>
-        <input id="primerApellido" name="primerApellido" type="text">
+        <input id="primerApellido" name="primerApellido" type="text" required>
         <br>
         <label for="segundoApellido">Segundo Apellido:</label>
         <input id="segundoApellido" name="segundoApellido" type="text" placeholder="No es obligatorio">
         <br>
         <label for="nombreEnRama">Nombre por el que se le conocía en la rama:</label>
-        <input id="nombreEnRama" name="nombreEnRama" type="text">
+        <input id="nombreEnRama" name="nombreEnRama" type="text" required>
         <br>
         <label for="anioIngresoRama">Año de ingreso a la rama:</label>
-        <input id="anioIngresoRama" name="anioIngresoRama" type="number" min="1986" max="2021">
+        <input id="anioIngresoRama" name="anioIngresoRama" type="number" min="1986" max="2021" required>
         <br>
         <label for="anioSalidaRama">Año de salida de la rama:</label>
-        <input id="anioSalidaRama" name="anioSalidaRama" type="number" min="1986" max="2022">
+        <input id="anioSalidaRama" name="anioSalidaRama" type="number" min="1986" max="2022" required>
         <br>
         <label for="correo">Correo de contacto:</label>
-        <input id="correo" name="correo" type="email">
+        <input id="correo" name="correo" type="email" required>
         <br>
         <label for="celular">Celular de contacto:</label>
-        <input id="celular" name="celular" type="number">
+        <input id="celular" name="celular" type="number" required>
         <br>
         <label for="frase">Frase para el reverso de la tarjeta (Cuidado con ortografía y el uso de mayusculas y minusculas):</label>
         <textarea id="frase" name="frase"></textarea>
         <br>
         <label for="urlFoto">Foto del miembro:</label>
-        <input type="file" name="urlFoto" id="urlFoto" accept="image/png, image/jpeg, image/jpg">
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+        <input type="file" name="urlFoto" id="urlFoto" accept="image/png, image/jpeg, image/jpg" required>
         <br>
         <label for="urlLinkedin">URL de perfil en Linkedin:</label>
         <input id="urlLinkedin" name="urlLinkedin" type="text" placeholder="No es obligatorio">
@@ -125,8 +126,40 @@
         <label for="coordinador">Coordinador de un comite de la rama</label>
         <input type="checkbox" id="coordinador" name="coordinador" value="coordinador"> 
         <br>
-
+        <div id="comites-coordinador">
+        </div>
         <input type="submit" value="Guardar">
     </form>
+    <div class="js">
+        <script>
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const coordinador = document.querySelector('#coordinador');
+                coordinador.addEventListener('change', ()=>{
+                    if(coordinador.checked){
+                        document.querySelector('#comites-coordinador').innerHTML=`
+                        <label for="coordinador-academico">Coordinador Academico</label>
+                        <input type="checkbox" id="coordinador-academico" name="coordinador-academico" value="coordinador-academico"> 
+                        <br>
+                        <label for="coordinador-ludicas">Coordinador Ludicas</label>
+                        <input type="checkbox" id="coordinador-ludicas" name="coordinador-ludicas" value="coordinador-ludicas"> 
+                        <br>
+                        <label for="coordinador-logistica">Coordinador Logistica</label>
+                        <input type="checkbox" id="coordinador-logistica" name="coordinador-logistica" value="coordinador-logistica"> 
+                        <br>
+                        <label for="coordinador-patrocinio">Coordinador Patrocinio</label>
+                        <input type="checkbox" id="coordinador-patrocinio" name="coordinador-patrocinio" value="coordinador-patrocinio"> 
+                        <br>
+                        <label for="coordinador-publicidad">Coordinador Publicidad</label>
+                        <input type="checkbox" id="coordinador-publicidad" name="coordinador-publicidad" value="coordinador-publicidad"> 
+                        <br>
+                        `;
+                    }else{
+                        document.querySelector('#comites-coordinador').innerHTML=``;
+                    }
+                })
+            })
+
+        </script>
+    </div>
 </body>
 </html>
