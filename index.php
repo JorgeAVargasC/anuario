@@ -19,7 +19,7 @@
             for($i=$anioInicio; $i<=$anioFinal; $i=$i+$intervalo){
         ?>
         <div class="time-interval">
-            <a href="/anuario/views/mosaico.php">
+            <a href="/anuario/views/mosaico.php?anio=<?php echo $i ?>">
                 <div class="flex-1"></div>
                 <img src="/anuario/img/timeline/<?php echo $img ?>.jpg" alt="<?php echo $i ?>-Image">
                 <div class="vertical-line"></div>
