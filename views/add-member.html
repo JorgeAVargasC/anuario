@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Miembro</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;  
+            text-align: center;     
+        }
+        h1 {
+            display: block;
+        }
+        form {
+            display: block;
+        }
+        form input {
+            margin: 20px 0;
+        }
+        textarea {
+            display: block;
+            margin: 10px auto;
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+        }
+        input[type='submit'] {
+            padding: 10px 20px;
+        }
+        input[type='checkbox'] {
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Añade un nuevo miembro</h1>
+    <form action="" method="post">
+        <label for="primerNombre">Primer Nombre:</label>
+        <input id="primerNombre" name="primerNombre" type="text">
+        <br>
+        <label for="segundoNombre">Segundo Nombre:</label>
+        <input id="segundoNombre" name="segundoNombre" type="text" placeholder="No es obligatorio">
+        <br>
+        <label for="nombrePreferido">Nombre Preferido:</label>
+        <input id="nombrePreferido" name="nombrePreferido" type="number" placeholder="1 ó 2" min="1" max="2">
+        <br>
+        <label for="primerApellido">Primer Apellido:</label>
+        <input id="primerApellido" name="primerApellido" type="text">
+        <br>
+        <label for="segundoApellido">Segundo Apellido:</label>
+        <input id="segundoApellido" name="segundoApellido" type="text" placeholder="No es obligatorio">
+        <br>
+        <label for="nombreEnRama">Nombre por el que se le conocía en la rama:</label>
+        <input id="nombreEnRama" name="nombreEnRama" type="text">
+        <br>
+        <label for="anioIngresoRama">Año de ingreso a la rama:</label>
+        <input id="anioIngresoRama" name="anioIngresoRama" type="number" min="1986" max="2021">
+        <br>
+        <label for="anioSalidaRama">Año de salida de la rama:</label>
+        <input id="anioSalidaRama" name="anioSalidaRama" type="number" min="1986" max="2022">
+        <br>
+        <label for="correo">Correo de contacto:</label>
+        <input id="correo" name="correo" type="email">
+        <br>
+        <label for="celular">Celular de contacto:</label>
+        <input id="celular" name="celular" type="number">
+        <br>
+        <label for="frase">Frase para el reverso de la tarjeta (Cuidado con ortografía y el uso de mayusculas y minusculas):</label>
+        <textarea id="frase" name="frase"></textarea>
+        <br>
+        <label for="urlFoto">Foto del miembro:</label>
+        <input type="file" name="urlFoto" id="urlFoto" accept="image/png, image/jpeg, image/jpg">
+        <br>
+        <label for="urlLinkedin">URL de perfil en Linkedin:</label>
+        <input id="urlLinkedin" name="urlLinkedin" type="text" placeholder="No es obligatorio">
+        <br>
+
+        <h1>Comites a los que perteneció</h1>
+        <label for="academico">Academico</label>
+        <input type="checkbox" id="academico" name="academico" value="academico"> 
+        <br>
+        <label for="ludicas">Ludicas</label>
+        <input type="checkbox" id="ludicas" name="ludicas" value="ludicas"> 
+        <br>
+        <label for="logistica">Logistica</label>
+        <input type="checkbox" id="logistica" name="logistica" value="logistica"> 
+        <br>
+        <label for="patrocinio">Patrocinio</label>
+        <input type="checkbox" id="patrocinio" name="patrocinio" value="patrocinio"> 
+        <br>
+        <label for="publicidad">Publicidad</label>
+        <input type="checkbox" id="publicidad" name="publicidad" value="publicidad"> 
+        <br>
+
+        <h1>Cargos</h1>
+        <label for="coordinadorTET">Coordinador TET</label>
+        <input type="checkbox" id="coordinadorTET" name="coordinadorTET" value="coordinadorTET"> 
+        <br>
+        <label for="webMaster">Web Master</label>
+        <input type="checkbox" id="webMaster" name="webMaster" value="webMaster"> 
+        <br>
+        <label for="coordinadoraWIE">Coordinadora WIE</label>
+        <input type="checkbox" id="coordinadoraWIE" name="coordinadoraWIE" value="coordinadoraWIE"> 
+        <br>
+        <label for="presidente">Presidente de la rama</label>
+        <input type="checkbox" id="presidente" name="presidente" value="presidente"> 
+        <br>
+        <label for="viscepresidente">Viscepresidente de la rama</label>
+        <input type="checkbox" id="viscepresidente" name="viscepresidente" value="viscepresidente"> 
+        <br>
+        <label for="fiscal">Fiscal de la rama</label>
+        <input type="checkbox" id="fiscal" name="fiscal" value="fiscal"> 
+        <br>
+        <label for="tesorero">Tesorero de la rama</label>
+        <input type="checkbox" id="tesorero" name="tesorero" value="tesorero"> 
+        <br>
+        <label for="secretario">Secretario de la rama</label>
+        <input type="checkbox" id="secretario" name="secretario" value="secretario"> 
+        <br>
+        <label for="coordinador">Coordinador de un comite de la rama</label>
+        <input type="checkbox" id="coordinador" name="coordinador" value="coordinador"> 
+        <br>
+
+        <input type="submit" value="Guardar">
+    </form>
+</body>
+</html>
