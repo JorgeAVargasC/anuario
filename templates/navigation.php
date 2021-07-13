@@ -50,9 +50,10 @@
                     </li>
                 </ul>
             </li>
-            <li class="list-item">Iniciar Sesion
+            <a href="../admin/login.php"><li class="list-item">Iniciar Sesión
                 <span></span>
             </li>
+            </a>
         </ul>
     </div>
     <div class="empty-panel" id="empty-panel">

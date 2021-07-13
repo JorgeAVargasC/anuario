@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `admins`
+--
+
+CREATE TABLE `admins` (
+  `id_admin` int(10) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `password` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `admins`
+--
+
+INSERT INTO `admins` (`id_admin`, `usuario`, `nombre`, `password`) VALUES
+(1, 'jvargas', 'Jorge Andrés Vargas', '$2y$12$K.sqU2VjnzgMF5kl71BXiuQgtysJZ4GiEqGj0.vXPDpKk2Mw0ubvO'),
+(2, 'admin', 'Super Usuario', '$2y$12$G1p3YBNUfUvT2s5QbIMLQ.cF65Z0nZdVk4L3660ec4Tj7FxiGTtdu');
+
+-- --------------------------------------------------------
+
+
+--
 -- Estructura de tabla para la tabla `cargos`
 --
 
@@ -146,6 +168,11 @@ INSERT INTO `miembros` (`id`, `primerNombre`, `segundoNombre`, `nombrePreferido`
 -- Índices para tablas volcadas
 --
 
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id_admin`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
+
+
 --
 -- Indices de la tabla `cargos`
 --
@@ -176,6 +203,9 @@ ALTER TABLE `miembros`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+ALTER TABLE `admins`
+  MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `cargos`

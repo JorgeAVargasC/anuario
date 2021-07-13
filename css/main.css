@@ -325,6 +325,11 @@ h4 {
     padding-left: 1.5vw;
 }
 
+.side-menu-options a {
+    text-decoration: none;
+    color: #9E9E9E;
+}
+
 .side-menu-options li:not(.sublist-item) {
     font-style: normal;
     font-weight: normal;
