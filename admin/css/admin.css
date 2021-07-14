@@ -1,0 +1,25 @@
+.login-page .main-footer {
+    display: none;
+}
+
+
+.grafica{
+    margin-bottom: 8rem;
+}
+
+
+@media (min-width: 768px) {
+    .graficas {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        column-gap: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .cuatro-columnas {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 2rem;
+    }
+}

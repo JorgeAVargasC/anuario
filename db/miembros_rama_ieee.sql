@@ -32,7 +32,7 @@ CREATE TABLE `admins` (
   `usuario` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `password` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `admins`

@@ -50,7 +50,7 @@
                     </li>
                 </ul>
             </li>
-            <a href="../admin/login.php"><li class="list-item">Iniciar Sesión
+            <a href="/anuario/admin/login.php"><li class="list-item">Iniciar Sesión
                 <span></span>
             </li>
             </a>
