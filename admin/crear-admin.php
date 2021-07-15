@@ -35,15 +35,15 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="usuario">Usuario</label>
-                                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa tu usuario">
+                                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña" required>
                                 </div>
                             </div>
                             <!-- /.card-body -->

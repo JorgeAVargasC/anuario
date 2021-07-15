@@ -60,7 +60,7 @@
         $query = "INSERT INTO miembros (primerNombre, segundoNombre, nombrePreferido, primerApellido, segundoApellido, nombreEnRama, anioIngresoRama, anioSalidaRama, correo, celular, frase, urlFoto, urlLinkedin) VALUES ('$primerNombre', '$segundoNombre', $nombrePreferido, '$primerApellido', '$segundoApellido', '$nombreEnRama', $anioIngresoRama, $anioSalidaRama, '$correo', $celular, '$frase', '$newFileName', '$urlLinkedin');";    
         $result = mysqli_query($conection, $query);
         
-        // Voluntario de comite
+        // Comites del voluntario
 
         $query = "SELECT id from miembros WHERE correo='$correo' AND celular=$celular;";
         $result = mysqli_query($conection, $query);

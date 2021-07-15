@@ -15,12 +15,12 @@ $(document).ready(function() {
                 var resultado = data;
                 if (resultado.respuesta == 'exito') {
                     Swal.fire({
-                        tite:'CORRECTO',
-                        text:'Se guardó correctamente',
-                        icon:'success'
-                    }).then((result)=>{
+                        tite: 'CORRECTO',
+                        text: 'Se guardó correctamente',
+                        icon: 'success'
+                    }).then((result) => {
                         window.location.href = 'lista-admin.php';
-                                               });
+                    });
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -50,12 +50,12 @@ $(document).ready(function() {
                 var resultado = data;
                 if (resultado.respuesta == 'exito') {
                     Swal.fire({
-                        title:'CORRECTO',
-                        text:'Edicion Exitosa',
-                        icon:'success'
-                    }).then((result)=>{
+                        title: 'CORRECTO',
+                        text: 'Edicion Exitosa',
+                        icon: 'success'
+                    }).then((result) => {
                         window.location.href = 'lista-admin.php';
-                                               });
+                    });
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -92,12 +92,12 @@ $(document).ready(function() {
 
                 if (resultado.respuesta == 'exito') {
                     Swal.fire({
-                        title:'CORRECTO',
-                        text:'Edicion Exitosa',
-                        icon:'success'
-                    }).then((result)=>{
+                        title: 'CORRECTO',
+                        text: 'Edicion Exitosa',
+                        icon: 'success'
+                    }).then((result) => {
                         window.location.href = 'lista-miembros.php';
-                                               });
+                    });
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -111,7 +111,7 @@ $(document).ready(function() {
     });
 
 
-     $('#guardar-registro-miembro').on('submit', function(e) {
+    $('#guardar-registro-miembro').on('submit', function(e) {
         e.preventDefault();
 
         var datos = new FormData(this);
@@ -131,17 +131,17 @@ $(document).ready(function() {
 
                 if (resultado.respuesta == 'exito') {
                     Swal.fire({
-                        title:'CORRECTO',
-                        text:'Registro Exitoso',
-                        icon:'success'
-                    }).then((result)=>{
+                        title: 'CORRECTO',
+                        text: 'Registro Exitoso',
+                        icon: 'success'
+                    }).then((result) => {
                         window.location.href = 'lista-miembros.php';
-                                               });
+                    });
                 } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'ERROR',
-                        text: 'Ubicacion no registrada'
+                        text: 'El miembro no se ha registrado'
                     })
                 }
             }
@@ -192,21 +192,21 @@ $(document).ready(function() {
         })
     });
 
-    $('.borrar_registro').on('click', function(e){
+    $('.borrar_registro').on('click', function(e) {
 
         e.preventDefault();
         var id = $(this).attr('data-id');
         var tipo = $(this).attr('data-tipo');
 
         Swal.fire({
-        title: 'Seguro que desea eliminar este registro?',
-        text: "Esta accion no se podra deshacer",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, Eliminar!',
-        cancelButtonText: 'Cancelar'
+            title: 'Seguro que desea eliminar este registro?',
+            text: "Esta accion no se podra deshacer",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!',
+            cancelButtonText: 'Cancelar'
         }).then((result) => {
 
             if (result.value) {
@@ -219,17 +219,17 @@ $(document).ready(function() {
                         'registro': 'eliminar'
                     },
 
-                    url: 'modelo-'+tipo+'.php',
-                    success:function(data){
+                    url: 'modelo-' + tipo + '.php',
+                    success: function(data) {
                         var resultado = JSON.parse(data);
-                        jQuery('[data-id="'+resultado.id_eliminado+'"]').parents('tr').remove()
+                        jQuery('[data-id="' + resultado.id_eliminado + '"]').parents('tr').remove()
 
                     }
-                })                
+                })
                 Swal.fire(
-                'Eliminado!',
-                'Registro eliminado correctamente',
-                'success'
+                    'Eliminado!',
+                    'Registro eliminado correctamente',
+                    'success'
                 )
 
             }
