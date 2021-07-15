@@ -959,11 +959,13 @@ ul {
 
 .front-content h4 {
     font-size: 2.2rem;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .front-content ul {
     margin-top: .5rem;
+    margin-right: 1rem;
+    line-height: 2rem;
 }
 
 .front-bg-blue {

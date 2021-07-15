@@ -22,11 +22,54 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json()).then(data => {
                 let member = data[0];
                 let cargos = data[1];
-                console.log(member);
+                // Para seleccionar el nombre
                 let nombre = member.nombrePreferido == 1 ? `${member.primerNombre} ${member.primerApellido}` : `${member.segundoNombre} ${member.primerApellido}`;
+                // Para añadir aportes
                 let aportes = ''; 
-                for(let cargo of cargos){
-                    aportes += `<li><p>${cargo.cargo}</p></li>`;
+                let volComites = [];
+                let coorComites = [];
+                for (let cargo of cargos) {
+                    if (cargo.cargo == 'Coordinador'){
+                        coorComites.push(' ' + cargo.comite);
+                    }else if(cargo.cargo == 'Voluntario'){
+                        volComites.push(' ' + cargo.comite);
+                    }else{
+                        aportes += `<li><p>${cargo.cargo}</p></li>`;
+                    }
+                }
+                if(coorComites.length > 0){
+                    if (coorComites.length > 1) {
+                        last_coorComites = coorComites.pop();
+                        aportes += `<li><p>Coordinador de comites de ${coorComites} y ${last_coorComites}.</p></li>`;
+                    }else{
+                        aportes +=`<li><p>Coordinador de comite de ${coorComites}.</p></li>`;
+                    }
+                }
+                if (volComites.length > 1) {
+                    last_volComites = volComites.pop();
+                    aportes +=`<li><p>Voluntario de comites de ${volComites} y ${last_volComites}.</p></li>`;
+                }else{
+                    aportes +=`<li><p>Voluntario de comite de ${volComites}.</p></li>`;
+                }
+                // Para añadir TETs organizados
+                let aniosMember = [];
+                let anosTeT = [2000, 2003, 2006, 2009, 2012, 2015, 2018, 2019, 2022]; // Lista de TETs organizados
+                let anioIngresoRama = parseInt(member.anioIngresoRama,10);
+                let anioSalidaRama = member.anioSalidaRama;
+                let TeTOrganizados = [];
+                for (let i = anioIngresoRama; i <= anioSalidaRama; i++) {
+                    aniosMember.push(i);
+                }
+                for (let anio of aniosMember) {
+                    if (anosTeT.includes(anio)) {
+                        TeTOrganizados.push(' ' + anio);
+                    }
+                }
+                if (TeTOrganizados.length > 1) {
+                    last_TetOrganizados = TeTOrganizados.pop();
+                    aportes +=`<li><p>Organización de los TeT ${TeTOrganizados} y ${last_TetOrganizados}.</p></li>`;
+                }else {
+                    aportes += `<li><p>Organización del TeT ${TeTOrganizados}.</p></li>`;
                 }
                 let result = `
                     <div class="card-face front-face-flex">
@@ -40,8 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h4>Aportes</h4>
                             <ul>
                                 ${aportes}
-                            </ul>
-                            
+                            </ul>       
                         </div>
                         <div class="front-insignias">
                             <i id="close-card" class="fas fa-times"></i>
