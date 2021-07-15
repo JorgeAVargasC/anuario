@@ -79,7 +79,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="crear-admin.php" class="nav-link">
+                                    <a href="crear-miembro.php" class="nav-link">
                                     <i class="fas fa-plus nav-icon"></i>
                                         <p>Agregar</p>
                                     </a>

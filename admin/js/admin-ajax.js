@@ -72,7 +72,7 @@ $(document).ready(function() {
 
     // se ejecuta cuando hay un archivo
 
-    $('#editar-registro-archivo').on('submit', function(e) {
+    $('#editar-registro-miembro').on('submit', function(e) {
         e.preventDefault();
 
         var datos = new FormData(this);
@@ -96,7 +96,7 @@ $(document).ready(function() {
                         text:'Edicion Exitosa',
                         icon:'success'
                     }).then((result)=>{
-                        window.location.href = 'lista-ubicacion.php';
+                        window.location.href = 'lista-miembros.php';
                                                });
                 } else {
                     Swal.fire({
@@ -111,7 +111,7 @@ $(document).ready(function() {
     });
 
 
-     $('#guardar-registro-archivo').on('submit', function(e) {
+     $('#guardar-registro-miembro').on('submit', function(e) {
         e.preventDefault();
 
         var datos = new FormData(this);
@@ -135,7 +135,7 @@ $(document).ready(function() {
                         text:'Registro Exitoso',
                         icon:'success'
                     }).then((result)=>{
-                        window.location.href = 'lista-ubicacion.php';
+                        window.location.href = 'lista-miembros.php';
                                                });
                 } else {
                     Swal.fire({
