@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-07-2021 a las 18:51:45
+-- Tiempo de generación: 16-07-2021 a las 21:20:08
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.34
 
@@ -43,7 +43,6 @@ INSERT INTO `admins` (`id_admin`, `usuario`, `nombre`, `password`) VALUES
 (2, 'admin', 'Super Usuario', '$2y$12$G1p3YBNUfUvT2s5QbIMLQ.cF65Z0nZdVk4L3660ec4Tj7FxiGTtdu');
 
 -- --------------------------------------------------------
-
 
 --
 -- Estructura de tabla para la tabla `cargos`
@@ -88,22 +87,9 @@ CREATE TABLE `cargos_de_miembros` (
 --
 
 INSERT INTO `cargos_de_miembros` (`id`, `miembro`, `cargo`, `comite`) VALUES
-(1, 4, 9, 2),
-(2, 8, 4, NULL),
-(3, 8, 6, NULL),
-(4, 2, 2, NULL),
-(5, 6, 7, NULL),
-(6, 1, 2, NULL),
-(7, 3, 2, NULL),
-(8, 6, 2, NULL),
-(9, 1, 10, 5),
-(10, 2, 10, 5),
-(11, 3, 10, 5),
-(12, 4, 10, 2),
-(13, 5, 10, 5),
-(14, 6, 10, 5),
-(15, 7, 10, 5),
-(16, 8, 10, 5);
+(25, 16, 10, 5),
+(26, 16, 4, NULL),
+(27, 16, 6, NULL);
 
 -- --------------------------------------------------------
 
@@ -155,23 +141,18 @@ CREATE TABLE `miembros` (
 --
 
 INSERT INTO `miembros` (`id`, `primerNombre`, `segundoNombre`, `nombrePreferido`, `primerApellido`, `segundoApellido`, `nombreEnRama`, `anioIngresoRama`, `anioSalidaRama`, `correo`, `celular`, `frase`, `urlFoto`, `urlLinkedin`) VALUES
-(1, 'Jhon', 'Fredy', 2, 'Romero', 'Núñez', 'Fredy', 2021, 2022, 'jhonrom@unicauca.edu.com', '3014822371', 'Mi mamá me dio la vida y la rama IEEE las ganas de vivirla', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/48383175_1989141267869104_6153743641794838528_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=upvBfaWOr_AAX8r2UYu&_nc_ht=scontent.fbog11-1.fna&oh=90fa7987e4e98019b7087336d3f41267&oe=60F1B200', 'https://www.linkedin.com/in/jhon-fredy-romero-n%C3%BA%C3%B1ez-25b4b9174/'),
-(2, 'Jorge', 'Andrés', 1, 'Vargas', 'Cordoba', 'Jorge', 2020, 2022, 'javargas216@unicauca.edu.co', '3143097657', 'Primero muerto antes que perder la vida', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/169342125_4021209251257984_4760993059613347327_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=1iScoUqo74cAX9fTZJF&tn=hlhndVaddNSeA_1I&_nc_ht=scontent.fbog11-1.fna&oh=d9e1eda01743670fd486d601fe68c81e&oe=60F1F744', 'https://www.linkedin.com/in/jorge-vargas-349a5b173/'),
-(3, 'Johan ', 'Santiago ', 2, 'Yangana ', 'Montoya', 'Santi', 2021, 2022, 'johanyangana@unicauca.edu.co', '3122275035', 'Aunque me cueste morir no dejare la bebida', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/60079521_2498972156779463_6976517598837997568_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=174925&_nc_ohc=lDUfJiroFpMAX_tzCTU&tn=hlhndVaddNSeA_1I&_nc_ht=scontent.fbog11-1.fna&oh=318328e267761131e5af8b28ec354693&oe=60F20704', ''),
-(4, 'Santiago', 'de Jesús', 1, 'Martinez', 'Semanate', 'Santi', 2018, 2022, 'santimartinez@unicauca.edu.co', '3124285279', 'Nose', 'https://scontent.fbog11-1.fna.fbcdn.net/v/t1.6435-9/71961728_10220419499493213_5092383615803719680_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=WUwXUOoTO4wAX_XHcIc&tn=hlhndVaddNSeA_1I&_nc_ht=scontent.fbog11-1.fna&oh=28b9ceff98e7cd8098876970a9c1e2cd&oe=60F0EE21', ''),
-(5, 'Angel', 'Gabriel', 1, 'Pasaje', 'Erazo', 'Angel', 2021, 2022, 'apasaje@unicauca.edu.co', '3204391332', 'si', '', ''),
-(6, 'Jose', 'Miguel', 1, 'Betancourt', 'Chaves', 'Betan', 2020, 2022, 'josebetancourt@unicauca.edu.co', '3046076944', 'Bla bla bla', 'https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/52597958_10215573045017727_5337622464539131904_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=kVSHm7UvGYoAX-vL7se&_nc_ht=scontent.fbog10-1.fna&oh=e03314c06cabc5ef7c62c241acbd3b71&oe=60F19758', ''),
-(7, 'Daniel', '', 1, 'Gomez', 'Mendez', 'Negru', 2021, 2022, 'dgomez216@unicauca.edu.co', '3218933997', 'Bla bla bla', 'https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/183589837_4155850617798436_1924416984467454886_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=BjDtD3q2sBUAX8nQRtb&_nc_ht=scontent.fbog10-1.fna&oh=9e2df2adf322806355d2d53bedbb11d5&oe=60F1A79D', ''),
-(8, 'Valentina', '', 1, 'Solano', 'Mogollón', 'Valen', 2019, 2022, 'smvalentina@unicauca.edu.co', '3207775660', 'La Rama me enseño a potenciar habilidades como el liderazgo y la organización de proyectos', 'https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/116284688_10223462839622887_23811892771767785_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=GkRYTcBnHrEAX9gZ33W&_nc_ht=scontent.fbog10-1.fna&oh=72329e0de464362244eeabfae69c7b2e&oe=60F097E0', '');
+(16, 'Valentina', '', 1, 'Solano', 'Mogollon', 'Valen', 2019, 2021, 'smvalentina@unicauca.edu.co', '3207775660', 'Hola', '../img/members/foto_valentina_solano_20210716_020729.jpg', 'www.fb.com');
 
 --
 -- Índices para tablas volcadas
 --
 
+--
+-- Indices de la tabla `admins`
+--
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id_admin`),
   ADD UNIQUE KEY `usuario` (`usuario`);
-
 
 --
 -- Indices de la tabla `cargos`
@@ -204,6 +185,9 @@ ALTER TABLE `miembros`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `admins`
+--
 ALTER TABLE `admins`
   MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
@@ -217,7 +201,7 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT de la tabla `cargos_de_miembros`
 --
 ALTER TABLE `cargos_de_miembros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `comites`
@@ -229,7 +213,7 @@ ALTER TABLE `comites`
 -- AUTO_INCREMENT de la tabla `miembros`
 --
 ALTER TABLE `miembros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
