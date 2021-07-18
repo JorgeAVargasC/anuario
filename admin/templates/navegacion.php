@@ -33,7 +33,7 @@
                                 <li class="nav-item">
                                     <a href="admin-area.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Alertas</p>
+                                        <p>Inicio</p>
                                     </a>
                                 </li>
                             </ul>
@@ -73,7 +73,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="lista-miembros.php" class="nav-link">
+                                    <a href="lista-miembro.php" class="nav-link">
                                         <i class="fas fa-list nav-icon"></i>
                                         <p>Ver todos</p>
                                     </a>

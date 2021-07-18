@@ -1,6 +1,56 @@
+/* Popups Admin */
+
+//login administrador
+
+$('#login-admin').on('submit', function(e) {
+    e.preventDefault(); //CON esto evitamos que se abra otra ventana cuando se crea otro administrador
+
+    var datos = $(this).serializeArray();
+
+    $.ajax({
+        type: $(this).attr('method'),
+        data: datos,
+        url: $(this).attr('action'),
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            var resultado = data;
+            if (resultado.respuesta == 'exitoso') {
+                Swal.fire(
+                    'Login correcto',
+                    'Bienvenid@ ' + resultado.usuario + ' !!',
+                    'success'
+                )
+
+                setTimeout(function() {
+
+                    //window.location.href = 'admin-area.php';
+                    window.location.href = 'admin-area.php';
+
+
+                }, 2000);
+
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Usuario o password incorrecto'
+                })
+            }
+
+        }
+    })
+});
+
+
+
+
+
+
+
 $(document).ready(function() {
 
-    $('#guardar-registro').on('submit', function(e) {
+    $('#crear-registro-admin').on('submit', function(e) {
         e.preventDefault();
 
         var datos = $(this).serializeArray();
@@ -16,7 +66,7 @@ $(document).ready(function() {
                 if (resultado.respuesta == 'exito') {
                     Swal.fire({
                         tite: 'CORRECTO',
-                        text: 'Se guardó correctamente',
+                        text: 'El usuario se guardó correctamente',
                         icon: 'success'
                     }).then((result) => {
                         window.location.href = 'lista-admin.php';
@@ -35,7 +85,7 @@ $(document).ready(function() {
 
     //edit registr
 
-    $('#editar-registro').on('submit', function(e) {
+    $('#editar-registro-admin').on('submit', function(e) {
         e.preventDefault();
 
         var datos = $(this).serializeArray();
@@ -70,7 +120,46 @@ $(document).ready(function() {
 
 
 
-    // se ejecuta cuando hay un archivo
+    /* Popups Miembro */
+
+
+    $('#crear-registro-miembro').on('submit', function(e) {
+        e.preventDefault();
+
+        var datos = new FormData(this);
+
+        $.ajax({
+            type: $(this).attr('method'),
+            data: datos,
+            url: $(this).attr('action'),
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            async: true,
+            cache: false,
+            success: function(data) {
+                console.log(data);
+                var resultado = data;
+
+                if (resultado.respuesta == 'exito') {
+                    Swal.fire({
+                        title: 'CORRECTO',
+                        text: 'Registro Exitoso',
+                        icon: 'success'
+                    }).then((result) => {
+                        window.location.href = 'lista-miembro.php';
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ERROR',
+                        text: 'El miembro no se ha registrado'
+                    })
+                }
+            }
+        })
+
+    });
 
     $('#editar-registro-miembro').on('submit', function(e) {
         e.preventDefault();
@@ -96,7 +185,7 @@ $(document).ready(function() {
                         text: 'Edicion Exitosa',
                         icon: 'success'
                     }).then((result) => {
-                        window.location.href = 'lista-miembros.php';
+                        window.location.href = 'lista-miembro.php';
                     });
                 } else {
                     Swal.fire({
@@ -111,86 +200,8 @@ $(document).ready(function() {
     });
 
 
-    $('#guardar-registro-miembro').on('submit', function(e) {
-        e.preventDefault();
+    //General
 
-        var datos = new FormData(this);
-
-        $.ajax({
-            type: $(this).attr('method'),
-            data: datos,
-            url: $(this).attr('action'),
-            dataType: 'json',
-            contentType: false,
-            processData: false,
-            async: true,
-            cache: false,
-            success: function(data) {
-                console.log(data);
-                var resultado = data;
-
-                if (resultado.respuesta == 'exito') {
-                    Swal.fire({
-                        title: 'CORRECTO',
-                        text: 'Registro Exitoso',
-                        icon: 'success'
-                    }).then((result) => {
-                        window.location.href = 'lista-miembros.php';
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'ERROR',
-                        text: 'El miembro no se ha registrado'
-                    })
-                }
-            }
-        })
-
-    });
-
-
-    //login administrador
-
-    $('#login-admin').on('submit', function(e) {
-        e.preventDefault(); //CON esto evitamos que se abra otra ventana cuando se crea otro administrador
-
-        var datos = $(this).serializeArray();
-
-        $.ajax({
-            type: $(this).attr('method'),
-            data: datos,
-            url: $(this).attr('action'),
-            dataType: 'json',
-            success: function(data) {
-                console.log(data);
-                var resultado = data;
-                if (resultado.respuesta == 'exitoso') {
-                    Swal.fire(
-                        'Login correcto',
-                        'Bienvenid@ ' + resultado.usuario + ' !!',
-                        'success'
-                    )
-
-                    setTimeout(function() {
-
-                        //window.location.href = 'admin-area.php';
-                        window.location.href = 'admin-area.php';
-
-
-                    }, 2000);
-
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Usuario o password incorrecto'
-                    })
-                }
-
-            }
-        })
-    });
 
     $('.borrar_registro').on('click', function(e) {
 

@@ -31,7 +31,7 @@
                         <h3 class="card-title">Crear administrador</h3>
                     </div>
                     <div class="card-body">
-                        <form role="form" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
+                        <form role="form" name="crear-registro-admin" id="crear-registro-admin" method="post" action="modelo-admin.php">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="usuario">Usuario</label>
@@ -50,7 +50,7 @@
 
                             <div class="card-footer">
                                 <input type="hidden" name="registro" value="nuevo">
-                            <button type="submit" class="btn btn-primary" id="crear-registro">Añadir</button>
+                            <button type="submit" class="btn btn-primary">Añadir</button>
                             </div>
                         </form>
                     </div>

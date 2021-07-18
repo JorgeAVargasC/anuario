@@ -31,7 +31,7 @@ include_once 'templates/navegacion.php';
                 <h3 class="card-title">Crear Miembro</h3>
             </div>
             <div class="card-body">
-                <form role="form" enctype="multipart/form-data" name="guardar-registro" id="guardar-registro-miembro" method="post" action="modelo-miembro.php">
+                <form role="form" enctype="multipart/form-data" name="crear-registro-miembro" id="crear-registro-miembro" method="post" action="modelo-miembro.php">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="primerNombre">Primer Nombre</label>
@@ -204,7 +204,7 @@ include_once 'templates/navegacion.php';
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <input type="hidden" name="miembro" value="nuevo">
+                        <input type="hidden" name="registro" value="nuevo">
                         <button type="submit" class="btn btn-primary">Añadir</button>
                     </div>
 

@@ -46,7 +46,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
 
                 ?>
 
-                <form role="form" name="editar-registro" id="editar-registro" method="post" action="modelo-admin.php">
+                <form role="form" name="editar-registro-admin" id="editar-registro-admin" method="post" action="modelo-admin.php">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="usuario">Usuario</label>
@@ -66,7 +66,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
                     <div class="card-footer">
                         <input type="hidden" name="registro" value="actualizar">
                         <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
-                        <button type="submit" class="btn btn-primary" id="crear-registro">Editar</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </div>
                 </form>
             </div>

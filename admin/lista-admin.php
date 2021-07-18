@@ -60,7 +60,7 @@
                                         <td> <?php echo $admin['usuario']; ?> </td>
                                         <td> <?php echo $admin['nombre']; ?> </td>
                                         <td> 
-                                            <a href="modificar-admin.php?id=<?php echo $admin['id_admin']; ?>"  class="btn bg-orange btn-flat margin">
+                                            <a href="editar-admin.php?id=<?php echo $admin['id_admin']; ?>"  class="btn bg-orange btn-flat margin">
                                                 <i class="fa fa-pencil"></i>
                                             </a> 
 
