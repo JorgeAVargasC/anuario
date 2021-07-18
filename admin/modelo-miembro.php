@@ -47,8 +47,8 @@ if ($_POST['registro'] == 'nuevo') {
       $urlLinkedin = $_POST["urlLinkedin"];
 
       date_default_timezone_set('America/Bogota');
-      $primerNombre_img = quitar_tildes(strtolower($primerNombre));
-      $primerApellido_img = quitar_tildes(strtolower($primerApellido));
+      $primerNombre_img = strtolower(quitar_tildes($primerNombre));
+      $primerApellido_img = strtolower(quitar_tildes($primerApellido));
       $urlFoto = 'foto_' . $primerNombre_img . '_' . $primerApellido_img . '_' . date('Ymd_his') . '.' . $ext;
 
 
