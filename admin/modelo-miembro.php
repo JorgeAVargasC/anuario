@@ -1,5 +1,7 @@
 <?php
 
+include("funciones/quitar_tildes.php");
+
 if ($_POST['registro'] == 'nuevo') {
 
   try {
@@ -30,8 +32,6 @@ if ($_POST['registro'] == 'nuevo') {
       $validacion4 = true;
     }
 
-
-
     if ($validacion1 && $validacion2 && $validacion3 && $validacion4) {
       $primerNombre = $_POST["primerNombre"];
       $segundoNombre = $_POST["segundoNombre"];
@@ -47,8 +47,8 @@ if ($_POST['registro'] == 'nuevo') {
       $urlLinkedin = $_POST["urlLinkedin"];
 
       date_default_timezone_set('America/Bogota');
-      $primerNombre_img = strtolower($primerNombre);
-      $primerApellido_img = strtolower($primerApellido);
+      $primerNombre_img = quitar_tildes(strtolower($primerNombre));
+      $primerApellido_img = quitar_tildes(strtolower($primerApellido));
       $urlFoto = 'foto_' . $primerNombre_img . '_' . $primerApellido_img . '_' . date('Ymd_his') . '.' . $ext;
 
 
