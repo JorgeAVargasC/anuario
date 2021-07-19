@@ -66,7 +66,6 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
           if ($cargos_miembro['cargo'] == 10) {
             array_push($array_comites_miembro, $cargos_miembro['comite']);
           }
-
           array_push($array_cargos_miembro, $cargos_miembro['cargo']);
         }
 
@@ -74,7 +73,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
 
         ?>
 
-        <form role="form" name="editar-registro-miembro" id="editar-registro-miembro" method="post" action="modelo-miembro.php">
+        <form role="form" enctype="multipart/form-data" name="editar-registro-miembro" id="editar-registro-miembro" method="post" action="modelo-miembro.php">
           <div class="card-body">
             <div class="form-group">
               <label for="primerNombre">Primer Nombre</label>
@@ -181,14 +180,16 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
             <h4>Cargos que ocupó</h4>
             <?php
               foreach($array_cargos as $cargo){
-                // Coordinador TET se convierte a coordinadorTET
-                $cargo_format=quitar_tildes(lcfirst(str_replace(' ','',$cargo['cargo'])));
+                if($cargo['id'] != 10){
+                    // Coordinador TET se convierte a coordinadorTET
+                    $cargo_format=lcfirst(str_replace(' ','', quitar_tildes($cargo['cargo'])));
                 ?>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="<?php echo $cargo_format;?>" name="<?php echo $cargo_format;?>" value="<?php echo $cargo_format;?>" <?php if (in_array($cargo['id'], $array_cargos_miembro)) {echo "checked";} ?> >
-                  <label for="<?php echo $cargo_format;?>" class="form-check-label"><?php echo $cargo['cargo']?></label>
-                </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="<?php echo $cargo_format;?>" name="<?php echo $cargo_format;?>" value="<?php echo $cargo_format;?>" <?php if (in_array($cargo['id'], $array_cargos_miembro)) {echo "checked";} ?> >
+                        <label for="<?php echo $cargo_format;?>" class="form-check-label"><?php echo $cargo['cargo']?></label>
+                    </div>
                 <?php
+                }
               }
             ?>
 
@@ -200,8 +201,8 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
                 $comite_format=strtolower(quitar_tildes($comite['comite']));
                 ?>
                   <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="<?php echo 'coord_'.$comite_format;?>" name="<?php echo 'coord_'.$comite_format;?>" value="<?php echo 'coord'.$comite_format;?>" <?php   if($array_comites_coord){if (in_array($comite['id'], $array_comites_coord)) {echo "checked";}}else{echo 'disabled';} ?>>
-                  <label for="<?php echo 'coord_'.$comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
+                    <input type="checkbox" class="form-check-input" id="<?php echo 'coord_'.$comite_format;?>" name="<?php echo 'coord_'.$comite_format;?>" value="<?php echo 'coord'.$comite_format;?>" <?php   if($array_comites_coord){if (in_array($comite['id'], $array_comites_coord)) {echo "checked";}}else{echo 'disabled';} ?>>
+                    <label for="<?php echo 'coord_'.$comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
                   </div>
                 <?php                
               }              
@@ -213,7 +214,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
           <div class="card-footer">
             <input type="hidden" name="registro" value="actualizar">
             <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
-            <button type="submit" class="btn btn-primary" id="crear-registro">Editar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
           </div>
         </form>
       </div>

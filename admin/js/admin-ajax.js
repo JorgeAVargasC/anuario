@@ -202,7 +202,6 @@ $(document).ready(function() {
 
     //General
 
-
     $('.borrar_registro').on('click', function(e) {
 
         e.preventDefault();

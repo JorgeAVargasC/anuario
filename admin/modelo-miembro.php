@@ -185,54 +185,205 @@ if ($_POST['registro'] == 'nuevo') {
   die(json_encode($respuesta));
 }
 
+
+
+
 if ($_POST['registro'] == 'actualizar') {
-
-  include_once "../connection/db_connection.php";
-  $conn = mysqli_connect($host, $user, $pw, $db);
-  $usuario = $_POST['usuario'];
-  $nombre = $_POST['nombre'];
-  $password = $_POST['password'];
   $id_registro = $_POST['id_registro'];
-
-  #echo $password_hashed;
-
   try {
-      //code...
-      if (!empty($password)) {
 
-          $opciones = array(
-              'cost' => 12
+    include_once "../connection/db_connection.php";
+    $conn = mysqli_connect($host, $user, $pw, $db);
+
+    $validacion1 = !empty($_POST['primerNombre']) && !empty($_POST['primerApellido']) && !empty($_POST['nombrePreferido']) && !empty($_POST['nombreEnRama']) && !empty($_POST['anioIngresoRama']) && !empty($_POST['anioSalidaRama']) && !empty($_POST['correo']) && !empty($_POST['celular']) && !empty($_POST['frase']);
+    $validacion2 = isset($_POST["academico"]) || isset($_POST["ludicas"]) || isset($_POST["logistica"]) || isset($_POST["patrocinio"]) || isset($_POST["publicidad"]);
+
+    $errors = [];
+    $fileSize = $_FILES['imagen-miembro']['size'];
+    $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
+    $path = $_FILES['imagen-miembro']['name'];
+    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+    if (!in_array($ext, $fileExtensionsAllowed)) {
+      $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+    }
+    if ($fileSize > 5000000) {
+      $errors[] = "File exceeds maximum size (10MB)";
+    }
+    $validacion3 = empty($errors);
+    if (isset($_POST["coordinador"])) {
+      $validacion4 = isset($_POST["coord_academico"]) || isset($_POST["coord_ludicas"]) || isset($_POST["coord_logistica"]) || isset($_POST["coord_patrocinio"]) || isset($_POST["coord_publicidad"]);
+    } else {
+      $validacion4 = true;
+    }
+
+    if ($validacion1 && $validacion2 && $validacion3 && $validacion4) {
+
+      $primerNombre = $_POST['primerNombre'];
+      $segundoNombre = $_POST["segundoNombre"];
+      $primerApellido = $_POST["primerApellido"];
+      $segundoApellido = $_POST["segundoApellido"];
+      $nombrePreferido = $_POST["nombrePreferido"];
+      $nombreEnRama = $_POST["nombreEnRama"];
+      $anioIngresoRama = $_POST["anioIngresoRama"];
+      $anioSalidaRama = $_POST["anioSalidaRama"];
+      $correo = $_POST["correo"];
+      $celular = $_POST["celular"];
+      $frase = $_POST["frase"];
+      $urlLinkedin = $_POST["urlLinkedin"];
+
+      date_default_timezone_set('America/Bogota');
+      $primerNombre_img = strtolower(quitar_tildes($primerNombre));
+      $primerApellido_img = strtolower(quitar_tildes($primerApellido));
+
+      $sql = "SELECT * FROM miembros WHERE id=$id_registro";
+      $resultado = $conn->query($sql);
+      $miembro = $resultado->fetch_assoc();
+
+      if ($_FILES['imagen-miembro']['name'] != null) {
+
+        $url_anterior = $miembro['urlFoto'];
+
+        unlink($url_anterior);
+
+        $errors = [];
+        $fileSize = $_FILES['imagen-miembro']['size'];
+        $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
+        $path = $_FILES['imagen-miembro']['name'];
+        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+        $urlFoto = 'foto_' . $primerNombre_img . '_' . $primerApellido_img . '_' . date('Ymd_his') . '.' . $ext;
+
+        $directorio = "../img/members/";
+
+        if (!is_dir($directorio)) {
+          mkdir($directorio, 0755, true);
+        }
+
+        if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
+          $imagen_url = $directorio . $urlFoto;  //it should change when every image would be on the same path
+          $imagen_resultado = "Se subió correctamente";
+        } else {
+          $respuesta = array(
+            'respuesta' => error_get_last()
           );
-          $password_hashed = password_hash($password, PASSWORD_BCRYPT, $opciones);
-          $stmt = $conn->prepare("UPDATE admins SET usuario = ?, nombre = ?, password = ? WHERE id_admin =?");
-          $stmt->bind_param("sssi", $usuario, $nombre, $password_hashed, $id_registro);
+        }
       } else {
-
-          $stmt = $conn->prepare("UPDATE admins SET usuario = ?, nombre = ? WHERE id_admin =?");
-          $stmt->bind_param("ssi", $usuario, $nombre,  $id_registro);
+        $imagen_url = $miembro['urlFoto'];
       }
 
+      try {
 
-      $stmt->execute();
-      if ($stmt->affected_rows) {
+        $sql = "UPDATE miembros SET primerNombre=?, segundoNombre=?, primerApellido=?, segundoApellido=?, nombrePreferido=?,nombreEnRama=?, anioIngresoRama=?, anioSalidaRama=?, correo=?, celular=?, frase=?, urlLinkedin=?, urlFoto=? WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssisiisisssi", $primerNombre, $segundoNombre, $primerApellido, $segundoApellido, $nombrePreferido, $nombreEnRama, $anioIngresoRama, $anioSalidaRama, $correo, $celular, $frase, $urlLinkedin, $imagen_url, $id_registro);
+        $stmt->execute();
+        $registros = $stmt->affected_rows;
+        $stmt->close();
+
+        if ($registros > 0) {
           # code...
           $respuesta = array(
-              'respuesta' => 'exito',
-              'id_actualizado' => $stmt->insert_id
+            'respuesta' => 'exito'
           );
-      } else {
+        } else {
           $respuesta = array(
-              'respuesta' => 'error'
+            'respuesta' => 'error'
           );
-      }
-      $stmt->close();
-      $conn->close();
-  } catch (Exception $e) {
-      //throw $th;
-      $respuesta = array(
+        }
+
+        $sql1 = "SELECT * FROM comites";
+        $array_comites = $conn->query($sql1);
+
+        $sql2 = "SELECT cargo,comite FROM cargos_de_miembros WHERE miembro=$id_registro";
+        $resultado2 = $conn->query($sql2);
+
+        $sql3 = "SELECT * FROM cargos";
+        $array_cargos = $conn->query($sql3);
+
+        $array_comites_coord = [];
+        $array_comites_miembro = [];
+        $array_cargos_miembro = [];
+
+        while ($cargos_miembro = $resultado2->fetch_assoc()) {
+
+          if ($cargos_miembro['cargo'] == 9) {
+            array_push($array_comites_coord, $cargos_miembro['comite']);
+          }
+          if ($cargos_miembro['cargo'] == 10) {
+            array_push($array_comites_miembro, $cargos_miembro['comite']);
+          }
+          array_push($array_cargos_miembro, $cargos_miembro['cargo']);
+        }
+
+        foreach ($array_cargos as $cargo) {
+          // Coordinador TET se convierte a coordinadorTET
+          $cargo_format = lcfirst(str_replace(' ', '', quitar_tildes($cargo['cargo'])));
+          $cargo_id = $cargo["id"];
+
+          if ($cargo_id != 9 && $cargo_id != 10) {
+            $sql00 = "SELECT * FROM cargos_de_miembros WHERE miembro = $id_registro AND cargo = $cargo_id";
+            $resultado = $conn->query($sql00);
+            $rows = $resultado->num_rows;
+
+            if (isset($_POST[$cargo_format]) && !$rows) {
+              $query = "INSERT INTO cargos_de_miembros (miembro, cargo) VALUES ($id_registro, $cargo_id)";
+              $result = mysqli_query($conn, $query);
+            } else if (!isset($_POST[$cargo_format]) && $rows) {
+              $query = "DELETE FROM cargos_de_miembros WHERE miembro=$id_registro AND cargo=$cargo_id";
+              $result = mysqli_query($conn, $query);
+            }
+          } else if ($cargo_id == 9) { #Coordinador Comite
+            foreach ($array_comites as $comite) {
+              $comite_id = $comite["id"];
+              $comite_format = strtolower(quitar_tildes($comite['comite']));
+              $resultado = $conn->query("SELECT * FROM cargos_de_miembros WHERE miembro = $id_registro AND cargo = $cargo_id AND comite = $comite_id");
+              $rows = $resultado->num_rows;
+              // Voluntario del Comite    
+              if (isset($_POST["coord_" . $comite_format]) && !$rows) {
+                $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
+                $result = mysqli_query($conn, $query);
+              } else if (!isset($_POST["coord_" . $comite_format]) && $rows) {
+                $query = "DELETE FROM cargos_de_miembros WHERE miembro=$id_registro AND cargo=$cargo_id AND comite=$comite_id";
+                $result = mysqli_query($conn, $query);
+              }
+            }
+
+            //$query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 9, 1);";
+          } else if ($cargo_id == 10) { #voluntario - comite
+            foreach ($array_comites as $comite) {
+              $comite_id = $comite["id"];
+              $comite_format = strtolower(quitar_tildes($comite['comite']));
+              $resultado = $conn->query("SELECT * FROM cargos_de_miembros WHERE miembro = $id_registro AND cargo = $cargo_id AND comite = $comite_id");
+              $rows = $resultado->num_rows;
+              // Voluntario del Comite    
+              if (isset($_POST[$comite_format]) && !$rows) {
+                $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
+                $result = mysqli_query($conn, $query);
+              } else if (!isset($_POST[$comite_format]) && $rows) {
+                $query = "DELETE FROM cargos_de_miembros WHERE miembro=$id_registro AND cargo=$cargo_id AND comite=$comite_id";
+                $result = mysqli_query($conn, $query);
+              }
+            }
+          }
+        }
+      } catch (Exception $e) {
+        $respuesta = array(
           'respuesta' => $e->getMessage()
+        );
+      }
+    } else {
+      $respuesta = array(
+        'respuesta' => error_get_last()
       );
+    }
+  } catch (Exception $e) {
+    //throw $th;
+    $respuesta = array(
+      'respuesta' => $e->getMessage()
+    );
   }
+
   die(json_encode($respuesta));
 }
 
@@ -249,7 +400,7 @@ if ($_POST['registro'] == 'eliminar') {
     $conn = mysqli_connect($host, $user, $pw, $db);
     $stmt = $conn->prepare('DELETE FROM miembros WHERE id = ?');
     $stmt->bind_param("i", $id_borrar);
-    $stmt->execute(); 
+    $stmt->execute();
 
     if ($stmt->affected_rows) {
       # code...
