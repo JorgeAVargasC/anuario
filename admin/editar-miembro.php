@@ -68,9 +68,6 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
           }
           array_push($array_cargos_miembro, $cargos_miembro['cargo']);
         }
-
-
-
         ?>
 
         <form role="form" enctype="multipart/form-data" name="editar-registro-miembro" id="editar-registro-miembro" method="post" action="modelo-miembro.php">
@@ -92,7 +89,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
               <input type="text" class="form-control" id="segundoApellido" name="segundoApellido" placeholder="Ingresa tu Segundo Apellido" value="<?php echo $miembro['segundoApellido']; ?>">
             </div>
 
-            <h4>Nombre preferido</h4>
+            <label>Nombre preferido</label>
             <?php
             if ($miembro['nombrePreferido'] == 1) {
             ?>
