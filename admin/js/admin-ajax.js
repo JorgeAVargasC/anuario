@@ -149,6 +149,12 @@ $(document).ready(function() {
                     }).then((result) => {
                         window.location.href = 'lista-miembro.php';
                     });
+                } else if (resultado.respuesta == 'error_img') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Image error',
+                        text: 'Las caracteristicas de la imagen no son validas'
+                    })
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -187,6 +193,12 @@ $(document).ready(function() {
                     }).then((result) => {
                         window.location.href = 'lista-miembro.php';
                     });
+                } else if (resultado.respuesta == 'error_img') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Image error',
+                        text: 'Las caracteristicas de la imagen no son validad'
+                    })
                 } else {
                     Swal.fire({
                         icon: 'error',

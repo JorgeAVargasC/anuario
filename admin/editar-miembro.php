@@ -77,7 +77,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
           <div class="card-body">
             <div class="form-group">
               <label for="primerNombre">Primer Nombre</label>
-              <input type="text" class="form-control" id="primerNombre" name="primerNombre" placeholder="Ingresa tu Primer Nombre" value="<?php echo $miembro['primerNombre']; ?>">
+              <input type="text" class="form-control" id="primerNombre" name="primerNombre" placeholder="Ingresa tu Primer Nombre" value="<?php echo $miembro['primerNombre']; ?>" required>
             </div>
             <div class="form-group">
               <label for="segundoNombre">Segundo Nombre</label>
@@ -85,7 +85,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
             </div>
             <div class="form-group">
               <label for="primerApellido">Primer Apellido</label>
-              <input type="text" class="form-control" id="primerApellido" name="primerApellido" placeholder="Ingresa tu Primer Apellido" value="<?php echo $miembro['primerApellido']; ?>">
+              <input type="text" class="form-control" id="primerApellido" name="primerApellido" placeholder="Ingresa tu Primer Apellido" value="<?php echo $miembro['primerApellido']; ?>" required>
             </div>
             <div class="form-group">
               <label for="segundoApellido">Segundo Apellido</label>
@@ -121,27 +121,27 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
 
             <div class="form-group">
               <label for="nombreEnRama">Nombre En Rama</label>
-              <input type="text" class="form-control" id="nombreEnRama" name="nombreEnRama" placeholder="Ingresa tu Nombre En Rama" value="<?php echo $miembro['nombreEnRama']; ?>">
+              <input type="text" class="form-control" id="nombreEnRama" name="nombreEnRama" placeholder="Ingresa tu Nombre En Rama" value="<?php echo $miembro['nombreEnRama']; ?>" required>
             </div>
             <div class="form-group">
               <label for="anioIngresoRama">Año de Ingreso Rama</label>
-              <input type="number" class="form-control" id="anioIngresoRama" name="anioIngresoRama" min="1985" max="<?php echo date("Y"); ?>" value="<?php echo $miembro['anioIngresoRama']; ?>">
+              <input type="number" class="form-control" id="anioIngresoRama" name="anioIngresoRama" min="1985" max="<?php echo date("Y"); ?>" value="<?php echo $miembro['anioIngresoRama']; ?>" required>
             </div>
             <div class="form-group">
               <label for="anioSalidaRama">Año de Salida Rama</label>
-              <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y"); ?>" value="<?php echo $miembro['anioSalidaRama']; ?>">
+              <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y"); ?>" value="<?php echo $miembro['anioSalidaRama']; ?>" required>
             </div>
             <div class="form-group">
               <label for="correo">Correo Electrónico</label>
-              <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico" value="<?php echo $miembro['correo']; ?>">
+              <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico" value="<?php echo $miembro['correo']; ?>" required>
             </div>
             <div class="form-group">
               <label for="celular">Celular</label>
-              <input type="number" class="form-control" id="celular" name="celular" value="<?php echo $miembro['celular']; ?>">
+              <input type="number" class="form-control" id="celular" name="celular" value="<?php echo $miembro['celular']; ?>" required>
             </div>
             <div class="form-group">
               <label for="frase">Frase</label>
-              <input type="text" class="form-control" id="frase" name="frase" placeholder="Ingresa tu Frase" value="<?php echo $miembro['frase']; ?>">
+              <input type="text" class="form-control" id="frase" name="frase" placeholder="Ingresa tu Frase" value="<?php echo $miembro['frase']; ?>" required>
             </div>
             <div class="form-group">
               <label for="imagen-actual">Imagen actual</label>
