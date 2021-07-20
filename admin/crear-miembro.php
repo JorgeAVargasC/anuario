@@ -4,6 +4,8 @@ include_once '../connection/db_connection.php';
 include_once 'templates/header.php';
 include_once 'templates/barra.php';
 include_once 'templates/navegacion.php';
+include_once 'funciones/quitar_tildes.php'
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -31,6 +33,18 @@ include_once 'templates/navegacion.php';
                 <h3 class="card-title">Crear Miembro</h3>
             </div>
             <div class="card-body">
+
+            <?php
+        $conn = mysqli_connect($host, $user, $pw, $db);
+
+        $sql1 = "SELECT * FROM comites";
+        $array_comites = $conn->query($sql1);       
+
+        $sql3 = "SELECT * FROM cargos";
+        $array_cargos = $conn->query($sql3);
+
+        ?>
+
                 <form role="form" enctype="multipart/form-data" name="crear-registro-miembro" id="crear-registro-miembro" method="post" action="modelo-miembro.php">
                     <div class="card-body">
                         <div class="form-group">
@@ -71,7 +85,7 @@ include_once 'templates/navegacion.php';
                         </div>
                         <div class="form-group">
                             <label for="anioSalidaRama">Año de Salida Rama</label>
-                            <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y");?>" placeholder="2022" required>
+                            <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y");?>" placeholder="<?php echo date("Y");?>" required>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo Electrónico</label>
@@ -98,108 +112,52 @@ include_once 'templates/navegacion.php';
                             <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin">
                         </div>
 
+                        <!-- Check boxes -->
+                        <br>
                         <h4>Comites a los que perteneció</h4>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="academico" name="academico" value="academico">
-                            <label for="academico" class="form-check-label">Academico</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="ludicas" name="ludicas" value="ludicas">
-                            <label for="ludicas" class="form-check-label">Ludicas</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="logistica" name="logistica" value="logistica">
-                            <label for="logistica" class="form-check-label">Logistica</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="patrocinio" name="patrocinio" value="patrocinio">
-                            <label for="patrocinio" class="form-check-label">Patrocinio</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="publicidad" name="publicidad" value="publicidad">
-                            <label for="publicidad" class="form-check-label">Publicidad</label>
-                        </div>
-
+                        <?php
+                        foreach($array_comites as $comite){
+                            $comite_format=strtolower(quitar_tildes($comite['comite']));
+                            ?>
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="<?php echo $comite_format;?>" name="<?php echo $comite_format;?>" value="<?php echo $comite_format;?>">
+                            <label for="<?php echo $comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                        
                         <br>
                         <h4>Cargos que ocupó</h4>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coordinadorTET" name="coordinadorTET" value="coordinadorTET">
-                            <label for="coordinadorTET" class="form-check-label">Coordinador TET</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="webMaster" name="webMaster" value="webMaster">
-                            <label for="webMaster" class="form-check-label">Web Master</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coordinadoraWIE" name="coordinadoraWIE" value="coordinadoraWIE">
-                            <label for="coordinadoraWIE" class="form-check-label">Coordinadora WIE</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="presidente" name="presidente" value="presidente">
-                            <label for="presidente" class="form-check-label">Presidente de la rama</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="viscepresidente" name="viscepresidente" value="viscepresidente">
-                            <label for="viscepresidente" class="form-check-label">Viscepresidente de la rama</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="fiscal" name="fiscal" value="fiscal">
-                            <label for="fiscal" class="form-check-label">Fiscal de la rama</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="tesorero" name="tesorero" value="tesorero">
-                            <label for="tesorero" class="form-check-label">Tesorero de la rama</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="secretario" name="secretario" value="secretario">
-                            <label for="secretario" class="form-check-label">Secretario de la rama</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coordinador" name="coordinador" value="coordinador">
-                            <label for="coordinador" class="form-check-label">Coordinador de un comite de la rama</label>
-                        </div>
+                        <?php
+                        foreach($array_cargos as $cargo){
+                            if($cargo['id'] != 10){
+                                // Coordinador TET se convierte a coordinadorTET
+                                $cargo_format=lcfirst(str_replace(' ','', quitar_tildes($cargo['cargo'])));
+                            ?>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="<?php echo $cargo_format;?>" name="<?php echo $cargo_format;?>" value="<?php echo $cargo_format;?>">
+                                    <label for="<?php echo $cargo_format;?>" class="form-check-label"><?php echo $cargo['cargo']?></label>
+                                </div>
+                            <?php
+                            }
+                        }
+                        ?>
 
                         <br>
                         <h4>Comites que Coordinó</h4>
+                        <?php
 
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coord_academico" name="coord_academico" value="academico" disabled>
-                            <label for="coord_academico" class="form-check-label">Academico</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coord_ludicas" name="coord_ludicas" value="ludicas" disabled>
-                            <label for="coord_ludicas" class="form-check-label">Ludicas</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coord_logistica" name="coord_logistica" value="logistica" disabled>
-                            <label for="coord_logistica" class="form-check-label">Logistica</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coord_patrocinio" name="coord_patrocinio" value="patrocinio" disabled>
-                            <label for="coord_patrocinio" class="form-check-label">Patrocinio</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="coord_publicidad" name="coord_publicidad" value="publicidad" disabled>
-                            <label for="coord_publicidad" class="form-check-label">Publicidad</label>
-                        </div>
+                        foreach($array_comites as $comite){
+                            $comite_format=strtolower(quitar_tildes($comite['comite']));
+                            ?>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="<?php echo 'coord_'.$comite_format;?>" name="<?php echo 'coord_'.$comite_format;?>" value="<?php echo 'coord'.$comite_format;?>"disabled>
+                                <label for="<?php echo 'coord_'.$comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
+                            </div>
+                            <?php                
+                        }              
+                        ?>
 
                     </div>
                     <!-- /.card-body -->
