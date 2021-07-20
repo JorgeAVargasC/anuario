@@ -198,26 +198,14 @@ if ($_POST['registro'] == 'actualizar') {
     $validacion1 = !empty($_POST['primerNombre']) && !empty($_POST['primerApellido']) && !empty($_POST['nombrePreferido']) && !empty($_POST['nombreEnRama']) && !empty($_POST['anioIngresoRama']) && !empty($_POST['anioSalidaRama']) && !empty($_POST['correo']) && !empty($_POST['celular']) && !empty($_POST['frase']);
     $validacion2 = isset($_POST["academico"]) || isset($_POST["ludicas"]) || isset($_POST["logistica"]) || isset($_POST["patrocinio"]) || isset($_POST["publicidad"]);
 
-    $errors = [];
-    $fileSize = $_FILES['imagen-miembro']['size'];
-    $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
-    $path = $_FILES['imagen-miembro']['name'];
-    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-
-    if (!in_array($ext, $fileExtensionsAllowed)) {
-      $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-    }
-    if ($fileSize > 5000000) {
-      $errors[] = "File exceeds maximum size (10MB)";
-    }
-    $validacion3 = empty($errors);
+    /*
     if (isset($_POST["coordinador"])) {
       $validacion4 = isset($_POST["coord_academico"]) || isset($_POST["coord_ludicas"]) || isset($_POST["coord_logistica"]) || isset($_POST["coord_patrocinio"]) || isset($_POST["coord_publicidad"]);
     } else {
-      $validacion4 = true;
+      $validacion4 = false;
     }
-
-    if ($validacion1 && $validacion2 && $validacion3 && $validacion4) {
+    */
+    if ($validacion1 && $validacion2) {
 
       $primerNombre = $_POST['primerNombre'];
       $segundoNombre = $_POST["segundoNombre"];
@@ -242,32 +230,49 @@ if ($_POST['registro'] == 'actualizar') {
 
       if ($_FILES['imagen-miembro']['name'] != null) {
 
-        $url_anterior = $miembro['urlFoto'];
-
-        unlink($url_anterior);
-
         $errors = [];
         $fileSize = $_FILES['imagen-miembro']['size'];
         $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
         $path = $_FILES['imagen-miembro']['name'];
         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 
-        $urlFoto = 'foto_' . $primerNombre_img . '_' . $primerApellido_img . '_' . date('Ymd_his') . '.' . $ext;
-
-        $directorio = "../img/members/";
-
-        if (!is_dir($directorio)) {
-          mkdir($directorio, 0755, true);
+        if (!in_array($ext, $fileExtensionsAllowed)) {
+          $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
         }
-
-        if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
-          $imagen_url = $directorio . $urlFoto;  //it should change when every image would be on the same path
-          $imagen_resultado = "Se subió correctamente";
-        } else {
-          $respuesta = array(
-            'respuesta' => error_get_last()
-          );
+        if ($fileSize > 5000000) {
+          $errors[] = "File exceeds maximum size (10MB)";
         }
+        $validacion3 = empty($errors);
+
+        if($validacion3){
+          $url_anterior = $miembro['urlFoto'];
+
+          unlink($url_anterior);
+
+          $errors = [];
+          $fileSize = $_FILES['imagen-miembro']['size'];
+          $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
+          $path = $_FILES['imagen-miembro']['name'];
+          $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+          $urlFoto = 'foto_' . $primerNombre_img . '_' . $primerApellido_img . '_' . date('Ymd_his') . '.' . $ext;
+
+          $directorio = "../img/members/";
+
+          if (!is_dir($directorio)) {
+            mkdir($directorio, 0755, true);
+          }
+
+          if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
+            $imagen_url = $directorio . $urlFoto;  //it should change when every image would be on the same path
+            $imagen_resultado = "Se subió correctamente";
+          } else {
+            $respuesta = array(
+              'respuesta' => error_get_last()
+            );
+          }
+        }  
+
       } else {
         $imagen_url = $miembro['urlFoto'];
       }
@@ -281,16 +286,12 @@ if ($_POST['registro'] == 'actualizar') {
         $registros = $stmt->affected_rows;
         $stmt->close();
 
-        if ($registros > 0) {
-          # code...
-          $respuesta = array(
-            'respuesta' => 'exito'
-          );
-        } else {
-          $respuesta = array(
-            'respuesta' => 'error'
-          );
-        }
+        $filasAfectadas=0;
+        $filasAfectadas+=$registros;
+
+        
+
+        
 
         $sql1 = "SELECT * FROM comites";
         $array_comites = $conn->query($sql1);
@@ -329,9 +330,11 @@ if ($_POST['registro'] == 'actualizar') {
             if (isset($_POST[$cargo_format]) && !$rows) {
               $query = "INSERT INTO cargos_de_miembros (miembro, cargo) VALUES ($id_registro, $cargo_id)";
               $result = mysqli_query($conn, $query);
+              $filasAfectadas+=1;
             } else if (!isset($_POST[$cargo_format]) && $rows) {
               $query = "DELETE FROM cargos_de_miembros WHERE miembro=$id_registro AND cargo=$cargo_id";
               $result = mysqli_query($conn, $query);
+              $filasAfectadas+=1;
             }
           } else if ($cargo_id == 9) { #Coordinador Comite
             foreach ($array_comites as $comite) {
@@ -343,9 +346,11 @@ if ($_POST['registro'] == 'actualizar') {
               if (isset($_POST["coord_" . $comite_format]) && !$rows) {
                 $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
                 $result = mysqli_query($conn, $query);
+                $filasAfectadas+=1;
               } else if (!isset($_POST["coord_" . $comite_format]) && $rows) {
                 $query = "DELETE FROM cargos_de_miembros WHERE miembro=$id_registro AND cargo=$cargo_id AND comite=$comite_id";
                 $result = mysqli_query($conn, $query);
+                $filasAfectadas+=1;
               }
             }
 
@@ -360,13 +365,27 @@ if ($_POST['registro'] == 'actualizar') {
               if (isset($_POST[$comite_format]) && !$rows) {
                 $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
                 $result = mysqli_query($conn, $query);
+                $filasAfectadas+=1;
               } else if (!isset($_POST[$comite_format]) && $rows) {
                 $query = "DELETE FROM cargos_de_miembros WHERE miembro=$id_registro AND cargo=$cargo_id AND comite=$comite_id";
                 $result = mysqli_query($conn, $query);
+                $filasAfectadas+=1;
               }
             }
           }
         }
+
+        if ($filasAfectadas > 0) {
+          # code...
+          $respuesta = array(
+            'respuesta' => 'exito'
+          );
+        } else {
+          $respuesta = array(
+            'respuesta' => 'error'
+          );
+        }
+
       } catch (Exception $e) {
         $respuesta = array(
           'respuesta' => $e->getMessage()
@@ -374,7 +393,7 @@ if ($_POST['registro'] == 'actualizar') {
       }
     } else {
       $respuesta = array(
-        'respuesta' => error_get_last()
+        'respuesta' => 'error'
       );
     }
   } catch (Exception $e) {
