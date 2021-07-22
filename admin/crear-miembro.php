@@ -81,7 +81,7 @@ include_once 'funciones/quitar_tildes.php'
             </div>
             <div class="form-group">
                 <label for="anioSalidaRama">Año de Salida Rama</label>
-                <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y");?>" placeholder="<?php echo date("Y");?>" required>
+                <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y")+2;?>" placeholder="<?php echo date("Y")+2;?>" required>
             </div>
             <div class="form-group">
                 <label for="correo">Correo Electrónico</label>
@@ -97,7 +97,7 @@ include_once 'funciones/quitar_tildes.php'
             </div>
 
             <div class="form-group">
-                <label for="imagen-miembro">Imagen</label>
+                <label for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
                 <div class="input-group">
                     <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
                     <label for="imagen-miembro"></label>
