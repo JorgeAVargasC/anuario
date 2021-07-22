@@ -850,10 +850,16 @@ height: 8vh;
 /*Big Card*/
 
 .flip-container {
-  width: 35rem;
-  height: 45rem;
+  width: 40rem;
+  height: 52rem;
   transition: transform 1000ms;
   transform-style: preserve-3d;
+}
+
+@media (max-width: 768px) {
+  .flip-container {
+    width: 35rem;
+  }
 }
 
 .card-view-layout {
@@ -971,7 +977,7 @@ ul {
   justify-content: space-around;
   align-items: center;
   padding: 2rem 0 1rem 0;
-  height: 60%;
+  height: 55%;
   width: 100%;
   background-color: var(--secundario);
   border-radius: 3.9rem 0% 100% 100% / 3.9rem 0% 10% 10%;
