@@ -1,5 +1,4 @@
 
-        </div><!-- cierre img-filter -->
     </div><!--cierre main page-->
 
 <div class="scripts">

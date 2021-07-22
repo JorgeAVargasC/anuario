@@ -5,6 +5,7 @@
 ?>
 
 <div class="page-content">
+  <div class="flex-main">
     <div class="arrow left-arrow">
         <div class="center-arrow" id="left-arrow">
         </div>
@@ -31,7 +32,7 @@
             }
         ?>
     </div>
-</div>
+    </div>
 
 <?php
     include_once("templates/footer.php");

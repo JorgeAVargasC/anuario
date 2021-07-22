@@ -22,16 +22,26 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  background-color: #b81515;
   /** Reset para REMS - 62.5% = 10px de 16px **/
 }
-.fondo {
-  position: fixed;
-  height: 100vh;
-}
+
 body {
   font-family: "Kiwi Maru";
   font-size: 1.6rem;
+}
+
+.fondo {
+  position: fixed;
+  object-fit: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.bg {
+  position: fixed;
+  background-color: rgba(4, 5, 5, 0.562);
+  height: 100vh;
+  width: 100vw;
 }
 
 img {
@@ -60,31 +70,13 @@ h4 {
   display: flex;
   flex-direction: column;
 }
-
-.img-filter {
-  /* background-color: rgba(37, 190, 182, 0.918);
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex; */
-  /* background-color: #5c080880;
-  position: absolute;
-  top: 14%;
-
-  min-height: 100vh; */
-  background-color: #f10303;
-  position: sticky;
-  top: 0;
-  display: flex;
-  height: 100vh;
-}
+/* background-color: rgba(37, 190, 182, 0.918);
+  */
 
 /*Header*/
 
 .header {
-  height: 14%;
+  height: 14vh;
   min-height: 7rem;
   width: 100%;
   background-color: #002b4ccc;
@@ -513,19 +505,27 @@ h4 {
 
 .page-content {
   position: relative;
+  margin-top: max(7rem, 14vh);
   width: 100%;
-  margin-top: 14%;
+}
+
+.flex-main {
+  display: flex;
+  flex-direction: column;
+  height: 86vh;
+  width: 100%;
+  justify-content: center;
 }
 
 /*Timeline*/
 
 .timeline {
-  height: 100vh;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   overflow-x: auto;
-  background-color: #4bb4a3;
+  /*background-color: #4bb4a3;*/
   /* scroll-behavior: smooth; */
   /* El scroll behavior produce error en algunos computadores */
 }
@@ -605,7 +605,7 @@ h4 {
   display: table;
   padding: 5% 0;
   height: 100%;
-  width: 8%;
+  width: 10%;
   z-index: 15;
 }
 
