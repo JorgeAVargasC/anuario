@@ -22,8 +22,8 @@ if ($_POST['registro'] == 'nuevo') {
     if (!in_array($ext, $fileExtensionsAllowed)) {
       $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
     }
-    if ($fileSize > 10485760) {
-      $errors[] = "File exceeds maximum size (10MB)";
+    if ($fileSize > 1572864) {
+      $errors[] = "File exceeds maximum size (1.5MB)";
     }
     $validacion3 = empty($errors);
     if (isset($_POST["coordinador"])) {
@@ -222,8 +222,8 @@ if ($_POST['registro'] == 'actualizar') {
       if (!in_array($ext, $fileExtensionsAllowed)) {
         $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
       }
-      if ($fileSize > 10485760) {
-        $errors[] = "File exceeds maximum size (10MB)";
+      if ($fileSize > 1572864) {
+        $errors[] = "File exceeds maximum size (1.5MB)";
       }
       $validacion3 = empty($errors);
     } else {      

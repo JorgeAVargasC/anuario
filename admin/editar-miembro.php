@@ -126,7 +126,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
             </div>
             <div class="form-group">
               <label for="anioSalidaRama">Año de Salida Rama</label>
-              <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y"); ?>" value="<?php echo $miembro['anioSalidaRama']; ?>" required>
+              <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y")+2; ?>" value="<?php echo $miembro['anioSalidaRama']; ?>" required>
             </div>
             <div class="form-group">
               <label for="correo">Correo Electrónico</label>
@@ -141,7 +141,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
               <input type="text" class="form-control" id="frase" name="frase" placeholder="Ingresa tu Frase" value="<?php echo $miembro['frase']; ?>" required>
             </div>
             <div class="form-group">
-              <label for="imagen-actual">Imagen actual</label>
+              <label for="imagen-actual">Imagen actual <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
               <br>
               <img src="<?php echo $miembro['urlFoto']; ?>" width="200">
               <!--<img src="../img/miembros/<?php echo $miembro['urlFoto']; ?>" width="200">-->
