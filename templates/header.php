@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-
+<img class="fondo" src="/anuario/img/backgrounds/popayan5.jpg"></img>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
