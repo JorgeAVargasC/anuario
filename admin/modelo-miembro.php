@@ -10,8 +10,16 @@ if ($_POST['registro'] == 'nuevo') {
     $conn = mysqli_connect($host, $user, $pw, $db);
 
     $validacion1 = !empty($_POST['primerNombre']) && !empty($_POST['primerApellido']) && !empty($_POST['nombrePreferido']) && !empty($_POST['nombreEnRama']) && !empty($_POST['anioIngresoRama']) && !empty($_POST['anioSalidaRama']) && !empty($_POST['correo']) && !empty($_POST['celular']) && !empty($_POST['frase']);
-    $validacion2 = isset($_POST["academico"]) || isset($_POST["ludicas"]) || isset($_POST["logistica"]) || isset($_POST["patrocinio"]) || isset($_POST["publicidad"]);
-
+    $sql1 = "SELECT * FROM comites";
+    $array_comites = $conn->query($sql1);
+    #$array_comites = $resultado->fetch_assoc();
+    $validacion2 = false; 
+    foreach($array_comites as $comite){
+      $comite_format = strtolower(quitar_tildes($comite['comite']));
+      if(isset($_POST[$comite_format])){
+        $validacion2 = true;
+      }
+    }
 
     $errors = [];
     $fileSize = $_FILES['imagen-miembro']['size'];
@@ -19,21 +27,40 @@ if ($_POST['registro'] == 'nuevo') {
     $path = $_FILES['imagen-miembro']['name'];
     $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 
-    if (!in_array($ext, $fileExtensionsAllowed)) {
-      $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-    }
-    if ($fileSize > 1572864) {
-      $errors[] = "File exceeds maximum size (1.5MB)";
-    }
-    $validacion3 = empty($errors);
-    if (isset($_POST["coordinador"])) {
-      $validacion4 = isset($_POST["coord_academico"]) || isset($_POST["coord_ludicas"]) || isset($_POST["coord_logistica"]) || isset($_POST["coord_patrocinio"]) || isset($_POST["coord_publicidad"]);
-    } else {
-      $validacion4 = true;
-    }
-    if($validacion3){
+    if ($_FILES['imagen-miembro']['name'] != null ) {
+      $errors = [];
+      $fileSize = $_FILES['imagen-miembro']['size'];
+      $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
+      $path = $_FILES['imagen-miembro']['name'];
+      $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 
-    if ($validacion1 && $validacion2 && $validacion4) {
+      if (!in_array($ext, $fileExtensionsAllowed)) {
+        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+      }
+      if ($fileSize > 1572864) {
+        $errors[] = "File exceeds maximum size (1.5MB)";
+      }
+      $validacion3 = empty($errors);
+    } else {      
+      $validacion3 = false;
+    }
+
+    $validacion4 = false;
+    $sql1 = "SELECT * FROM comites";
+    $array_comites = $conn->query($sql1);
+
+    if(isset($_POST["coordinador"])){
+      foreach($array_comites as $comite){
+        $comite_format = strtolower(quitar_tildes($comite['comite']));        
+          if(isset($_POST["coord_".$comite_format])){
+            $validacion4 = true;
+          }
+      }      
+    }else{
+      $validacion4 = true;
+    } 
+
+    if ($validacion1 && $validacion2 && $validacion3 && $validacion4) {
       $primerNombre = $_POST["primerNombre"];
       $segundoNombre = $_POST["segundoNombre"];
       $nombrePreferido = $_POST["nombrePreferido"];
@@ -52,11 +79,9 @@ if ($_POST['registro'] == 'nuevo') {
       $primerApellido_img = strtolower(quitar_tildes($primerApellido));
       $urlFoto = 'foto_' . $primerNombre_img . '_' . $primerApellido_img . '_' . date('Ymd_his') . '.' . $ext;
 
-
       //subida foto
       $directorio = "../img/members/";
       if (!is_dir($directorio)) {
-        # code...
         mkdir($directorio, 0755, true);
       }
       if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
@@ -92,95 +117,62 @@ if ($_POST['registro'] == 'nuevo') {
 
       $resultado = $conn->query("SELECT id FROM miembros WHERE correo='$correo' AND celular=$celular");
       $member = $resultado->fetch_assoc();
-      $id = $member['id'];
+      $id_registro = $member['id'];
 
-      // Voluntario del Comite
-      if (isset($_POST["academico"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 10, 1);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["ludicas"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 10, 2);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["logistica"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 10, 3);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["patrocinio"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 10, 4);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["publicidad"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 10, 5);";
-        $result = mysqli_query($conn, $query);
-      }
-
+      $sql2 = "SELECT * FROM cargos";
+      $array_cargos = $conn->query($sql2);
       // Cargos del miembro
-      if (isset($_POST["coordinadorTET"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 1, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["webMaster"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 2, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["coordinadoraWIE"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 3, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["presidente"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 4, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["viscepresidente"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 5, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["fiscal"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 6, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["tesorero"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 7, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["secretario"])) {
-        $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 8, NULL);";
-        $result = mysqli_query($conn, $query);
-      }
-      if (isset($_POST["coordinador"])) {
-        if (isset($_POST["coord_academico"])) {
-          $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 9, 1);";
-          $result = mysqli_query($conn, $query);
-        }
-        if (isset($_POST["coord_ludicas"])) {
-          $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 9, 2);";
-          $result = mysqli_query($conn, $query);
-        }
-        if (isset($_POST["coord_logistica"])) {
-          $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 9, 3);";
-          $result = mysqli_query($conn, $query);
-        }
-        if (isset($_POST["coord_patrocinio"])) {
-          $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 9, 4);";
-          $result = mysqli_query($conn, $query);
-        }
-        if (isset($_POST["coord_publicidad"])) {
-          $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id, 9, 5);";
-          $result = mysqli_query($conn, $query);
+      foreach ($array_cargos as $cargo) {
+        $cargo_format = lcfirst(str_replace(' ', '', quitar_tildes($cargo['cargo'])));
+        $cargo_id = $cargo["id"];
+        
+        if ($cargo_id != 9 && $cargo_id != 10) { // Generales
+          if (isset($_POST[$cargo_format])) {
+            $query = "INSERT INTO cargos_de_miembros (miembro, cargo) VALUES ($id_registro, $cargo_id)";
+            $result = mysqli_query($conn, $query);
+          }
+        }else if ($cargo_id == 9) { // Voluntario del Comite
+          foreach ($array_comites as $comite) {
+            $comite_id = $comite["id"];
+            $comite_format = strtolower(quitar_tildes($comite['comite']));
+            if (isset($_POST["coord_" . $comite_format])) {
+              $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
+              $result = mysqli_query($conn, $query);
+            }
+          }
+        }else if ($cargo_id == 10) { //Coordinador comites
+          if (isset($_POST["coordinador"])) {
+            foreach ($array_comites as $comite) {
+              $comite_id = $comite["id"];
+              $comite_format = strtolower(quitar_tildes($comite['comite']));
+              if (isset($_POST[$comite_format])) {
+                $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
+                $result = mysqli_query($conn, $query);
+              }            
+            }
+          }
         }
       }
     } else {
-      $respuesta = array(
-        'respuesta' => error_get_last()
-      );
+       if(!$validacion2){
+        $respuesta = array(
+          'respuesta' => 'error_vol_comite'
+        );
+      }else if(!$validacion3){
+        $respuesta = array(
+          'respuesta' => 'error_img'
+        );
+      }else if(!$validacion4){
+        $respuesta = array(
+          'respuesta' => 'error_coord_comite'
+        );
+      }
+      else{
+        $respuesta = array(
+          'respuesta' => 'error'
+        );
+      }
     }
-  }else{
-    $respuesta = array(
-      'respuesta' => 'error_img'
-    );
-  }
   } catch (Exception $e) {
     //throw $th;
     $respuesta = array(
