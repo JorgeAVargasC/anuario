@@ -18,18 +18,41 @@ $array_cargos = $conn->query($sql);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../admin/css/all.min.css">
+  <script src="https://kit.fontawesome.com/9d25e26f75.js" crossorigin="anonymous"></script>
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../admin/css/adminlte.min.css">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../admin/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../admin/css/responsive.bootstrap4.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="../admin/css/sweetalert2.min.css">
+  <!-- Leaflet - mapas -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+
   <title>Formulario Público</title>
 </head>
 
 <body>
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Formulario Público Anuario</h3>
+      <h4 class="card-title">Formulario Público Anuario</h4>
     </div>
     <div class="card-body">
-      <form role="form" enctype="multipart/form-data" name="" id="" method="post" action="../functions/modelo-publico.php">
+      <form role="form" enctype="multipart/form-data" name="crear-miembro-publico" id="crear-miembro-publico" method="post" action="../functions/modelo-publico.php">
         <div class="card-body">
           <div class="form-group mb-3">
             <label class="mb-1" for="primerNombre">Primer Nombre</label>
@@ -94,7 +117,7 @@ $array_cargos = $conn->query($sql);
             <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin">
           </div>
 
-          <!-- Check boxes -->          
+          <!-- Check boxes -->
           <h5>Comites a los que perteneció</h5>
           <?php
           foreach ($array_comites as $comite) {
@@ -107,7 +130,7 @@ $array_cargos = $conn->query($sql);
           <?php
           }
           ?>
-          
+
           <h5 class="mt-3">Cargos que ocupó</h5>
           <?php
           foreach ($array_cargos as $cargo) {
@@ -123,7 +146,7 @@ $array_cargos = $conn->query($sql);
             }
           }
           ?>
-          
+
           <h5 class="mt-3">Comites que Coordinó</h5>
           <?php
 
@@ -153,8 +176,38 @@ $array_cargos = $conn->query($sql);
 
 </body>
 
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="../admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../admin/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../admin/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../admin/js/demo.js"></script>
+<!-- Leaflet - mapas -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<!-- mapa -->
+<script src="../admin/js/mapa.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../admin/js/bs-custom-file-input.min.js"></script>
+
+<script src="../admin/js/sweetalert2.all.min.js"></script>
+
+<script src="../js/miembro-ajax.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script src="../admin/js/jquery.dataTables.min.js"></script>
+<script src="../admin/js/dataTables.bootstrap4.min.js"></script>
+<script src="../admin/js/dataTables.responsive.min.js"></script>
+<script src="../admin/js/responsive.bootstrap4.min.js"></script>
+<script src="../admin/js/app.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    bsCustomFileInput.init();
+  });
+</script>
 
 <script>
   document.getElementById("coordinador").onclick = function() {
@@ -164,7 +217,6 @@ $array_cargos = $conn->query($sql);
       document.getElementById("coord_logistica").disabled = false
       document.getElementById("coord_patrocinio").disabled = false
       document.getElementById("coord_publicidad").disabled = false
-        
     } else {
       document.getElementById("coord_academico").disabled = true
       document.getElementById("coord_ludicas").disabled = true
@@ -174,4 +226,5 @@ $array_cargos = $conn->query($sql);
     }
   }
 </script>
+
 </html>
