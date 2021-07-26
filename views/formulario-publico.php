@@ -80,7 +80,7 @@ $array_cargos = $conn->query($sql);
           </div>
           <div class="form-check mb-3 ">
             <label for="nombrePreferido2" class="form-check-label">2</label>
-            <input type="radio" class="form-check-input" id="nombrePreferido2" value=2 name="nombrePreferido">
+            <input type="radio" class="form-check-input" id="nombrePreferido2" value=2 name="nombrePreferido" disabled>
 
           </div>
           <div class="form-group mb-3 ">
