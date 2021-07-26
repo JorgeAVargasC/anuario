@@ -215,7 +215,7 @@ $array_cargos = $conn->query($sql);
   });
 </script>
 
-<!-- <script>
+<script>
 Swal.fire({
   title: 'Política De Datos',
   text: "De acuerdo con la Ley Estatutaria 1581 de 2012 de Protección de Datos y con el Decreto 1377 de 2013, el usuario acepta que los datos consignados en el presente formulario sean incorporados en una base de datos responsabilidad de La Asociación Rama Estudiantil IEEE de la Universidad del Cauca. ",
@@ -238,10 +238,10 @@ Swal.fire({
   }
 })
 
-</script> -->
+</script>
 
 <script>
-  document.getElementById("segundoNombre") = function() {
+  document.getElementById("segundoNombre").onkeyup = function() {
     var a = document.getElementById("segundoNombre").value;
     if (!a) {
       document.getElementById("nombrePreferido2").disabled = true
