@@ -43,7 +43,9 @@ $array_cargos = $conn->query($sql);
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
 
+  <link rel="stylesheet" href="../css/formulario-publico.css">
   <title>Formulario Público</title>
+
 </head>
 
 <body>
@@ -54,67 +56,71 @@ $array_cargos = $conn->query($sql);
     <div class="card-body">
       <form role="form" enctype="multipart/form-data" name="crear-miembro-publico" id="crear-miembro-publico" method="post" action="../functions/modelo-publico.php">
         <div class="card-body">
-          <div class="form-group mb-3">
-            <label class="mb-1" for="primerNombre">Primer Nombre</label>
+          <div class="form-group mb-3 ">
             <input type="text" class="form-control" id="primerNombre" name="primerNombre" placeholder="Ingresa tu Primer Nombre" required>
+            <label class="mb-1 required" for="primerNombre">Primer Nombre</label>
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="segundoNombre">Segundo Nombre</label>
+          <div class="form-group mb-3 ">
             <input type="text" class="form-control" id="segundoNombre" name="segundoNombre" placeholder="Ingresa tu Segundo Nombre">
+            <label class="mb-1" for="segundoNombre">Segundo Nombre</label>
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="primerApellido">Primer Apellido</label>
+          <div class="form-group mb-3 ">
             <input type="text" class="form-control" id="primerApellido" name="primerApellido" placeholder="Ingresa tu Primer Apellido" required>
+            <label class="mb-1 required" for="primerApellido">Primer Apellido</label>
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="segundoApellido">Segundo Apellido</label>
+          <div class="form-group mb-3 ">
             <input type="text" class="form-control" id="segundoApellido" name="segundoApellido" placeholder="Ingresa tu Segundo Apellido">
+            <label class="mb-1" for="segundoApellido">Segundo Apellido</label>
           </div>
 
           <p class="mb-1">Nombre preferido</p>
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="nombrePreferido" value=1 name="nombrePreferido" checked>
             <label for="nombrePreferido1" class="form-check-label">1</label>
+            <input type="radio" class="form-check-input" id="nombrePreferido1" value=1 name="nombrePreferido" checked>
           </div>
-          <div class="form-check mb-3">
-            <input type="radio" class="form-check-input" id="nombrePreferido" value=2 name="nombrePreferido">
+          <div class="form-check mb-3 ">
             <label for="nombrePreferido2" class="form-check-label">2</label>
+            <input type="radio" class="form-check-input" id="nombrePreferido2" value=2 name="nombrePreferido">
+
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="nombreEnRama">Nombre En Rama</label>
+          <div class="form-group mb-3 ">
             <input type="text" class="form-control" id="nombreEnRama" name="nombreEnRama" placeholder="Ingresa tu Nombre En Rama" required>
+            <label class="mb-1 required" for="nombreEnRama">Nombre En Rama</label>
+
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="anioIngresoRama">Año de Ingreso Rama</label>
+          <div class="form-group mb-3 ">
             <input type="number" class="form-control" id="anioIngresoRama" name="anioIngresoRama" min="1985" max="<?php echo date("Y"); ?>" placeholder="2020" required>
+            <label class="mb-1 required" for="anioIngresoRama">Año de Ingreso Rama</label>
+
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="anioSalidaRama">Año de Salida Rama</label>
+          <div class="form-group mb-3 ">
             <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y") + 2; ?>" placeholder="<?php echo date("Y") + 2; ?>" required>
+            <label class="mb-1 required" for="anioSalidaRama">Año de Salida Rama</label>
+
           </div>
-          <div class="form-group mb-3">
+          <div class="form-group mb-3 ">
+            <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico" required>
             <label class="mb-1" for="correo">Correo Electrónico</label>
-            <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico">
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="celular">Celular</label>
+          <div class="form-group mb-3 ">
             <input type="number" class="form-control" id="celular" name="celular" placeholder="3157003333">
+            <label class="mb-1" for="celular">Celular</label>
           </div>
-          <div class="form-group mb-3">
-            <label class="mb-1" for="frase">Frase</label>
+          <div class="form-group mb-3 ">
             <input type="text" class="form-control" id="frase" name="frase" placeholder="Ingresa tu Frase">
+            <label class="mb-1" for="frase">Frase</label>
           </div>
 
-          <div class="form-group mb-3">
-            <label class="mb-1" for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
+          <div class="form-group mb-3 ">
             <div class="input-group">
-              <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
               <label for="imagen-miembro"></label>
+              <input type="file" id="imagen-miembro required" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>            
+              <label class="mb-1" for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
             </div>
           </div>
-          <div class="form-group mb-3">
-            <label for="urlLinkedin">URL Linkedin</label>
+          <div class="form-group mb-3 ">
             <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin">
+            <label for="urlLinkedin">URL Linkedin</label>
           </div>
 
           <!-- Check boxes -->
@@ -209,7 +215,41 @@ $array_cargos = $conn->query($sql);
   });
 </script>
 
+<!-- <script>
+Swal.fire({
+  title: 'Política De Datos',
+  text: "De acuerdo con la Ley Estatutaria 1581 de 2012 de Protección de Datos y con el Decreto 1377 de 2013, el usuario acepta que los datos consignados en el presente formulario sean incorporados en una base de datos responsabilidad de La Asociación Rama Estudiantil IEEE de la Universidad del Cauca. ",
+  icon: 'question',
+  showCancelButton: true,
+  cancelButtonColor: '#d33',
+  cancelButtonText: 'No acepto',
+  confirmButtonColor: '#3085d6',
+  confirmButtonText: 'Acepto',
+  
+}).then((result) => {
+  if (!(result.isConfirmed)) {
+    window.location.href = "../index.php";
+  }else{
+    Swal.fire({
+      title: "Confirmado",
+      text: "Gracias por aceptar las  políticas",
+      icon: "success"
+    })
+  }
+})
+
+</script> -->
+
 <script>
+  document.getElementById("segundoNombre") = function() {
+    var a = document.getElementById("segundoNombre").value;
+    if (!a) {
+      document.getElementById("nombrePreferido2").disabled = true
+    } else {
+      document.getElementById("nombrePreferido2").disabled = false
+    }
+  }
+
   document.getElementById("coordinador").onclick = function() {
     if (document.getElementById("coord_academico").disabled) {
       document.getElementById("coord_academico").disabled = false
