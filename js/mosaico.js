@@ -65,12 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         TeTOrganizados.push(' ' + anio);
                     }
                 }
-                if (TeTOrganizados.length > 1) {
-                    last_TetOrganizados = TeTOrganizados.pop();
-                    aportes +=`<li><p>Organización de los TeT ${TeTOrganizados} y ${last_TetOrganizados}.</p></li>`;
-                }else {
-                    aportes += `<li><p>Organización del TeT ${TeTOrganizados}.</p></li>`;
+                if(TeTOrganizados.length > 0){
+                    if (TeTOrganizados.length > 1) {
+                        last_TetOrganizados = TeTOrganizados.pop();
+                        aportes +=`<li><p>Organización de los TeT ${TeTOrganizados} y ${last_TetOrganizados}.</p></li>`;
+                    }else {
+                        aportes += `<li><p>Organización del TeT ${TeTOrganizados}.</p></li>`;
+                    }    
                 }
+                
                 let result = `
                     <div class="card-face front-face-flex">
                         <div class="front-content">
