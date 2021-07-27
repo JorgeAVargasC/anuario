@@ -2,11 +2,9 @@
     display: none;
 }
 
-
 .grafica{
     margin-bottom: 8rem;
 }
-
 
 @media (min-width: 768px) {
     .graficas {
@@ -23,3 +21,41 @@
         column-gap: 2rem;
     }
 }
+
+@media (min-width: 768px) {
+    .image-preview{
+        display: grid;
+        width: 90%;
+        background-color: blue;
+        grid-template-columns: 60% 40%;
+    }
+}
+
+#image-container {
+    background-color: aqua;
+    margin: 0 auto;
+    width: 80%;
+}
+
+#image-container #image {
+    background-color: chartreuse;
+    display: none;
+    max-width: 100%;
+}
+
+#result {
+    background-color: brown;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#result .image-result {
+    max-width: 100%;
+}
+
+
+
+

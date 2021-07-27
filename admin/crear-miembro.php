@@ -103,6 +103,15 @@ include_once 'funciones/quitar_tildes.php'
                     <label for="imagen-miembro"></label>
                 </div>
             </div>
+            <div class="image-preview">
+              <div id="image-container">
+                <img id="image" src="" alt="Picture">
+                <button type="button" id="crop-button">Crop</button>
+              </div>
+              <div id="result">
+                <button type="button" id="crop-button">Crop</button>
+              </div>
+            </div>
             <div class="form-group">
                 <label for="urlLinkedin">URL Linkedin</label>
                 <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin">
@@ -172,23 +181,91 @@ include_once 'funciones/quitar_tildes.php'
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" integrity="sha512-ooSWpxJsiXe6t4+PPjCgYmVfr1NS5QXJACcR/FPpsdm6kqG1FmQ2SVyg2RXeVuCRBLr0lWHnWJP6Zs1Efvxzww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js" integrity="sha512-ZK6m9vADamSl5fxBPtXw6ho6A4TuX89HUbcfvxa2v2NYNT/7l8yFGJ3JlXyMN4hlNbz0il4k6DvqbIW5CCwqkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-  document.getElementById("coordinador").onclick = function() {
-    if (document.getElementById("coord_academico").disabled) {
-      document.getElementById("coord_academico").disabled = false
-      document.getElementById("coord_ludicas").disabled = false
-      document.getElementById("coord_logistica").disabled = false
-      document.getElementById("coord_patrocinio").disabled = false
-      document.getElementById("coord_publicidad").disabled = false
-        
-    } else {
-      document.getElementById("coord_academico").disabled = true
-      document.getElementById("coord_ludicas").disabled = true
-      document.getElementById("coord_logistica").disabled = true
-      document.getElementById("coord_patrocinio").disabled = true
-      document.getElementById("coord_publicidad").disabled = true
+  document.addEventListener('DOMContentLoaded', () => {
+    // Para habilitar checkbox del coordinador
+    document.getElementById("coordinador").onclick = function() {
+      if (document.getElementById("coord_academico").disabled) {
+        document.getElementById("coord_academico").disabled = false;
+        document.getElementById("coord_ludicas").disabled = false;
+        document.getElementById("coord_logistica").disabled = false;
+        document.getElementById("coord_patrocinio").disabled = false;
+        document.getElementById("coord_publicidad").disabled = false;
+      } else {
+        document.getElementById("coord_academico").disabled = true;
+        document.getElementById("coord_ludicas").disabled = true;
+        document.getElementById("coord_logistica").disabled = true;
+        document.getElementById("coord_patrocinio").disabled = true;
+        document.getElementById("coord_publicidad").disabled = true;
+      }
     }
-  }
+    // Para recortador
+    function getRoundedCanvas(sourceCanvas) {
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      var width = sourceCanvas.width;
+      var height = sourceCanvas.height;
+      canvas.width = width;
+      canvas.height = height;
+      context.imageSmoothingEnabled = true;
+      context.drawImage(sourceCanvas, 0, 0, width, height);
+      context.globalCompositeOperation = 'destination-in';
+      context.beginPath();
+      context.fill();
+      return canvas;
+    }
+
+    let image = document.getElementById('image');
+    let button = document.getElementById('crop-button');
+    let result = document.getElementById('result');
+    let archivo = document.getElementById("imagen-miembro");
+    let croppable = false;
+    let cropper = new Cropper(image, {
+      aspectRatio: 1,
+      viewMode: 3,
+      dragMode: 'move',
+      // cropBoxResizable: false,
+      autoCropArea: 1,
+      scalable: false,
+      ready: function () {
+        croppable = true;
+      },
+    });
+
+    archivo.addEventListener('change', ()=> {
+      image.src = URL.createObjectURL(archivo.files[0]);
+      cropper.replace(image.src);
+      image.style.display = 'block';
+
+      button.onclick = function () {
+        var croppedCanvas;
+        var roundedCanvas;
+        var roundedImage;
+
+        if (!croppable) {
+          return;
+        }
+
+        // Crop
+        croppedCanvas = cropper.getCroppedCanvas();
+
+        // Round
+        roundedCanvas = getRoundedCanvas(croppedCanvas);
+
+        // Show
+        roundedImage = document.createElement('img');
+        roundedImage.classList = 'image-result';
+        roundedImage.src = roundedCanvas.toDataURL()
+        result.innerHTML = '';
+        result.appendChild(roundedImage);
+      };
+
+    })
+
+    
+  })
 </script>
 
 
