@@ -99,19 +99,45 @@ include_once 'funciones/quitar_tildes.php'
             <div class="form-group">
                 <label for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
                 <div class="input-group">
-                    <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
+                    <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" data-target="#modal" data-toggle="modal" required>
                     <label for="imagen-miembro"></label>
                 </div>
             </div>
-            <div class="image-preview">
-              <div id="image-container">
-                <img id="image" src="" alt="Picture">
-                <button type="button" id="crop-button">Crop</button>
-              </div>
-              <div id="result">
-                <button type="button" id="crop-button">Crop</button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modalLabel">Personaliza tu imagen</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- <div class="img-container">
+                      <img id="image" src="../images/picture.jpg" alt="Picture">
+                    </div> -->
+                    <div class="image-preview">
+                      <div id="image-container">
+                        <img id="image" src="#" alt="Picture">
+                      </div>
+                      <div id="result">
+                        <h5>Previsualización:</h5>
+                        <br>
+                        <div id="image-result">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="crop-button" class="btn btn-secondary">Crop</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="form-group">
                 <label for="urlLinkedin">URL Linkedin</label>
                 <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin">
@@ -219,18 +245,46 @@ include_once 'funciones/quitar_tildes.php'
 
     let image = document.getElementById('image');
     let button = document.getElementById('crop-button');
-    let result = document.getElementById('result');
+    let result = document.getElementById('image-result');
     let archivo = document.getElementById("imagen-miembro");
     let croppable = false;
     let cropper = new Cropper(image, {
       aspectRatio: 1,
       viewMode: 3,
       dragMode: 'move',
-      // cropBoxResizable: false,
-      autoCropArea: 1,
-      scalable: false,
+      autoCropArea: 0.6,
       ready: function () {
+        var clone = this.cloneNode();
+        clone.className = '';
+        clone.style.cssText = (
+          'display: block;' +
+          // 'width: 100%;' +
+          'height: 40vh;' +
+          'min-width: 0;' +
+          'min-height: 0;' +
+          'max-width: none;' +
+          'max-height: none;'
+        );
+        result.appendChild(clone.cloneNode());
         croppable = true;
+      },
+      crop: function (event){
+        if (!croppable) {
+          return;
+        }
+        let data = event.detail;
+        let cropper = this.cropper;
+        let imageData = cropper.getImageData();
+        let previewAspectRatio = data.width / data.height;
+        let previewImage = result.getElementsByTagName('img').item(0);
+        let previewWidth = result.offsetWidth;
+        let previewHeight = previewWidth / previewAspectRatio;
+        let imageScaledRatio = data.width / previewWidth;
+        result.style.height = previewHeight + 'px';
+        previewImage.style.width = imageData.naturalWidth / imageScaledRatio + 'px';
+        previewImage.style.height = imageData.naturalHeight / imageScaledRatio + 'px';
+        previewImage.style.marginLeft = -data.x / imageScaledRatio + 'px';
+        previewImage.style.marginTop = -data.y / imageScaledRatio + 'px';
       },
     });
 
@@ -238,30 +292,6 @@ include_once 'funciones/quitar_tildes.php'
       image.src = URL.createObjectURL(archivo.files[0]);
       cropper.replace(image.src);
       image.style.display = 'block';
-
-      button.onclick = function () {
-        var croppedCanvas;
-        var roundedCanvas;
-        var roundedImage;
-
-        if (!croppable) {
-          return;
-        }
-
-        // Crop
-        croppedCanvas = cropper.getCroppedCanvas();
-
-        // Round
-        roundedCanvas = getRoundedCanvas(croppedCanvas);
-
-        // Show
-        roundedImage = document.createElement('img');
-        roundedImage.classList = 'image-result';
-        roundedImage.src = roundedCanvas.toDataURL()
-        result.innerHTML = '';
-        result.appendChild(roundedImage);
-      };
-
     })
 
     
