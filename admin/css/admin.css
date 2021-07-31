@@ -38,6 +38,13 @@
     justify-content: center;
 }
 
+#cropped-image-container {
+    margin-top: 2%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
 #image-container #image {
     display: none;
     /* max-width: 100%; */

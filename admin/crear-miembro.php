@@ -99,11 +99,14 @@ include_once 'funciones/quitar_tildes.php'
             <div class="form-group">
                 <label for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
                 <div class="input-group">
-                    <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" data-target="#modal" data-toggle="modal" required>
+                    <!-- <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" data-target="#modal" data-toggle="modal" required> -->
+                    <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
                     <label for="imagen-miembro"></label>
                 </div>
+                <div id="cropped-image-container">
+                  <img id="cropped-image" src="#" width="200vw" alt="Cropped Image">
+                </div>
             </div>
-            
             <!-- Modal -->
             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
@@ -115,9 +118,6 @@ include_once 'funciones/quitar_tildes.php'
                     </button>
                   </div>
                   <div class="modal-body">
-                    <!-- <div class="img-container">
-                      <img id="image" src="../images/picture.jpg" alt="Picture">
-                    </div> -->
                     <div class="image-preview">
                       <div id="image-container">
                         <img id="image" src="#" alt="Picture">
@@ -131,8 +131,8 @@ include_once 'funciones/quitar_tildes.php'
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" id="crop-button" class="btn btn-secondary">Crop</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                    <button type="button" id="crop-button" class="btn btn-primary">Crop</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Exit</button>
                   </div>
                 </div>
               </div>
@@ -227,24 +227,9 @@ include_once 'funciones/quitar_tildes.php'
         document.getElementById("coord_publicidad").disabled = true;
       }
     }
-    // Para recortador
-    function getRoundedCanvas(sourceCanvas) {
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
-      var width = sourceCanvas.width;
-      var height = sourceCanvas.height;
-      canvas.width = width;
-      canvas.height = height;
-      context.imageSmoothingEnabled = true;
-      context.drawImage(sourceCanvas, 0, 0, width, height);
-      context.globalCompositeOperation = 'destination-in';
-      context.beginPath();
-      context.fill();
-      return canvas;
-    }
 
     let image = document.getElementById('image');
-    let button = document.getElementById('crop-button');
+    let cropButton = document.getElementById('crop-button');
     let result = document.getElementById('image-result');
     let archivo = document.getElementById("imagen-miembro");
     let croppable = false;
@@ -253,6 +238,7 @@ include_once 'funciones/quitar_tildes.php'
       viewMode: 3,
       dragMode: 'move',
       autoCropArea: 0.6,
+      toggleDragModeOnDblclick: false,
       ready: function () {
         var clone = this.cloneNode();
         clone.className = '';
@@ -289,10 +275,35 @@ include_once 'funciones/quitar_tildes.php'
     });
 
     archivo.addEventListener('change', ()=> {
-      image.src = URL.createObjectURL(archivo.files[0]);
-      cropper.replace(image.src);
-      image.style.display = 'block';
+      $('#modal').modal('show');
+      setTimeout(() => {
+        image.src = URL.createObjectURL(archivo.files[0]);
+        cropper.replace(image.src);
+        image.style.display = 'block';  
+      }, 200);
     })
+
+    cropButton.addEventListener('click', ()=>{
+      $('#modal').modal('hide');
+      document.getElementById('cropped-image-container').style.display = 'flex';
+      let imageData = cropper.getCroppedCanvas().toDataURL(archivo.files[0].type);
+      document.getElementById('cropped-image').src = imageData;
+      urlToFile(imageData, archivo.files[0].name, archivo.files[0].type)
+      .then(file =>{
+        // Create a DataTransfer instance and add a newly created file
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        // Assign the DataTransfer files list to the file input
+        archivo.files = dataTransfer.files;
+      });
+    });
+
+    function urlToFile(url, filename, mimeType){
+        return (fetch(url)
+            .then(function(res){return res.arrayBuffer();})
+            .then(function(buf){return new File([buf], filename, {type:mimeType});})
+        );
+    }
 
     
   })
