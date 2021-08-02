@@ -145,5 +145,17 @@
 	}
 	?>
 
+	<hr class="mt-3">
+	<h5 class="mt-3 text-primary">*La siguiente infomacion es opcional y no se mostrara en el anuario</h5>
+	<div class="form-group">
+		<input class="form-control" type="text" name="ocupacionActual" id="ocupacionActual">
+		<label class="mb-1" for="">Ocupación Actual</label>
+	</div>
+
+	<div class="form-group">
+		<textarea class="form-control" type="text" name="contactos" id="contactos"></textarea>
+		<label class="mb-1" for="">Exintegrantes de la rama que conozcas</label>
+	</div>
+
 </div>
 <!-- /.card-body -->

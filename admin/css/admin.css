@@ -1,5 +1,7 @@
 .login-page .main-footer {
     display: none;
+    width: 100%;
+    background-color: aqua;
 }
 
 .grafica{
@@ -91,6 +93,7 @@
 .form-check {
   display: flex;
   flex-direction: row;
+  align-items: center;
   
 }
 
