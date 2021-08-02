@@ -1,6 +1,6 @@
-        <footer class="main-footer">
-            
-            <strong>Copyright &copy; 2021.</strong></footer>
+        <footer class="main-footer">            
+            <strong>Copyright &copy; 2021.</strong>
+        </footer>
 
     </div>
     <!-- ./wrapper -->
@@ -39,6 +39,4 @@
     </script>
 
 </body>
-
-
 </html>

@@ -49,6 +49,7 @@ include_once 'funciones/quitar_tildes.php'
 
           <div class="card-footer">
             <input type="hidden" name="registro" value="nuevo">
+            <input type="hidden" name="estado" value="1">
             <button type="submit" class="btn btn-primary">Añadir</button>
           </div>
         </form>

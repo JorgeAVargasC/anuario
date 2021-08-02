@@ -39,15 +39,15 @@
 		<label for="anioSalidaRama">Año de Salida Rama</label>
 	</div>
 	<div class="form-group">
-		<input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico">
+		<input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico" required>
 		<label for="correo">Correo Electrónico</label>
 	</div>
 	<div class="form-group">
-		<input type="number" class="form-control" id="celular" name="celular" placeholder="3157003333">
+		<input type="number" class="form-control" id="celular" name="celular" placeholder="3157003333" required>
 		<label for="celular">Celular</label>
 	</div>
 	<div class="form-group">
-		<textarea type="text" class="form-control" id="frase" name="frase" maxlength="240" placeholder="Escribe aquí tu frase..."></textarea>
+		<textarea type="text" class="form-control" id="frase" name="frase" maxlength="240" placeholder="Escribe aquí tu frase..." required></textarea>
 		<label for="frase">Qué te aportó la Rama o una frase</label>
 	</div>
 
