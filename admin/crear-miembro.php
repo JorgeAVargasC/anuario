@@ -64,11 +64,11 @@ include_once 'funciones/quitar_tildes.php'
 
             <h4>Nombre preferido</h4>
             <div class="form-check">
-                <input type="radio" class="form-check-input" id="nombrePreferido" value=1 name="nombrePreferido" checked>
+                <input type="radio" class="form-check-input" id="nombrePreferido1" value=1 name="nombrePreferido" checked>
                 <label for="nombrePreferido1" class="form-check-label">1</label>
             </div>
             <div class="form-check">
-                <input type="radio" class="form-check-input" id="nombrePreferido" value=2 name="nombrePreferido">
+                <input type="radio" class="form-check-input" id="nombrePreferido2" value=2 name="nombrePreferido" disabled>
                 <label for="nombrePreferido2" class="form-check-label">2</label>
             </div>
             <div class="form-group">
@@ -227,6 +227,16 @@ include_once 'funciones/quitar_tildes.php'
         document.getElementById("coord_publicidad").disabled = true;
       }
     }
+
+    // Para deshabilitar radius si no hay segundo nombre
+    document.getElementById("segundoNombre").onkeyup = function() {
+    var a = document.getElementById("segundoNombre").value;
+    if (!a) {
+      document.getElementById("nombrePreferido2").disabled = true
+    } else {
+      document.getElementById("nombrePreferido2").disabled = false
+    }
+  }
 
     let image = document.getElementById('image');
     let cropButton = document.getElementById('crop-button');
