@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2021 at 07:19 PM
+-- Generation Time: Aug 02, 2021 at 07:19 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `miembros_rama_ieee`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -41,8 +41,8 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`id_admin`, `usuario`, `nombre`, `password`) VALUES
 (1, 'jvargas', 'Jorge Andrés Vargas', '$2y$12$K.sqU2VjnzgMF5kl71BXiuQgtysJZ4GiEqGj0.vXPDpKk2Mw0ubvO'),
 (2, 'admin', 'Super Usuario', '$2y$12$G1p3YBNUfUvT2s5QbIMLQ.cF65Z0nZdVk4L3660ec4Tj7FxiGTtdu'),
-(7, 'jfredy', 'Jhon Fredy Romero', '$2y$12$UtGFTrh1NLV3U1qUmn9ZIOxcbdGjzjqdWThew70SOTDlXSN8niUWa'),
-(8, 'dgomez', 'Daniel Gomez', '$2y$12$DbNTVBHUbYk7kEX2R2ERKeRhzG0hJsjvqh3yKbzpGCHlKzmatVzs2');
+(3, 'jfredy', 'Jhon Fredy Romero', '$2y$12$UtGFTrh1NLV3U1qUmn9ZIOxcbdGjzjqdWThew70SOTDlXSN8niUWa'),
+(4, 'dgomez', 'Daniel Gomez', '$2y$12$DbNTVBHUbYk7kEX2R2ERKeRhzG0hJsjvqh3yKbzpGCHlKzmatVzs2');
 
 -- --------------------------------------------------------
 
@@ -155,8 +155,10 @@ INSERT INTO `cargos_de_miembros` (`id`, `miembro`, `cargo`, `comite`) VALUES
 (64, 18, 10, 5),
 (65, 18, 10, 3),
 (66, 18, 10, 4),
-(67, 36, 5, NULL),
-(68, 37, 8, NULL);
+(67, 27, 2, NULL),
+(68, 31, 1, NULL),
+(69, 32, 1, NULL),
+(70, 33, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -284,7 +286,7 @@ ALTER TABLE `miembros`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cargos`
@@ -296,7 +298,7 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT for table `cargos_de_miembros`
 --
 ALTER TABLE `cargos_de_miembros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `comites`
@@ -324,5 +326,7 @@ ALTER TABLE `cargos_de_miembros`
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -73,6 +73,9 @@ if ($_POST['registro'] == 'nuevo') {
       $celular = $_POST["celular"];
       $frase = $_POST["frase"];
       $urlLinkedin = $_POST["urlLinkedin"];
+      $estado = $_POST["estado"];
+      $ocupacionActual = $_POST["ocupacionActual"];
+      $contactos=$_POST["contactos"];
 
       date_default_timezone_set('America/Bogota');
       $primerNombre_img = strtolower(quitar_tildes($primerNombre));
@@ -96,16 +99,15 @@ if ($_POST['registro'] == 'nuevo') {
 
       #LOGICA
 
-      $sql = "INSERT INTO miembros (primerNombre, segundoNombre, nombrePreferido, primerApellido, segundoApellido, nombreEnRama, anioIngresoRama, anioSalidaRama, correo, celular, frase, urlFoto, urlLinkedin) 
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      $sql = "INSERT INTO miembros (primerNombre, segundoNombre, nombrePreferido, primerApellido, segundoApellido, nombreEnRama, anioIngresoRama, anioSalidaRama, correo, celular, frase, urlFoto, urlLinkedin, estado, ocupacionActual, contactos) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       $stmt = $conn->prepare($sql);
-      $stmt->bind_param("ssdsssddsdsss", $primerNombre, $segundoNombre, $nombrePreferido, $primerApellido, $segundoApellido, $nombreEnRama, $anioIngresoRama, $anioSalidaRama, $correo, $celular, $frase, $imagen_url, $urlLinkedin);
+      $stmt->bind_param("ssdsssddsdsssdss", $primerNombre, $segundoNombre, $nombrePreferido, $primerApellido, $segundoApellido, $nombreEnRama, $anioIngresoRama, $anioSalidaRama, $correo, $celular, $frase, $imagen_url, $urlLinkedin, $estado, $ocupacionActual, $contactos);
       $stmt->execute();
       $registros = $stmt->affected_rows;
       $stmt->close();
       if ($registros > 0) {
-        # code...
         $respuesta = array(
           'respuesta' => 'exito'
         );
