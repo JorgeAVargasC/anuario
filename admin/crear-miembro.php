@@ -10,7 +10,7 @@ include_once 'funciones/quitar_tildes.php'
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+  <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -25,7 +25,7 @@ include_once 'funciones/quitar_tildes.php'
   <!-- Main content -->
   <section class="content">
 
-      <!-- Default box -->
+    <!-- Default box -->
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Crear Miembro</h3>
@@ -36,76 +36,77 @@ include_once 'funciones/quitar_tildes.php'
         $conn = mysqli_connect($host, $user, $pw, $db);
 
         $sql1 = "SELECT * FROM comites";
-        $array_comites = $conn->query($sql1);       
+        $array_comites = $conn->query($sql1);
 
         $sql3 = "SELECT * FROM cargos";
         $array_cargos = $conn->query($sql3);
 
-        ?>    
+        ?>
 
         <form role="form" enctype="multipart/form-data" name="crear-registro-miembro" id="crear-registro-miembro" method="post" action="modelo-miembro.php">
           <div class="card-body">
             <div class="form-group">
-              <label for="primerNombre">Primer Nombre</label>
               <input type="text" class="form-control" id="primerNombre" name="primerNombre" placeholder="Ingresa tu Primer Nombre" required>
+              <label for="primerNombre">Primer Nombre</label>
             </div>
             <div class="form-group">
-              <label for="segundoNombre">Segundo Nombre</label>
               <input type="text" class="form-control" id="segundoNombre" name="segundoNombre" placeholder="Ingresa tu Segundo Nombre">
+              <label for="segundoNombre">Segundo Nombre</label>
             </div>
             <div class="form-group">
-              <label for="primerApellido">Primer Apellido</label>
               <input type="text" class="form-control" id="primerApellido" name="primerApellido" placeholder="Ingresa tu Primer Apellido" required>
+              <label for="primerApellido">Primer Apellido</label>
             </div>
             <div class="form-group">
-              <label for="segundoApellido">Segundo Apellido</label>
               <input type="text" class="form-control" id="segundoApellido" name="segundoApellido" placeholder="Ingresa tu Segundo Apellido">
+              <label for="segundoApellido">Segundo Apellido</label>
             </div>
 
-            <h4>Nombre preferido</h4>
+            <label class="mb-1">Nombre preferido</label>
             <div class="form-check">
-                <input type="radio" class="form-check-input" id="nombrePreferido1" value=1 name="nombrePreferido" checked>
-                <label for="nombrePreferido1" class="form-check-label">1</label>
+              <label for="nombrePreferido1" class="form-check-label">1</label>
+              <input type="radio" class="form-check-input" id="nombrePreferido1" value=1 name="nombrePreferido" checked>
             </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" id="nombrePreferido2" value=2 name="nombrePreferido" disabled>
-                <label for="nombrePreferido2" class="form-check-label">2</label>
-            </div>
-            <div class="form-group">
-                <label for="nombreEnRama">Nombre En Rama</label>
-                <input type="text" class="form-control" id="nombreEnRama" name="nombreEnRama" placeholder="Ingresa tu Nombre En Rama" required>
+            <div class="form-check mb-2">
+              <label for="nombrePreferido2" class="form-check-label">2</label>
+              <input type="radio" class="form-check-input" id="nombrePreferido2" value=2 name="nombrePreferido" disabled>
             </div>
             <div class="form-group">
-                <label for="anioIngresoRama">Año de Ingreso Rama</label>
-                <input type="number" class="form-control" id="anioIngresoRama" name="anioIngresoRama" min="1985" max="<?php echo date("Y");?>" placeholder="2020" required>
+              
+              <input type="text" class="form-control" id="nombreEnRama" name="nombreEnRama" placeholder="Ingresa tu Nombre En Rama" required>
+              <label for="nombreEnRama">Nombre En Rama</label>
             </div>
-            <div class="form-group">
-                <label for="anioSalidaRama">Año de Salida Rama</label>
-                <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y")+2;?>" placeholder="<?php echo date("Y")+2;?>" required>
+            <div class="form-group">              
+              <input type="number" class="form-control" id="anioIngresoRama" name="anioIngresoRama" min="1985" max="<?php echo date("Y"); ?>" placeholder="2020" required>
+              <label for="anioIngresoRama">Año de Ingreso Rama</label>
             </div>
-            <div class="form-group">
-                <label for="correo">Correo Electrónico</label>
-                <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico">
+            <div class="form-group">              
+              <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y") + 2; ?>" placeholder="<?php echo date("Y") + 2; ?>" required>
+              <label for="anioSalidaRama">Año de Salida Rama</label>
             </div>
-            <div class="form-group">
-                <label for="celular">Celular</label>
-                <input type="number" class="form-control" id="celular" name="celular" placeholder="3157003333">
+            <div class="form-group">              
+              <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico">
+              <label for="correo">Correo Electrónico</label>
             </div>
-            <div class="form-group">
-                <label for="frase">Frase</label>
-                <input type="text" class="form-control" id="frase" name="frase" placeholder="Ingresa tu Frase">
+            <div class="form-group">              
+              <input type="number" class="form-control" id="celular" name="celular" placeholder="3157003333">
+              <label for="celular">Celular</label>
+            </div>
+            <div class="form-group">              
+              <textarea type="text" class="form-control" id="frase" name="frase" maxlength="240" placeholder="Escribe aquí tu frase..."></textarea>
+              <label for="frase">Qué te aportó la Rama o una frase</label>
             </div>
 
             <div class="form-group">
+              
+              <div class="input-group">
+                <!-- <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" data-target="#modal" data-toggle="modal" required> -->
+                <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
                 <label for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
-                <div class="input-group">
-                    <!-- <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" data-target="#modal" data-toggle="modal" required> -->
-                    <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
-                    <label for="imagen-miembro"></label>
-                </div>
-                <div id="cropped-image-container">
-                  <img id="cropped-image" src="#" width="200vw" alt="Cropped Image">
-                </div>
+              </div>              
+              <div id="cropped-image-container">
+                <img id="cropped-image" src="#" width="200vw" alt="Cropped Image">
+              </div>
             </div>
             <!-- Modal -->
             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -138,39 +139,39 @@ include_once 'funciones/quitar_tildes.php'
               </div>
             </div>
 
-            <div class="form-group">
-                <label for="urlLinkedin">URL Linkedin</label>
-                <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin">
+            <div class="form-group">              
+              <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin">
+              <label for="urlLinkedin">URL Linkedin</label>
             </div>
 
             <!-- Check boxes -->
             <br>
             <h4>Comites a los que perteneció</h4>
             <?php
-            foreach($array_comites as $comite){
-              $comite_format=strtolower(quitar_tildes($comite['comite']));
-              ?>
+            foreach ($array_comites as $comite) {
+              $comite_format = strtolower(quitar_tildes($comite['comite']));
+            ?>
               <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="<?php echo $comite_format;?>" name="<?php echo $comite_format;?>" value="<?php echo $comite_format;?>">
-              <label for="<?php echo $comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
+                <input type="checkbox" class="form-check-input" id="<?php echo $comite_format; ?>" name="<?php echo $comite_format; ?>" value="<?php echo $comite_format; ?>">
+                <label for="<?php echo $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
               </div>
-              <?php
+            <?php
             }
             ?>
-            
+
             <br>
             <h4>Cargos que ocupó</h4>
             <?php
-            foreach($array_cargos as $cargo){
-              if($cargo['id'] != 10){
-                  // Coordinador TET se convierte a coordinadorTET
-                  $cargo_format=lcfirst(str_replace(' ','', quitar_tildes($cargo['cargo'])));
-              ?>
+            foreach ($array_cargos as $cargo) {
+              if ($cargo['id'] != 10) {
+                // Coordinador TET se convierte a coordinadorTET
+                $cargo_format = lcfirst(str_replace(' ', '', quitar_tildes($cargo['cargo'])));
+            ?>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="<?php echo $cargo_format;?>" name="<?php echo $cargo_format;?>" value="<?php echo $cargo_format;?>">
-                    <label for="<?php echo $cargo_format;?>" class="form-check-label"><?php echo $cargo['cargo']?></label>
+                  <input type="checkbox" class="form-check-input" id="<?php echo $cargo_format; ?>" name="<?php echo $cargo_format; ?>" value="<?php echo $cargo_format; ?>">
+                  <label for="<?php echo $cargo_format; ?>" class="form-check-label"><?php echo $cargo['cargo'] ?></label>
                 </div>
-              <?php
+            <?php
               }
             }
             ?>
@@ -179,19 +180,19 @@ include_once 'funciones/quitar_tildes.php'
             <h4>Comites que Coordinó</h4>
             <?php
 
-            foreach($array_comites as $comite){
-              $comite_format=strtolower(quitar_tildes($comite['comite']));
-              ?>
+            foreach ($array_comites as $comite) {
+              $comite_format = strtolower(quitar_tildes($comite['comite']));
+            ?>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="<?php echo 'coord_'.$comite_format;?>" name="<?php echo 'coord_'.$comite_format;?>" value="<?php echo 'coord'.$comite_format;?>"disabled>
-                <label for="<?php echo 'coord_'.$comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
+                <input type="checkbox" class="form-check-input" id="<?php echo 'coord_' . $comite_format; ?>" name="<?php echo 'coord_' . $comite_format; ?>" value="<?php echo 'coord' . $comite_format; ?>" disabled>
+                <label for="<?php echo 'coord_' . $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
               </div>
-              <?php                
-            }              
+            <?php
+            }
             ?>
 
           </div>
-            <!-- /.card-body -->
+          <!-- /.card-body -->
           <div class="card-footer">
             <input type="hidden" name="registro" value="nuevo">
             <button type="submit" class="btn btn-primary">Añadir</button>
@@ -199,12 +200,12 @@ include_once 'funciones/quitar_tildes.php'
 
         </form>
       </div>
-          <!-- /.card-body -->
+      <!-- /.card-body -->
     </div>
-      <!-- /.card -->
+    <!-- /.card -->
 
   </section>
-    <!-- /.content -->
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" integrity="sha512-ooSWpxJsiXe6t4+PPjCgYmVfr1NS5QXJACcR/FPpsdm6kqG1FmQ2SVyg2RXeVuCRBLr0lWHnWJP6Zs1Efvxzww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -230,13 +231,13 @@ include_once 'funciones/quitar_tildes.php'
 
     // Para deshabilitar radius si no hay segundo nombre
     document.getElementById("segundoNombre").onkeyup = function() {
-    var a = document.getElementById("segundoNombre").value;
-    if (!a) {
-      document.getElementById("nombrePreferido2").disabled = true
-    } else {
-      document.getElementById("nombrePreferido2").disabled = false
+      var a = document.getElementById("segundoNombre").value;
+      if (!a) {
+        document.getElementById("nombrePreferido2").disabled = true
+      } else {
+        document.getElementById("nombrePreferido2").disabled = false
+      }
     }
-  }
 
     let image = document.getElementById('image');
     let cropButton = document.getElementById('crop-button');
@@ -249,7 +250,7 @@ include_once 'funciones/quitar_tildes.php'
       dragMode: 'move',
       autoCropArea: 0.6,
       toggleDragModeOnDblclick: false,
-      ready: function () {
+      ready: function() {
         var clone = this.cloneNode();
         clone.className = '';
         clone.style.cssText = (
@@ -264,7 +265,7 @@ include_once 'funciones/quitar_tildes.php'
         result.appendChild(clone.cloneNode());
         croppable = true;
       },
-      crop: function (event){
+      crop: function(event) {
         if (!croppable) {
           return;
         }
@@ -284,38 +285,44 @@ include_once 'funciones/quitar_tildes.php'
       },
     });
 
-    archivo.addEventListener('change', ()=> {
+    archivo.addEventListener('change', () => {
       $('#modal').modal('show');
       setTimeout(() => {
         image.src = URL.createObjectURL(archivo.files[0]);
         cropper.replace(image.src);
-        image.style.display = 'block';  
+        image.style.display = 'block';
       }, 200);
     })
 
-    cropButton.addEventListener('click', ()=>{
+    cropButton.addEventListener('click', () => {
       $('#modal').modal('hide');
       document.getElementById('cropped-image-container').style.display = 'flex';
       let imageData = cropper.getCroppedCanvas().toDataURL(archivo.files[0].type);
       document.getElementById('cropped-image').src = imageData;
       urlToFile(imageData, archivo.files[0].name, archivo.files[0].type)
-      .then(file =>{
-        // Create a DataTransfer instance and add a newly created file
-        const dataTransfer = new DataTransfer();
-        dataTransfer.items.add(file);
-        // Assign the DataTransfer files list to the file input
-        archivo.files = dataTransfer.files;
-      });
+        .then(file => {
+          // Create a DataTransfer instance and add a newly created file
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(file);
+          // Assign the DataTransfer files list to the file input
+          archivo.files = dataTransfer.files;
+        });
     });
 
-    function urlToFile(url, filename, mimeType){
-        return (fetch(url)
-            .then(function(res){return res.arrayBuffer();})
-            .then(function(buf){return new File([buf], filename, {type:mimeType});})
-        );
+    function urlToFile(url, filename, mimeType) {
+      return (fetch(url)
+        .then(function(res) {
+          return res.arrayBuffer();
+        })
+        .then(function(buf) {
+          return new File([buf], filename, {
+            type: mimeType
+          });
+        })
+      );
     }
 
-    
+
   })
 </script>
 

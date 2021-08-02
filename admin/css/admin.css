@@ -78,5 +78,29 @@
     max-width: 1000px !important;
 }
 
+/* Para el simbolo de campo obligatorio en el formulario */
+.form-group,
+.form-group .input-group {
+  display: flex;
+  flex-direction: column-reverse;
+
+  height: fit-content;
+  width: 90%;
+}
+
+.form-check {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.form-check-input {
+  margin-top: 0;
+}
+
+input:required + label::after, textarea:required + label::after {
+  content: " *";
+  color: red;
+}
 
 
