@@ -37,13 +37,12 @@
                         <thead>
                             <tr>
                                 <th>Primer Nombre</th>
-                                
+                                <th>Segundo Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
                                 <th>Año Ingreso</th>
                                 <th>Año Salida</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>                                
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +50,7 @@
                                 try {
                                     //code...
                                     $conn = mysqli_connect($host, $user, $pw, $db);
-                                    $sql = "SELECT id, primerNombre, segundoNombre, primerApellido, segundoApellido, anioIngresoRama, anioSalidaRama, estado FROM miembros";
+                                    $sql = "SELECT id, primerNombre, segundoNombre, primerApellido, segundoApellido, anioIngresoRama, anioSalidaRama FROM miembros WHERE estado = 1";
                                     $resultado = $conn->query($sql);
 
                                 } catch (Exception $e) {
@@ -63,23 +62,13 @@
 
                                     <tr>
                                         <td> <?php echo $miembro['primerNombre']; ?> </td>
+                                        <td> <?php echo $miembro['segundoNombre']; ?> </td>
                                         <td> <?php echo $miembro['primerApellido']; ?> </td>
                                         <td> <?php echo $miembro['segundoApellido']; ?> </td>
                                         <td> <?php echo $miembro['anioIngresoRama']; ?> </td>
                                         <td> <?php echo $miembro['anioSalidaRama']; ?> </td>
-                                        
-                                        <td class="text-center">
-                                            <?php
-                                                if($miembro['estado']){
-                                                    echo '<i class="fas fa-user-check fa-2x text-success"></i>';
-                                                }else{
-                                                    echo "<i class='fas fa-user-clock fa-2x text-warning'></i>";
-                                                }
-                                            ?>
-
-                                        </td>
                                         <td> 
-                                            <a href="editar-miembro.php?id=<?php echo $miembro['id']; ?>" class="btn bg-primary btn-flat margin rounded">
+                                            <a href="editar-miembro.php?id=<?php echo $miembro['id']; ?>"  class="btn bg-primary btn-flat margin rounded">
                                                 <i class="fa fa-pencil"></i>
                                             </a> 
 
@@ -92,12 +81,12 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Primer Nombre</th>
+                            <th>Primer Nombre</th>
+                                <th>Segundo Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
                                 <th>Año Ingreso</th>
                                 <th>Año Salida</th>
-                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </tfoot>

@@ -53,7 +53,7 @@
                                         <i class="fas fa-list nav-icon"></i>
                                         <p>Ver todos</p>
                                     </a>
-                                </li>
+                                </li>                                
                                 <li class="nav-item">
                                     <a href="crear-admin.php" class="nav-link">
                                     <i class="fas fa-plus nav-icon"></i>
@@ -76,6 +76,18 @@
                                     <a href="lista-miembro.php" class="nav-link">
                                         <i class="fas fa-list nav-icon"></i>
                                         <p>Ver todos</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="lista-miembro-aceptado.php" class="nav-link">
+                                        <i class="fas fa-user-check nav-icon"></i>
+                                        <p>Aceptados</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="lista-miembro-espera.php" class="nav-link">
+                                        <i class="fas fa-user-clock nav-icon"></i>
+                                        <p>En Espera</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

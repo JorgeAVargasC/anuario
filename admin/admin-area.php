@@ -13,7 +13,7 @@ include_once 'templates/navegacion.php';
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Alertas</h1>
+                    <h1>Inicio</h1>
                 </div>
 
             </div>
@@ -28,7 +28,7 @@ include_once 'templates/navegacion.php';
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Alertas</h3>
+                <h3 class="card-title">Inicio</h3>
 
             </div>
             <div class="card-body">

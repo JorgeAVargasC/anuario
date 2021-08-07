@@ -59,7 +59,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
         $array_cargos_miembro = [];
 
         while ($cargos_miembro = $resultado2->fetch_assoc()) {
-          
+
           if ($cargos_miembro['cargo'] == 9) {
             array_push($array_comites_coord, $cargos_miembro['comite']);
           }
@@ -73,20 +73,20 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
         <form role="form" enctype="multipart/form-data" name="editar-registro-miembro" id="editar-registro-miembro" method="post" action="modelo-miembro.php">
           <div class="card-body">
             <div class="form-group">
-              <label for="primerNombre">Primer Nombre</label>
               <input type="text" class="form-control" id="primerNombre" name="primerNombre" placeholder="Ingresa tu Primer Nombre" value="<?php echo $miembro['primerNombre']; ?>" required>
+              <label for="primerNombre">Primer Nombre</label>
             </div>
             <div class="form-group">
-              <label for="segundoNombre">Segundo Nombre</label>
               <input type="text" class="form-control" id="segundoNombre" name="segundoNombre" placeholder="Ingresa tu Segundo Nombre" value="<?php echo $miembro['segundoNombre']; ?>">
+              <label for="segundoNombre">Segundo Nombre</label>
             </div>
             <div class="form-group">
-              <label for="primerApellido">Primer Apellido</label>
               <input type="text" class="form-control" id="primerApellido" name="primerApellido" placeholder="Ingresa tu Primer Apellido" value="<?php echo $miembro['primerApellido']; ?>" required>
+              <label for="primerApellido">Primer Apellido</label>
             </div>
             <div class="form-group">
-              <label for="segundoApellido">Segundo Apellido</label>
               <input type="text" class="form-control" id="segundoApellido" name="segundoApellido" placeholder="Ingresa tu Segundo Apellido" value="<?php echo $miembro['segundoApellido']; ?>">
+              <label for="segundoApellido">Segundo Apellido</label>
             </div>
 
             <label>Nombre preferido</label>
@@ -116,29 +116,29 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
             }
             ?>
 
-            <div class="form-group">
-              <label for="nombreEnRama">Nombre En Rama</label>
+            <div class="form-group mt-3">
               <input type="text" class="form-control" id="nombreEnRama" name="nombreEnRama" placeholder="Ingresa tu Nombre En Rama" value="<?php echo $miembro['nombreEnRama']; ?>" required>
+              <label for="nombreEnRama">Nombre En Rama</label>
             </div>
             <div class="form-group">
-              <label for="anioIngresoRama">Año de Ingreso Rama</label>
               <input type="number" class="form-control" id="anioIngresoRama" name="anioIngresoRama" min="1985" max="<?php echo date("Y"); ?>" value="<?php echo $miembro['anioIngresoRama']; ?>" required>
+              <label for="anioIngresoRama">Año de Ingreso Rama</label>
             </div>
             <div class="form-group">
+              <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y") + 2; ?>" value="<?php echo $miembro['anioSalidaRama']; ?>" required>
               <label for="anioSalidaRama">Año de Salida Rama</label>
-              <input type="number" class="form-control" id="anioSalidaRama" name="anioSalidaRama" min="1985" max="<?php echo date("Y")+2; ?>" value="<?php echo $miembro['anioSalidaRama']; ?>" required>
             </div>
             <div class="form-group">
-              <label for="correo">Correo Electrónico</label>
               <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu Correo Electronico" value="<?php echo $miembro['correo']; ?>" required>
+              <label for="correo">Correo Electrónico</label>
             </div>
             <div class="form-group">
-              <label for="celular">Celular</label>
               <input type="number" class="form-control" id="celular" name="celular" value="<?php echo $miembro['celular']; ?>" required>
+              <label for="celular">Celular</label>
             </div>
             <div class="form-group">
-              <label for="frase">Frase</label>
               <input type="text" class="form-control" id="frase" name="frase" placeholder="Ingresa tu Frase" value="<?php echo $miembro['frase']; ?>" required>
+              <label for="frase">Frase</label>
             </div>
             <div class="form-group">
               <div class="input-group">
@@ -156,15 +156,15 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
                   <label for="imagen-actual">Imagen nueva</label>
                   <img id="cropped-image" src="#" width="300vw" alt="Cropped Image">
                 </div>
-              </div>	
+              </div>
             </div>
             <div class="form-group">
               <label for="imagen-actual">Imagen actual <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
               <br>
               <img src="<?php echo $miembro['urlFoto']; ?>" width="200">
-              <!--<img src="../img/miembros/<?php echo $miembro['urlFoto']; ?>" width="200">-->
+
             </div>
-           	<!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -195,56 +195,75 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
               </div>
             </div>
             <div class="form-group">
-              <label for="urlLinkedin">URL Linkedin</label>
               <input type="text" class="form-control" id="urlLinkedin" name="urlLinkedin" placeholder="Ingresa la URL Linkedin" value="<?php echo $miembro['urlLinkedin']; ?>">
+              <label for="urlLinkedin">URL Linkedin</label>
             </div>
 
             <!-- Check boxes -->
             <br>
             <h4>Comites a los que perteneció</h4>
             <?php
-              foreach($array_comites as $comite){
-                $comite_format=strtolower(quitar_tildes($comite['comite']));
-                ?>
-                  <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="<?php echo $comite_format;?>" name="<?php echo $comite_format;?>" value="<?php echo $comite_format;?>" <?php if (in_array($comite['id'], $array_comites_miembro)) {echo "checked";} ?>>
-                  <label for="<?php echo $comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
-                  </div>
-                <?php
-              }
+            foreach ($array_comites as $comite) {
+              $comite_format = strtolower(quitar_tildes($comite['comite']));
             ?>
-            
+              <div class="form-check">
+                <label for="<?php echo $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
+                <input type="checkbox" class="form-check-input" id="<?php echo $comite_format; ?>" name="<?php echo $comite_format; ?>" value="<?php echo $comite_format; ?>" <?php if (in_array($comite['id'], $array_comites_miembro)) {
+                                                                                                                                                                                echo "checked";
+                                                                                                                                                                              } ?>>
+              </div>
+            <?php
+            }
+            ?>
+
             <br>
             <h4>Cargos que ocupó</h4>
             <?php
-              foreach($array_cargos as $cargo){
-                if($cargo['id'] != 10){
-                    // Coordinador TET se convierte a coordinadorTET
-                    $cargo_format=lcfirst(str_replace(' ','', quitar_tildes($cargo['cargo'])));
-                ?>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="<?php echo $cargo_format;?>" name="<?php echo $cargo_format;?>" value="<?php echo $cargo_format;?>" <?php if (in_array($cargo['id'], $array_cargos_miembro)) {echo "checked";} ?> >
-                        <label for="<?php echo $cargo_format;?>" class="form-check-label"><?php echo $cargo['cargo']?></label>
-                    </div>
-                <?php
-                }
+            foreach ($array_cargos as $cargo) {
+              if ($cargo['id'] != 10) {
+                // Coordinador TET se convierte a coordinadorTET
+                $cargo_format = lcfirst(str_replace(' ', '', quitar_tildes($cargo['cargo'])));
+            ?>
+                <div class="form-check">
+                  <label for="<?php echo $cargo_format; ?>" class="form-check-label"><?php echo $cargo['cargo'] ?></label>
+                  <input type="checkbox" class="form-check-input" id="<?php echo $cargo_format; ?>" name="<?php echo $cargo_format; ?>" value="<?php echo $cargo_format; ?>" <?php if (in_array($cargo['id'], $array_cargos_miembro)) {
+                                                                                                                                                                                echo "checked";
+                                                                                                                                                                              } ?>>
+                </div>
+            <?php
               }
+            }
             ?>
 
             <br>
             <h4>Comites que Coordinó</h4>
             <?php
 
-              foreach($array_comites as $comite){
-                $comite_format=strtolower(quitar_tildes($comite['comite']));
-                ?>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="<?php echo 'coord_'.$comite_format;?>" name="<?php echo 'coord_'.$comite_format;?>" value="<?php echo 'coord'.$comite_format;?>" <?php   if($array_comites_coord){if (in_array($comite['id'], $array_comites_coord)) {echo "checked";}}else{echo 'disabled';} ?>>
-                    <label for="<?php echo 'coord_'.$comite_format;?>" class="form-check-label"><?php echo $comite['comite'];?></label>
-                  </div>
-                <?php                
-              }              
+            foreach ($array_comites as $comite) {
+              $comite_format = strtolower(quitar_tildes($comite['comite']));
             ?>
+              <div class="form-check">
+                <label for="<?php echo 'coord_' . $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
+                <input type="checkbox" class="form-check-input" id="<?php echo 'coord_' . $comite_format; ?>" name="<?php echo 'coord_' . $comite_format; ?>" value="<?php echo 'coord' . $comite_format; ?>" <?php if ($array_comites_coord) {
+                                                                                                                                                                                                                if (in_array($comite['id'], $array_comites_coord)) {
+                                                                                                                                                                                                                  echo "checked";
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                echo 'disabled';
+                                                                                                                                                                                                              } ?>>
+              </div>
+            <?php
+            }
+            ?>
+
+            <div class="form-group mt-3">
+              <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                <label class="custom-control-label" for="customSwitch3">Estado Aprobado / No Aprobado</label>
+              </div>
+            </div>
+
+
 
           </div>
           <!-- /.card-body -->
