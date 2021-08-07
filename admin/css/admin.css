@@ -46,6 +46,12 @@
   margin-top: 2%;
   display: none;
   align-items: center;
+  justify-content: space-around;
+}
+
+#cropped-image-container > div > label{
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 

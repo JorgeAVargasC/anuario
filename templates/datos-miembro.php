@@ -52,15 +52,15 @@
 	</div>
 
 	<div class="form-group">
-
 		<div class="input-group">
-			<!-- <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" data-target="#modal" data-toggle="modal" required> -->
 			<input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
 			<label for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
 		</div>
+	</div>
+	<div class="form-group">
 		<div id="cropped-image-container">
-			<img id="cropped-image" src="#" width="200vw" alt="Cropped Image">
-		</div>
+			<img id="cropped-image" src="#" width="300vw" alt="Cropped Image">
+		</div>	
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">

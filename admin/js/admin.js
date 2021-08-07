@@ -32,48 +32,50 @@ document.addEventListener('DOMContentLoaded', () => {
   let result = document.getElementById('image-result');
   let archivo = document.getElementById("imagen-miembro");
   let croppable = false;
-  let cropper = new Cropper(image, {
-    aspectRatio: 1,
-    viewMode: 3,
-    dragMode: 'move',
-    autoCropArea: 0.6,
-    toggleDragModeOnDblclick: false,
-    ready: function () {
-      var clone = this.cloneNode();
-      clone.className = '';
-      clone.style.cssText = (
-        'display: block;' +
-        // 'width: 100%;' +
-        'height: 40vh;' +
-        'min-width: 0;' +
-        'min-height: 0;' +
-        'max-width: none;' +
-        'max-height: none;'
-      );
-      result.appendChild(clone.cloneNode());
-      croppable = true;
-    },
-    crop: function (event) {
-      if (!croppable) {
-        return;
-      }
-      let data = event.detail;
-      let cropper = this.cropper;
-      let imageData = cropper.getImageData();
-      let previewAspectRatio = data.width / data.height;
-      let previewImage = result.getElementsByTagName('img').item(0);
-      let previewWidth = result.offsetWidth;
-      let previewHeight = previewWidth / previewAspectRatio;
-      let imageScaledRatio = data.width / previewWidth;
-      result.style.height = previewHeight + 'px';
-      previewImage.style.width = imageData.naturalWidth / imageScaledRatio + 'px';
-      previewImage.style.height = imageData.naturalHeight / imageScaledRatio + 'px';
-      previewImage.style.marginLeft = -data.x / imageScaledRatio + 'px';
-      previewImage.style.marginTop = -data.y / imageScaledRatio + 'px';
-    },
-  });
+  let cropper;
 
   archivo.addEventListener('change', () => {
+    cropper = new Cropper(image, {
+      aspectRatio: 1,
+      viewMode: 3,
+      dragMode: 'move',
+      autoCropArea: 0.6,
+      toggleDragModeOnDblclick: false,
+      ready: function () {
+        var clone = this.cloneNode();
+        clone.className = 'image-result-preview';
+        clone.style.cssText = (
+          'display: block;' +
+          // 'width: 100%;' +
+          'height: 40vh;' +
+          'min-width: 0;' +
+          'min-height: 0;' +
+          'max-width: none;' +
+          'max-height: none;'
+        );
+        result.innerHTML = '';
+        result.appendChild(clone.cloneNode());
+        croppable = true;
+      },
+      crop: function (event) {
+        if (!croppable) {
+          return;
+        }
+        let data = event.detail;
+        let cropper = this.cropper;
+        let imageData = cropper.getImageData();
+        let previewAspectRatio = data.width / data.height;
+        let previewImage = result.getElementsByTagName('img').item(0);
+        let previewWidth = result.offsetWidth;
+        let previewHeight = previewWidth / previewAspectRatio;
+        let imageScaledRatio = data.width / previewWidth;
+        result.style.height = previewHeight + 'px';
+        previewImage.style.width = imageData.naturalWidth / imageScaledRatio + 'px';
+        previewImage.style.height = imageData.naturalHeight / imageScaledRatio + 'px';
+        previewImage.style.marginLeft = -data.x / imageScaledRatio + 'px';
+        previewImage.style.marginTop = -data.y / imageScaledRatio + 'px';
+      },
+    });
     $('#modal').modal('show');
     setTimeout(() => {
       image.src = URL.createObjectURL(archivo.files[0]);
@@ -95,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Assign the DataTransfer files list to the file input
         archivo.files = dataTransfer.files;
       });
+      cropper.destroy();
   });
 
   function urlToFile(url, filename, mimeType) {

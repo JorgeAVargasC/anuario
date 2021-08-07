@@ -141,16 +141,57 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
               <input type="text" class="form-control" id="frase" name="frase" placeholder="Ingresa tu Frase" value="<?php echo $miembro['frase']; ?>" required>
             </div>
             <div class="form-group">
+              <div class="input-group">
+                <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg" required>
+                <label for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div id="cropped-image-container">
+                <div>
+                  <label for="imagen-actual">Imagen actual</label>
+                  <img src="<?php echo $miembro['urlFoto']; ?>" width="300vw">
+                </div>
+                <div>
+                  <label for="imagen-actual">Imagen nueva</label>
+                  <img id="cropped-image" src="#" width="300vw" alt="Cropped Image">
+                </div>
+              </div>	
+            </div>
+            <div class="form-group">
               <label for="imagen-actual">Imagen actual <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
               <br>
               <img src="<?php echo $miembro['urlFoto']; ?>" width="200">
               <!--<img src="../img/miembros/<?php echo $miembro['urlFoto']; ?>" width="200">-->
             </div>
-            <div class="form-group">
-              <label for="imagen-miembro">Imagen</label>
-              <div class="input-group">
-                <input type="file" id="imagen-miembro" name="imagen-miembro">
-                <label for="imagen-miembro"></label>
+           	<!-- Modal -->
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modalLabel">Personaliza tu imagen</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="image-preview">
+                      <div id="image-container">
+                        <img id="image" src="#" alt="Picture">
+                      </div>
+                      <div id="result">
+                        <h5>Previsualización:</h5>
+                        <br>
+                        <div id="image-result">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="crop-button" class="btn btn-primary">Crop</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Exit</button>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -223,25 +264,10 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" integrity="sha512-ooSWpxJsiXe6t4+PPjCgYmVfr1NS5QXJACcR/FPpsdm6kqG1FmQ2SVyg2RXeVuCRBLr0lWHnWJP6Zs1Efvxzww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js" integrity="sha512-ZK6m9vADamSl5fxBPtXw6ho6A4TuX89HUbcfvxa2v2NYNT/7l8yFGJ3JlXyMN4hlNbz0il4k6DvqbIW5CCwqkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../admin/js/admin.js"></script>
 
-<script>
-  document.getElementById("coordinador").onclick = function() {
-    if (document.getElementById("coord_academico").disabled) {
-      document.getElementById("coord_academico").disabled = false
-      document.getElementById("coord_ludicas").disabled = false
-      document.getElementById("coord_logistica").disabled = false
-      document.getElementById("coord_patrocinio").disabled = false
-      document.getElementById("coord_publicidad").disabled = false
-
-    } else {
-      document.getElementById("coord_academico").disabled = true
-      document.getElementById("coord_ludicas").disabled = true
-      document.getElementById("coord_logistica").disabled = true
-      document.getElementById("coord_patrocinio").disabled = true
-      document.getElementById("coord_publicidad").disabled = true
-    }
-  }
-</script>
 
 <?php
 include_once 'templates/footer.php';
