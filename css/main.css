@@ -1052,13 +1052,38 @@ ul {
 }
 
 .medalla img:hover{
-  transform: scale(1.1);
   transform: rotate(1turn);
 }
 
 .flip-icon {
   margin-bottom: 1rem;
   cursor: pointer;
+}
+
+.flip-icon-right:hover {
+  animation: move-right 800ms forwards;
+}
+
+.flip-icon-left:hover {
+  animation: move-left 800ms forwards;
+}
+
+@keyframes move-left {
+    50%{
+      transform: translateX(-60%);
+    }
+    100%{
+      transform: translateX(0%);
+    }
+}
+
+@keyframes move-right {
+  50%{
+    transform: translateX(60%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
 }
 
 .back-blue-side {

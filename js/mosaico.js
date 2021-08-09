@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Para añadir TETs organizados
                 let aniosMember = [];
-                let anosTeT = [2000, 2003, 2006, 2009, 2012, 2015, 2018, 2019, 2022]; // Lista de TETs organizados
+                let aniosTet = [2000, 2003, 2006, 2009, 2012, 2015, 2018, 2022]; // Lista de TETs organizados
                 let anioIngresoRama = parseInt(member.anioIngresoRama,10);
                 let anioSalidaRama = member.anioSalidaRama;
                 let TeTOrganizados = [];
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     aniosMember.push(i);
                 }
                 for (let anio of aniosMember) {
-                    if (anosTeT.includes(anio)) {
+                    if (aniosTet.includes(anio)) {
                         TeTOrganizados.push(' ' + anio);
                     }
                 }
@@ -106,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             <i id="close-card" class="fas fa-times"></i>
                             <span class="big-content-line"></span>
                             ${medallas}
-                            <i class="fab fa-linkedin fa-2x"></i>
+                            <a href="${member.urlLinkedin}" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
                             <div class="flex-1"></div>
-                            <i class="fas fa-arrow-right fa-2x flip-icon"></i>
+                            <i class="fas fa-arrow-right fa-2x flip-icon flip-icon-right"></i>
                         </div>
                     </div>
                     <div class="card-face back-face-flex">
                         <div class="back-blue-side">
-                            <i class="fas fa-arrow-left fa-2x flip-icon"></i>
+                            <i class="fas fa-arrow-left fa-2x flip-icon flip-icon-left"></i>
                         </div>
                         <div class="back-content">
                             <div class="back-blue-banner">
