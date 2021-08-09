@@ -133,21 +133,21 @@ if ($_POST['registro'] == 'nuevo') {
             $query = "INSERT INTO cargos_de_miembros (miembro, cargo) VALUES ($id_registro, $cargo_id)";
             $result = mysqli_query($conn, $query);
           }
-        }else if ($cargo_id == 9) { // Voluntario del Comite
+        }else if ($cargo_id == 10) { // Voluntario del Comite
           foreach ($array_comites as $comite) {
             $comite_id = $comite["id"];
             $comite_format = strtolower(quitar_tildes($comite['comite']));
-            if (isset($_POST["coord_" . $comite_format])) {
+            if (isset($_POST[$comite_format])) {
               $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
               $result = mysqli_query($conn, $query);
             }
           }
-        }else if ($cargo_id == 10) { //Coordinador comites
+        }else if ($cargo_id == 9) { //Coordinador comites
           if (isset($_POST["coordinador"])) {
             foreach ($array_comites as $comite) {
               $comite_id = $comite["id"];
               $comite_format = strtolower(quitar_tildes($comite['comite']));
-              if (isset($_POST[$comite_format])) {
+              if (isset($_POST["coord_" . $comite_format])) {
                 $query = "INSERT INTO cargos_de_miembros (miembro, cargo, comite) VALUES ($id_registro, $cargo_id, $comite_id)";
                 $result = mysqli_query($conn, $query);
               }            
@@ -253,6 +253,11 @@ if ($_POST['registro'] == 'actualizar') {
       $celular = $_POST["celular"];
       $frase = $_POST["frase"];
       $urlLinkedin = $_POST["urlLinkedin"];
+      if(isset( $_POST["estado"])){
+        $estado = $_POST["estado"];
+      }else{
+        $estado = 0;
+      }
 
       date_default_timezone_set('America/Bogota');
       $primerNombre_img = strtolower(quitar_tildes($primerNombre));
@@ -289,9 +294,9 @@ if ($_POST['registro'] == 'actualizar') {
 
       try {
 
-        $sql = "UPDATE miembros SET primerNombre=?, segundoNombre=?, primerApellido=?, segundoApellido=?, nombrePreferido=?,nombreEnRama=?, anioIngresoRama=?, anioSalidaRama=?, correo=?, celular=?, frase=?, urlLinkedin=?, urlFoto=? WHERE id=?";
+        $sql = "UPDATE miembros SET primerNombre=?, segundoNombre=?, primerApellido=?, segundoApellido=?, nombrePreferido=?,nombreEnRama=?, anioIngresoRama=?, anioSalidaRama=?, correo=?, celular=?, frase=?, urlLinkedin=?, urlFoto=?, estado=? WHERE id=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssisiisisssi", $primerNombre, $segundoNombre, $primerApellido, $segundoApellido, $nombrePreferido, $nombreEnRama, $anioIngresoRama, $anioSalidaRama, $correo, $celular, $frase, $urlLinkedin, $imagen_url, $id_registro);
+        $stmt->bind_param("ssssisiisisssii", $primerNombre, $segundoNombre, $primerApellido, $segundoApellido, $nombrePreferido, $nombreEnRama, $anioIngresoRama, $anioSalidaRama, $correo, $celular, $frase, $urlLinkedin, $imagen_url, $estado, $id_registro);
         $stmt->execute();
         $registros = $stmt->affected_rows;
         $stmt->close();

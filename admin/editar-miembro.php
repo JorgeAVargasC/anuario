@@ -255,10 +255,10 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
             <?php
             }
             ?>
-
+            <hr>
             <div class="form-group mt-3">
               <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                <input type="checkbox" class="custom-control-input" id="customSwitch3" name="estado" value="1"  <?php if($miembro['estado']){echo 'checked';} ?>>
                 <label class="custom-control-label" for="customSwitch3">Estado Aprobado / No Aprobado</label>
               </div>
             </div>
