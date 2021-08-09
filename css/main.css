@@ -1019,14 +1019,42 @@ ul {
   color: var(--blanco);
 }
 
-.front-insignias * {
-  margin-top: 1rem;
-  cursor: pointer;
+#close-card{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  cursor:pointer;
 }
 
-.front-insignias i:first-of-type {
-  margin-top: 2.2rem;
-  margin-bottom: 0.5rem;
+
+
+.front-insignias i{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+/*MEDALLERÍA DE LOS OLIMPICOS*/
+.front-insignias :first-child{
+  margin-top: 2rem;
+}
+.medalla{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  align-items: center;
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.medalla img{
+  cursor:pointer;
+  height: 90%;
+  width: auto;
+  transition: all 1500ms;
+}
+
+.medalla img:hover{
+  transform: scale(1.1);
+  transform: rotate(1turn);
 }
 
 .flip-icon {
@@ -1090,6 +1118,7 @@ ul {
 .back-content img {
   height: 10rem;
 }
+
 
 /*
 .big-card-container:hover {

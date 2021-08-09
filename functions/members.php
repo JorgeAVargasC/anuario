@@ -12,7 +12,7 @@
     }
 
     // Traigo sus cargos
-    $query = "SELECT cargos.cargo, comites.comite FROM cargos_de_miembros JOIN cargos ON cargos_de_miembros.cargo=cargos.id LEFT JOIN comites ON cargos_de_miembros.comite=comites.id WHERE miembro=$id ORDER BY cargos.id ASC";
+    $query = "SELECT cargos.cargo, comites.comite, cargos.urlLogo FROM cargos_de_miembros JOIN cargos ON cargos_de_miembros.cargo=cargos.id LEFT JOIN comites ON cargos_de_miembros.comite=comites.id WHERE miembro=$id ORDER BY cargos.id ASC";
     $result = mysqli_query($conection, $query);
     $jsonCargos = array();
     while($row = mysqli_fetch_assoc($result)){

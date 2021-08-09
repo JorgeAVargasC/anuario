@@ -439,6 +439,7 @@ if ($_POST['registro'] == 'eliminar') {
 
     include_once "../connection/db_connection.php";
     $conn = mysqli_connect($host, $user, $pw, $db);
+
     $stmt = $conn->prepare('DELETE FROM miembros WHERE id = ?');
     $stmt->bind_param("i", $id_borrar);
     $stmt->execute();

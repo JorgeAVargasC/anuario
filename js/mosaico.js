@@ -28,15 +28,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 let aportes = ''; 
                 let volComites = [];
                 let coorComites = [];
+                let medallas ='';
+                let banderaCoor = false;
+                let banderaVol = false;
                 for (let cargo of cargos) {
                     if (cargo.cargo == 'Coordinador'){
                         coorComites.push(' ' + cargo.comite);
+                        if(!banderaCoor){
+                            medallas += `<div class="medalla"><img src="${cargo.urlLogo}" title="${cargo.cargo}"></img></div>`;
+                            banderaCoor = true;        
+                        }
                     }else if(cargo.cargo == 'Voluntario'){
                         volComites.push(' ' + cargo.comite);
+                        if(!banderaVol){
+                            medallas += `<div class="medalla"><img src="${cargo.urlLogo}" title="${cargo.cargo}"></img></div>`;
+                            banderaVol = true;        
+                        }
                     }else{
                         aportes += `<li><p>${cargo.cargo}</p></li>`;
+                        medallas += `<div class="medalla"><img src="${cargo.urlLogo}" title="${cargo.cargo}"></img></div>`;
                     }
                 }
+                banderaCoor = false;
+                banderaVol = false;
                 if(coorComites.length > 0){
                     if (coorComites.length > 1) {
                         last_coorComites = coorComites.pop();
@@ -91,10 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="front-insignias">
                             <i id="close-card" class="fas fa-times"></i>
                             <span class="big-content-line"></span>
-                            <i class="fab fa-facebook-square fa-2x"></i>
-                            <i class="fab fa-instagram fa-2x"></i>
+                            ${medallas}
                             <i class="fab fa-linkedin fa-2x"></i>
-                            <i class="fas fa-medal fa-2x"></i>
                             <div class="flex-1"></div>
                             <i class="fas fa-arrow-right fa-2x flip-icon"></i>
                         </div>
