@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2021 at 07:19 PM
+-- Generation Time: Aug 09, 2021 at 10:43 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Database: `miembros_rama_ieee`
 --
 
 -- --------------------------------------------------------
@@ -52,24 +52,25 @@ INSERT INTO `admins` (`id_admin`, `usuario`, `nombre`, `password`) VALUES
 
 CREATE TABLE `cargos` (
   `id` int(11) NOT NULL,
-  `cargo` varchar(20) NOT NULL
+  `cargo` varchar(20) NOT NULL,
+  `urlLogo` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cargos`
 --
 
-INSERT INTO `cargos` (`id`, `cargo`) VALUES
-(1, 'Coordinador TET'),
-(2, 'Web Master'),
-(3, 'Coordinadora WIE'),
-(4, 'Presidente'),
-(5, 'Viscepresidente'),
-(6, 'Fiscal'),
-(7, 'Tesorero'),
-(8, 'Secretario'),
-(9, 'Coordinador'),
-(10, 'Voluntario');
+INSERT INTO `cargos` (`id`, `cargo`, `urlLogo`) VALUES
+(1, 'Coordinador TET', '/anuario/img/medallas/medallaTET.svg'),
+(2, 'Web Master', '/anuario/img/medallas/medallaWebMaster.svg'),
+(3, 'Coordinadora WIE', '/anuario/img/medallas/medallaWIE.svg'),
+(4, 'Presidente', '/anuario/img/medallas/medallaPresidente.svg'),
+(5, 'Viscepresidente', '/anuario/img/medallas/medallaVice.svg'),
+(6, 'Fiscal', '/anuario/img/medallas/medallaFiscal.svg'),
+(7, 'Tesorero', '/anuario/img/medallas/medallaTesorero.svg'),
+(8, 'Secretario', '/anuario/img/medallas/medallaSecretario.svg'),
+(9, 'Coordinador', '/anuario/img/medallas/medallaCoordinador.svg'),
+(10, 'Voluntario', '/anuario/img/medallas/medallaVoluntario.svg');
 
 -- --------------------------------------------------------
 
@@ -154,11 +155,7 @@ INSERT INTO `cargos_de_miembros` (`id`, `miembro`, `cargo`, `comite`) VALUES
 (63, 18, 10, 2),
 (64, 18, 10, 5),
 (65, 18, 10, 3),
-(66, 18, 10, 4),
-(67, 27, 2, NULL),
-(68, 31, 1, NULL),
-(69, 32, 1, NULL),
-(70, 33, 1, NULL);
+(66, 18, 10, 4);
 
 -- --------------------------------------------------------
 
@@ -298,7 +295,7 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT for table `cargos_de_miembros`
 --
 ALTER TABLE `cargos_de_miembros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `comites`
@@ -320,13 +317,11 @@ ALTER TABLE `miembros`
 -- Constraints for table `cargos_de_miembros`
 --
 ALTER TABLE `cargos_de_miembros`
-  ADD CONSTRAINT `cargos_de_miembros_ibfk_1` FOREIGN KEY (`miembro`) REFERENCES `miembros` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cargos_de_miembros_ibfk_2` FOREIGN KEY (`cargo`) REFERENCES `cargos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cargos_de_miembros_ibfk_3` FOREIGN KEY (`comite`) REFERENCES `comites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cargo_del_miembro` FOREIGN KEY (`cargo`) REFERENCES `cargos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comite_del_cargo_del_miembro` FOREIGN KEY (`comite`) REFERENCES `comites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `miembro_del_cargo` FOREIGN KEY (`miembro`) REFERENCES `miembros` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

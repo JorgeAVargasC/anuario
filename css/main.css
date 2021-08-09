@@ -1025,16 +1025,15 @@ ul {
   cursor:pointer;
 }
 
-
-
 .front-insignias i{
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
-/*MEDALLERÍA DE LOS OLIMPICOS*/
+
 .front-insignias :first-child{
   margin-top: 2rem;
 }
+
 .medalla{
   display: flex;
   justify-content: center;
