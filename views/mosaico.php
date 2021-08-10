@@ -36,7 +36,6 @@ include_once("../templates/navigation.php");
 			<?php
 			$query = "SELECT * from miembros WHERE anioIngresoRama>=$anio AND anioIngresoRama<$anio+$intervalo";
 			$result = mysqli_query($conection, $query);
-			$contador = 0;
 			while ($row = $result->fetch_array(MYSQLI_NUM)) {
 				$id = $row[0];
 				$primerNombre = $row[1];
@@ -52,7 +51,6 @@ include_once("../templates/navigation.php");
 				$frase = $row[11];
 				$urlFoto = $row[12];
 				$urlLinkedin = $row[13];
-				$contador++;
 			?>
 				<div class="mini-card" data-id="<?php echo $id ?>">
 					<div class="bg-blue">
@@ -76,11 +74,33 @@ include_once("../templates/navigation.php");
 						?>
 					</div>
 					<div class="insignias">
-						<i class="fab fa-facebook-square"></i>
-						<i class="fab fa-instagram"></i>
-						<i class="fab fa-linkedin"></i>
-						<i class="fas fa-medal"></i>
-						<i class="fas fa-medal"></i>
+						<?php
+							$query1 = "SELECT cargos.cargo, comites.comite, cargos.urlLogo FROM cargos_de_miembros JOIN cargos ON cargos_de_miembros.cargo=cargos.id LEFT JOIN comites ON cargos_de_miembros.comite=comites.id WHERE miembro=$id GROUP BY cargos.cargo ORDER BY cargos.id ASC LIMIT 3";
+							$result1 = mysqli_query($conection, $query1);
+							$contador = 0;
+							$medallas = "";
+							while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
+								$contador++;
+								$cargo = $row1[0];
+								$comite = $row1[1];
+								$urlLogo = $row1[2];
+								$medallas = $medallas.'<div class="mini-card-medalla"><img src="'.$urlLogo.'" title="'.$cargo.'"></img></div>';
+							}
+							if($contador<=1){
+						?>
+						<a href="<?php echo $urlLinkedin ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
+						<?php echo $medallas ?>
+						<a href="mailto:<?php echo $correo ?>"><i class="fas fa-envelope"></i></a>
+						<?php
+							}elseif($contador<=2){
+						?>
+						<?php echo $medallas ?>
+						<a href="mailto:<?php echo $correo ?>"><i class="fas fa-envelope"></i></a>
+						<?php
+							}else{
+								echo $medallas;
+							}
+						?>
 					</div>
 				</div>
 			<?php

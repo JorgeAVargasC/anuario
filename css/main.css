@@ -1034,6 +1034,14 @@ ul {
   margin-top: 2rem;
 }
 
+.mini-card-medalla{
+  height: 24px;
+}
+
+.mini-card-medalla img{
+  height: 100%;
+}
+
 .medalla{
   display: flex;
   justify-content: center;

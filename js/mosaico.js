@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="big-content-line"></span>
                             ${medallas}
                             <a href="${member.urlLinkedin}" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
+                            <a href="mailto:${member.correo}"><i class="fas fa-envelope fa-3x"></i></i></a>
                             <div class="flex-1"></div>
                             <i class="fas fa-arrow-right fa-2x flip-icon flip-icon-right"></i>
                         </div>
