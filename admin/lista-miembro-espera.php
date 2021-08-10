@@ -42,6 +42,7 @@
                                 <th>Segundo Apellido</th>
                                 <th>Año Ingreso</th>
                                 <th>Año Salida</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -50,7 +51,7 @@
                                 try {
                                     //code...
                                     $conn = mysqli_connect($host, $user, $pw, $db);
-                                    $sql = "SELECT id, primerNombre, segundoNombre, primerApellido, segundoApellido, anioIngresoRama, anioSalidaRama FROM miembros WHERE estado = 0";
+                                    $sql = "SELECT id, primerNombre, segundoNombre, primerApellido, segundoApellido, anioIngresoRama, anioSalidaRama, estado FROM miembros WHERE estado = 0";
                                     $resultado = $conn->query($sql);
 
                                 } catch (Exception $e) {
@@ -67,6 +68,19 @@
                                         <td> <?php echo $miembro['segundoApellido']; ?> </td>
                                         <td> <?php echo $miembro['anioIngresoRama']; ?> </td>
                                         <td> <?php echo $miembro['anioSalidaRama']; ?> </td>
+
+                                        <td class="text-center">
+                                            <?php
+                                                if($miembro['estado']){
+                                                    echo "<p style='color: #00000000; margin:0; width:0; height:0; font-size: 0;'>1</p>";
+                                                    echo "<i class='fas fa-user-check fa-2x text-success'></i>";
+                                                }else{
+                                                    
+                                                    echo "<i class='fas fa-user-clock fa-2x text-warning'></i>";
+                                                }
+                                            ?>
+                                        </td>
+
                                         <td> 
                                             <a href="editar-miembro.php?id=<?php echo $miembro['id']; ?>"  class="btn bg-primary btn-flat margin rounded">
                                                 <i class="fa fa-pencil"></i>
@@ -87,6 +101,7 @@
                                 <th>Segundo Apellido</th>
                                 <th>Año Ingreso</th>
                                 <th>Año Salida</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </tfoot>

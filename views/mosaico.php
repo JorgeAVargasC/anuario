@@ -34,7 +34,7 @@ include_once("../templates/navigation.php");
 			?>
 			<div class="year-title"><?php echo $anio ?></div>
 			<?php
-			$query = "SELECT * from miembros WHERE anioIngresoRama>=$anio AND anioIngresoRama<$anio+$intervalo";
+			$query = "SELECT * from miembros WHERE anioIngresoRama>=$anio AND anioIngresoRama<$anio+$intervalo AND estado=1";
 			$result = mysqli_query($conection, $query);
 			while ($row = $result->fetch_array(MYSQLI_NUM)) {
 				$id = $row[0];
