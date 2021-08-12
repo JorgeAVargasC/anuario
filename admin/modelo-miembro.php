@@ -445,6 +445,14 @@ if ($_POST['registro'] == 'eliminar') {
     include_once "../connection/db_connection.php";
     $conn = mysqli_connect($host, $user, $pw, $db);
 
+
+    $sql = "SELECT urlFoto FROM miembros WHERE id=$id_borrar";
+    $resultado = $conn->query($sql);
+    $miembro = $resultado->fetch_assoc();
+
+    $url_foto = $miembro['urlFoto'];
+    unlink($url_foto);
+
     $stmt = $conn->prepare('DELETE FROM miembros WHERE id = ?');
     $stmt->bind_param("i", $id_borrar);
     $stmt->execute();

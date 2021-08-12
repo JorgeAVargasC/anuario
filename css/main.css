@@ -734,9 +734,11 @@ height: 8vh;
   }
 }
 
+/* Tarjetas */
+
 .mini-card {
-  width: 17.32rem;
-  height: 23rem;
+  width: 18.32rem;
+  height: 24rem;
   background-color: var(--blanco);
   border-radius: 6%;
   display: flex;
@@ -750,8 +752,6 @@ height: 8vh;
   font-size: 3rem;
   font-weight: 500;
 }
-
-/* Tarjetas */
 
 .bg-blue {
   display: flex;
@@ -836,11 +836,16 @@ height: 8vh;
 
 .insignias i {
   color: var(--primario);
-  transform: scale(1.3);
+  transform: scale(1.7);
   transition-duration: 0.5s;
 }
 
-.insignias i:hover,
+.insignias i:hover {
+  color: var(--secundario);
+  transform: scale(1.8);
+  transition-duration: 0.5s;
+}
+
 .insignias img:hover {
   color: var(--secundario);
   transform: scale(1.1);
@@ -1028,19 +1033,14 @@ ul {
   color: var(--blanco);
 }
 
+.front-insignias * {
+  margin-bottom: 1rem;
+}
+
 #close-card {
   margin-top: 2rem;
   margin-bottom: 1rem;
   cursor: pointer;
-}
-
-.front-insignias i {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.front-insignias :first-child {
-  margin-top: 2rem;
 }
 
 .medalla {
@@ -1049,14 +1049,14 @@ ul {
   align-items: center;
   overflow: visible;
   align-items: center;
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 100%;
+  height: fit-content;
 }
 
 .medalla img {
   cursor: pointer;
-  height: 90%;
-  width: auto;
+  width: 65%;
+  height: auto;
   transition: all 1500ms;
 }
 
