@@ -26,6 +26,16 @@ $array_cargos = $conn->query($sql);
           <input type="hidden" name="registro" value="nuevo">
           <button type="submit" class="btn btn-primary">Añadir</button>
         </div>
+    <div class="btn-previsualizar-hover">
+      <button class="btn-previsualizar btn btn-primary">  
+        <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+        <lord-icon src="https://cdn.lordicon.com/tyounuzx.json" trigger="loop" colors="primary:#FFFFFF,secondary:#FFFFFF" stroke="100"></lord-icon>
+        <div class="texto"><h1>Previsualizar</h1></div>
+      </button>
+    </div>
+      
+    
+		
 
       </form>
     </div>
