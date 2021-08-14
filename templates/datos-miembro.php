@@ -106,7 +106,7 @@
 		$comite_format = strtolower(quitar_tildes($comite['comite']));
 	?>
 		<div class="form-check">
-			<input type="checkbox" class="form-check-input" id="<?php echo $comite_format; ?>" name="<?php echo $comite_format; ?>" value="<?php echo $comite_format; ?>">
+			<input type="checkbox" class="form-check-input checkbox-comite" id="<?php echo $comite_format; ?>" name="<?php echo $comite_format; ?>" value="<?php echo $comite_format; ?>">
 			<label for="<?php echo $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
 		</div>
 	<?php
@@ -122,7 +122,7 @@
 			$cargo_format = lcfirst(str_replace(' ', '', quitar_tildes($cargo['cargo'])));
 	?>
 			<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="<?php echo $cargo_format; ?>" name="<?php echo $cargo_format; ?>" value="<?php echo $cargo_format; ?>">
+				<input type="checkbox" class="form-check-input checkbox-cargos" id="<?php echo $cargo_format; ?>" name="<?php echo $cargo_format; ?>" value="<?php echo $cargo_format; ?>">
 				<label for="<?php echo $cargo_format; ?>" class="form-check-label"><?php echo $cargo['cargo'] ?></label>
 			</div>
 	<?php
@@ -138,7 +138,7 @@
 		$comite_format = strtolower(quitar_tildes($comite['comite']));
 	?>
 		<div class="form-check">
-			<input type="checkbox" class="form-check-input" id="<?php echo 'coord_' . $comite_format; ?>" name="<?php echo 'coord_' . $comite_format; ?>" value="<?php echo 'coord' . $comite_format; ?>" disabled>
+			<input type="checkbox" class="form-check-input checkbox-coordinador" id="<?php echo 'coord_' . $comite_format; ?>" name="<?php echo 'coord_' . $comite_format; ?>" value="<?php echo 'coord' . $comite_format; ?>" disabled>
 			<label for="<?php echo 'coord_' . $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
 		</div>
 	<?php
