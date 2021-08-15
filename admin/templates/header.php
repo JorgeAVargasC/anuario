@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Anuario IEEE</title>
     <!-- Tell the browser to be responsive to screen width -->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Font Awesome -->
@@ -14,6 +15,7 @@
     <script src="https://kit.fontawesome.com/9d25e26f75.js" crossorigin="anonymous"></script>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="../admin/css/adminlte.min.css">
     
@@ -41,5 +43,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
 
     <link rel="stylesheet" href="../admin/css/admin.css">
+    
+    
  
 </head>

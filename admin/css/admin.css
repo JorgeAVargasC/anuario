@@ -6,12 +6,12 @@
   --gris-c: #757575;
   --gris-o: #3a3a3a;
 }
-
+/* 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
-  /** Reset para REMS - 62.5% = 10px de 16px **/
-}
+  font-size: 62.5%;  
+} 
+*/
 
 .login-page .main-footer {
   display: none;

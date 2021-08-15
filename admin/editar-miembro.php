@@ -143,7 +143,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
             <div class="form-group">
               <div class="input-group">
                 <input type="file" id="imagen-miembro" name="imagen-miembro" accept="image/png, image/jpeg, image/jpg">
-                <label for="imagen-miembro">Imagen <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
+                <label for="imagen-miembro">Imagen</label>
               </div>
             </div>
             <div class="form-group">

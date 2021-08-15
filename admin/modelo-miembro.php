@@ -21,12 +21,6 @@ if ($_POST['registro'] == 'nuevo') {
       }
     }
 
-    $errors = [];
-    $fileSize = $_FILES['imagen-miembro']['size'];
-    $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
-    $path = $_FILES['imagen-miembro']['name'];
-    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-
     if ($_FILES['imagen-miembro']['name'] != null ) {
       $errors = [];
       $fileSize = $_FILES['imagen-miembro']['size'];
@@ -207,22 +201,31 @@ if ($_POST['registro'] == 'actualizar') {
     }
 
     if ($_FILES['imagen-miembro']['name'] != null ) {
-      $errors = [];
+      // $errors = [];
+      $validacion3 = false;
       $fileSize = $_FILES['imagen-miembro']['size'];
       $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
       $path = $_FILES['imagen-miembro']['name'];
       $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 
-      if (!in_array($ext, $fileExtensionsAllowed)) {
-        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+      if (in_array($ext, $fileExtensionsAllowed)) {
+        $validacion3 = true;
       }
-      if ($fileSize > 1572864) {
-        $errors[] = "File exceeds maximum size (1.5MB)";
-      }
-      $validacion3 = empty($errors);
-    } else {      
-      $validacion3 = true;
-    }
+
+
+      // if (!in_array($ext, $fileExtensionsAllowed)) {
+      //   $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+      // }
+      
+      // if ($fileSize > 1572864) {
+      //   $errors[] = "File exceeds maximum size (1.5MB)";
+      // }
+      
+      // $validacion3 = empty($errors);
+    } 
+    // else {      
+    //   $validacion3 = true;
+    // }
 
     $validacion4 = false;
     $sql1 = "SELECT * FROM comites";
@@ -279,8 +282,8 @@ if ($_POST['registro'] == 'actualizar') {
         if (!is_dir($directorio)) {
           mkdir($directorio, 0755, true);
         }
-
-        if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
+        
+        if (compressImage($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto,10)) {
           $imagen_url = $directorio . $urlFoto;  //it should change when every image would be on the same path
           $imagen_resultado = "Se subió correctamente";
         } else {
@@ -476,4 +479,27 @@ if ($_POST['registro'] == 'eliminar') {
   }
 
   die(json_encode($respuesta));
+}
+
+function compressImage($imgOriginal, $destino, $calidad){
+
+	$imgInfo = getimagesize($imgOriginal);
+	$mime = $imgInfo['mime'];
+
+	switch ($mime) {
+		case 'image/jpeg':
+			$imgComprimida = imagecreatefromjpeg($imgOriginal);
+			break;
+		case 'image/png':
+			$imgComprimida = imagecreatefrompng($imgOriginal);
+			break;
+		case 'image/gif':
+			$imgComprimida = imagecreatefromgif($imgOriginal);
+			break;
+		default:
+			$imgComprimida = imagecreatefromjpeg($imgOriginal);
+	}
+
+	$resultado_subida = imagejpeg($imgComprimida, $destino, $calidad);
+	return $resultado_subida;
 }
