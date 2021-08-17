@@ -1,43 +1,26 @@
 <?php
 
-$carpeta = "../functions/";
-$calidad = 35;
+function compressImage($imgOriginal, $destino, $calidad){
 
-$img = $_FILES["image"]["tmp_name"];
-$imgSize = $_FILES["image"]["size"];
-$imgNombre = $_FILES["image"]["name"];
+	$imgInfo = getimagesize($imgOriginal);
+	$mime = $imgInfo['mime'];
 
-$imgRuta = $carpeta . $imgNombre;
+	switch ($mime) {
+		case 'image/jpeg':
+			$imgComprimida = imagecreatefromjpeg($imgOriginal);
+			break;
+		case 'image/png':
+			$imgComprimida = imagecreatefrompng($imgOriginal);
+			break;
+		case 'image/gif':
+			$imgComprimida = imagecreatefromgif($imgOriginal);
+			break;
+		default:
+			$imgComprimida = imagecreatefromjpeg($imgOriginal);
+	}
 
-$imgInfo = getimagesize($img);
-$imgExt = $imgInfo['mime'];
-
-switch ($imgExt) {
-	case 'image/jpeg':
-		$img = imagecreatefromjpeg($img);
-		break;
-	case 'image/png':
-		$img = imagecreatefrompng($img);
-		break;
-	case 'image/gif':
-		$img = imagecreatefromgif($img);
-		break;
-	default:
-		$img = imagecreatefromjpeg($img);
+	$resultado_subida = imagejpeg($imgComprimida, $destino, $calidad);
+	return $resultado_subida;
 }
 
-/*
-echo "Imagen: " . $img;
-print "<br>";
-echo "Size: " . $imgSize . " bytes";
-print "<br>";
-echo "Size: ".$imgSize/pow(1024,2)." MB";
-print "<br>";
-echo "Extension: " . $imgExt;
-print "<br>";
-echo "Nombre: " . $imgNombre;
-print "<br>";
-print_r($imgInfo);
-*/
-
-imagejpeg($img, $imgRuta, $calidad);
+?>

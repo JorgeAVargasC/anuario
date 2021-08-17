@@ -1,6 +1,7 @@
 <?php
 
 include("funciones/quitar_tildes.php");
+include("../functions/comprimir_imagenes.php");
 
 if ($_POST['registro'] == 'nuevo') {
 
@@ -27,17 +28,12 @@ if ($_POST['registro'] == 'nuevo') {
       $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
       $path = $_FILES['imagen-miembro']['name'];
       $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+      $validacion3 = true;
 
       if (!in_array($ext, $fileExtensionsAllowed)) {
-        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-      }
-      if ($fileSize > 1572864) {
-        $errors[] = "File exceeds maximum size (1.5MB)";
-      }
-      $validacion3 = empty($errors);
-    } else {      
-      $validacion3 = false;
-    }
+        $validacion3 = false;
+      }      
+    } 
 
     $validacion4 = false;
     $sql1 = "SELECT * FROM comites";
@@ -81,15 +77,15 @@ if ($_POST['registro'] == 'nuevo') {
       if (!is_dir($directorio)) {
         mkdir($directorio, 0755, true);
       }
-      if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
-        # code...
+
+      if (compressImage($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto,10)) {
         $imagen_url = $directorio . $urlFoto;  //it should change when every image would be on the same path
         $imagen_resultado = "Se subió correctamente";
       } else {
         $respuesta = array(
           'respuesta' => error_get_last()
         );
-      }
+      }      
 
       #LOGICA
 
@@ -175,7 +171,6 @@ if ($_POST['registro'] == 'nuevo') {
       'respuesta' => $e->getMessage()
     );
   }
-
   die(json_encode($respuesta));
 }
 
@@ -481,25 +476,3 @@ if ($_POST['registro'] == 'eliminar') {
   die(json_encode($respuesta));
 }
 
-function compressImage($imgOriginal, $destino, $calidad){
-
-	$imgInfo = getimagesize($imgOriginal);
-	$mime = $imgInfo['mime'];
-
-	switch ($mime) {
-		case 'image/jpeg':
-			$imgComprimida = imagecreatefromjpeg($imgOriginal);
-			break;
-		case 'image/png':
-			$imgComprimida = imagecreatefrompng($imgOriginal);
-			break;
-		case 'image/gif':
-			$imgComprimida = imagecreatefromgif($imgOriginal);
-			break;
-		default:
-			$imgComprimida = imagecreatefromjpeg($imgOriginal);
-	}
-
-	$resultado_subida = imagejpeg($imgComprimida, $destino, $calidad);
-	return $resultado_subida;
-}
