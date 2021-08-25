@@ -7,14 +7,6 @@
   --gris-o: #3a3a3a;
 }
 
-/*
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;  
-} 
-*/
-
-
 .login-page .main-footer {
   display: none;
 }
@@ -52,19 +44,29 @@ html {
 }
 
 #image-container {
-  margin: 0 auto;
-  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #cropped-image-container {
-  margin-top: 2%;
+  margin: 2% 0;
   display: none;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
+  width: 100%;
 }
+
+#cropped-image {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #cropped-image {
+    width: 20%;
+  }
+}
+
 
 #cropped-image-container > div > label {
   display: flex;
@@ -192,5 +194,44 @@ textarea:required + label::after {
   display: block;
 }
 
-/* Card preview */
+.empty-panel {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  animation: empty-panel-animation-close 500ms ease forwards;
+  display: none;
+}
 
+.empty-panel.open {
+  animation: empty-panel-animation-open 500ms ease forwards;
+  background-color: rgba(24, 23, 23, 0.8);
+}
+
+/* Difuminar fondo */
+
+@keyframes empty-panel-animation-open {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes empty-panel-animation-close {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  95% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}

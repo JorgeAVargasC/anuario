@@ -59,7 +59,7 @@
 	</div>
 	<div class="form-group">
 		<div id="cropped-image-container">
-			<img id="cropped-image" src="#" width="300vw" alt="Cropped Image">
+			<img id="cropped-image" src="#"S alt="Cropped Image">
 		</div>	
 	</div>
 	<!-- Modal -->

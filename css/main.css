@@ -306,8 +306,6 @@ h4 {
 }
 
 .empty-panel.open {
-  /* backdrop-filter: blur(2px); */
-  /* El blur es el difuminado... Mas de 4px hace lenta la animacion */
   animation: empty-panel-animation-open 500ms ease forwards;
   background-color: rgba(24, 23, 23, 0.8);
 }
@@ -854,6 +852,10 @@ height: 8vh;
 
 .mini-card-medalla {
   height: 90%;
+  width: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mini-card-medalla img {
@@ -1069,12 +1071,16 @@ ul {
   cursor: pointer;
 }
 
-.contenedor-flecha-derecha:hover .flip-icon-right{
+.flip-icon-container-right:hover .flip-icon-right{
   animation: move-right 800ms forwards;
 }
 
-.contenedor-flecha-izquierda:hover .flip-icon-left{
+.flip-icon-container-left:hover .flip-icon-left{
   animation: move-left 800ms forwards;
+}
+
+.flip-icon-container {
+  cursor: pointer;
 }
 
 @keyframes move-left {

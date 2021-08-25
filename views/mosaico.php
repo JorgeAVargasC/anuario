@@ -88,14 +88,14 @@ include_once("../templates/navigation.php");
 							}
 							if($contador<=1){
 						?>
-						<a href="<?php echo $urlLinkedin ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
+						<div class="mini-card-medalla"><a href="<?php echo $urlLinkedin ?>" target="_blank"><i class="fab fa-linkedin"></i></a></div>
 						<?php echo $medallas ?>
-						<a href="mailto:<?php echo $correo ?>"><i class="fas fa-envelope"></i></a>
+						<div class="mini-card-medalla"><a href="mailto:<?php echo $correo ?>"><i class="fas fa-envelope"></i></a></div>
 						<?php
 							}elseif($contador<=2){
 						?>
 						<?php echo $medallas ?>
-						<a href="mailto:<?php echo $correo ?>"><i class="fas fa-envelope"></i></a>
+						<div class="mini-card-medalla"><a href="mailto:<?php echo $correo ?>"><i class="fas fa-envelope"></i></a></div>
 						<?php
 							}else{
 								echo $medallas;

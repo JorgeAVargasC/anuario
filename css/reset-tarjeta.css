@@ -217,12 +217,16 @@
     transform: rotate(1turn);
   }
 
-  .contenedor-flecha-derecha:hover .flip-icon-right{
+  .flip-icon-container-right:hover .flip-icon-right{
     animation: move-right 800ms forwards;
   }
 
-  .contenedor-flecha-izquierda:hover .flip-icon-left{
+  .flip-icon-container-left:hover .flip-icon-left{
     animation: move-left 800ms forwards;
+  }
+
+  .flip-icon-container {
+    cursor: pointer;
   }
 
   .flip-icon {

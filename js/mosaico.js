@@ -113,14 +113,14 @@ document.addEventListener("DOMContentLoaded", () => {
                             <a href="${member.urlLinkedin}" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                             <a href="mailto:${member.correo}"><i class="fas fa-envelope fa-2x"></i></i></a>
                             <div class="flex-1"></div>
-                            <div class="contenedor-flecha-derecha">
+                            <div class="flip-icon-container flip-icon-container-right">
                                 <i class="fas fa-arrow-right fa-2x flip-icon flip-icon-right"></i>
                             </div>
                         </div>
                     </div>
                     <div class="card-face back-face-flex">
                         <div class="back-blue-side">
-                            <div class="contenedor-flecha-izquierda">
+                            <div class="flip-icon-container flip-icon-container-left">
                                 <i class="fas fa-arrow-left fa-2x flip-icon flip-icon-left"></i>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
           flipContainer.innerHTML = result;
-          const flipIcon = document.querySelectorAll(".flip-icon");
+          const flipIcon = document.querySelectorAll(".flip-icon-container");
           flipIcon.forEach((obj) => {
             obj.addEventListener("click", function () {
               flipContainer.classList.toggle("is-flipped");
