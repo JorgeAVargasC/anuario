@@ -12,6 +12,8 @@ $sql = "SELECT * FROM cargos";
 $array_cargos = $conn->query($sql);
 ?>
 
+<link rel="stylesheet" href="/anuario/css/reset-tarjeta.css">
+
 <body>
   <div class="card">
     <div class="card-header">
@@ -28,21 +30,28 @@ $array_cargos = $conn->query($sql);
         </div>
       </form>
       <div class="btn-previsualizar-hover">
-        <button class="btn-previsualizar btn btn-primary">  
+        <button class="btn-previsualizar btn btn-primary">
           <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
           <lord-icon src="https://cdn.lordicon.com/tyounuzx.json" trigger="loop" colors="primary:#FFFFFF,secondary:#FFFFFF" stroke="100"></lord-icon>
-          <div class="texto"><h1>Previsualizar</h1></div>
+          <div class="texto">
+            <h1>Previsualizar</h1>
+          </div>
         </button>
       </div>
+
       <div class="card-view-layout" id="card-view-layout">
         <div class="empty-panel" id="card-view-empty-panel"></div>
-          <div class="card-view" id="card-view">
+        <div class="card-view" id="card-view">
+          <div class="reset-rems">
             <div class="flip-container" id="flip-container"></div>
           </div>
         </div>
       </div>
+
     </div>
-    <!-- /.card-body -->
+
+  </div>
+  <!-- /.card-body -->
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" integrity="sha512-ooSWpxJsiXe6t4+PPjCgYmVfr1NS5QXJACcR/FPpsdm6kqG1FmQ2SVyg2RXeVuCRBLr0lWHnWJP6Zs1Efvxzww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -77,7 +86,7 @@ $array_cargos = $conn->query($sql);
       const flipContainer = document.querySelector("#flip-container");
       const cardViewLayout = document.querySelector("#card-view-layout");
       const cardView = document.querySelector("#card-view");
-      $('.btn-previsualizar').click(()=>{
+      $('.btn-previsualizar').click(() => {
         cardViewLayout.style.display = "flex";
         cardViewEmptyPanel.style.display = "block";
         cardView.style.display = "block";
@@ -103,24 +112,24 @@ $array_cargos = $conn->query($sql);
         // Creo sus cargos como voluntario
         let cargos = []
         let comitesVoluntario = $('.checkbox-comite:checkbox:checked');
-        for(let comite of comitesVoluntario){
+        for (let comite of comitesVoluntario) {
           cargos.push({
             "cargo": "Voluntario",
             "comite": comite.nextElementSibling.innerHTML,
             "urlLogo": "/anuario/img/medallas/medallaVoluntario.svg"
           });
-        }  
+        }
         let listaCargos = $('.checkbox-cargos:checkbox:checked');
-        for(let cargo of listaCargos){
-          if(cargo.value != "coordinador"){
+        for (let cargo of listaCargos) {
+          if (cargo.value != "coordinador") {
             cargos.push({
               "cargo": cargo.nextElementSibling.innerHTML,
               "comite": "",
               "urlLogo": "/anuario/img/medallas/medallaVoluntario.svg"
             });
-          }else{
+          } else {
             let comitesCoordinador = $('.checkbox-coordinador:checkbox:checked');
-            for(let comite of comitesCoordinador){
+            for (let comite of comitesCoordinador) {
               cargos.push({
                 "cargo": "Coordinador",
                 "comite": comite.nextElementSibling.innerHTML,
@@ -131,9 +140,9 @@ $array_cargos = $conn->query($sql);
         }
         // Para seleccionar el nombre
         let nombre =
-          member.nombrePreferido == 1
-            ? `${member.primerNombre} ${member.primerApellido}`
-            : `${member.segundoNombre} ${member.primerApellido}`;
+          member.nombrePreferido == 1 ?
+          `${member.primerNombre} ${member.primerApellido}` :
+          `${member.segundoNombre} ${member.primerApellido}`;
         // Para añadir aportes
         let aportes = "";
         let volComites = [];
@@ -239,7 +248,7 @@ $array_cargos = $conn->query($sql);
         flipContainer.innerHTML = result;
         const flipIcon = document.querySelectorAll(".flip-icon");
         flipIcon.forEach((obj) => {
-          obj.addEventListener("click", function () {
+          obj.addEventListener("click", function() {
             flipContainer.classList.toggle("is-flipped");
           });
         });
@@ -247,7 +256,7 @@ $array_cargos = $conn->query($sql);
         closeCard.addEventListener("click", () => {
           closingCard();
         });
-  
+
         // Funcionalidad del panel vacío
         cardViewEmptyPanel.addEventListener("click", () => {
           closingCard();
