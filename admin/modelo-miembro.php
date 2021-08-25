@@ -475,4 +475,3 @@ if ($_POST['registro'] == 'eliminar') {
 
   die(json_encode($respuesta));
 }
-

@@ -147,22 +147,16 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
               </div>
             </div>
             <div class="form-group">
-              <div id="cropped-image-container">
-                <div>
-                  <label for="imagen-actual">Imagen actual</label>
-                  <img src="<?php echo $miembro['urlFoto']; ?>" width="300vw">
+                <div class="image-containers">
+                    <div id="actual-image-container">
+                        <label for="actual-image">Imagen Actual</label>
+                        <img id="actual-image" src="<?php echo $miembro['urlFoto']; ?>">
+                    </div>	
+                    <div id="cropped-image-container">
+                        <label for="cropped-image">Imagen Nueva</label>
+                        <img id="cropped-image" src="#" alt="Cropped Image">
+                    </div>	
                 </div>
-                <div>
-                  <label for="imagen-actual">Imagen nueva</label>
-                  <img id="cropped-image" src="#" width="300vw" alt="Cropped Image">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="imagen-actual">Imagen actual <span style="font-weight: lighter;">(maximo 1.5Mb)</span></label>
-              <br>
-              <img src="<?php echo $miembro['urlFoto']; ?>" width="200">
-
             </div>
             <!-- Modal -->
             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
