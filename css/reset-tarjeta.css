@@ -217,17 +217,17 @@
     transform: rotate(1turn);
   }
 
-  .flip-icon {
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-
-  .flip-icon-right:hover {
+  .contenedor-flecha-derecha:hover .flip-icon-right{
     animation: move-right 800ms forwards;
   }
 
-  .flip-icon-left:hover {
+  .contenedor-flecha-izquierda:hover .flip-icon-left{
     animation: move-left 800ms forwards;
+  }
+
+  .flip-icon {
+    margin-bottom: 10px;
+    cursor: pointer;
   }
 
   @keyframes move-left {

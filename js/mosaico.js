@@ -113,12 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
                             <a href="${member.urlLinkedin}" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                             <a href="mailto:${member.correo}"><i class="fas fa-envelope fa-2x"></i></i></a>
                             <div class="flex-1"></div>
-                            <i class="fas fa-arrow-right fa-2x flip-icon flip-icon-right"></i>
+                            <div class="contenedor-flecha-derecha">
+                                <i class="fas fa-arrow-right fa-2x flip-icon flip-icon-right"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="card-face back-face-flex">
                         <div class="back-blue-side">
-                            <i class="fas fa-arrow-left fa-2x flip-icon flip-icon-left"></i>
+                            <div class="contenedor-flecha-izquierda">
+                                <i class="fas fa-arrow-left fa-2x flip-icon flip-icon-left"></i>
+                            </div>
                         </div>
                         <div class="back-content">
                             <div class="back-blue-banner">
