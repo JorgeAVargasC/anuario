@@ -78,7 +78,7 @@ if ($_POST['registro'] == 'nuevo') {
         mkdir($directorio, 0755, true);
       }
 
-      if (compressImage($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto,10)) {
+      if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
         $imagen_url = $directorio . $urlFoto;  //it should change when every image would be on the same path
         $imagen_resultado = "Se subió correctamente";
       } else {
@@ -174,7 +174,6 @@ if ($_POST['registro'] == 'nuevo') {
   die(json_encode($respuesta));
 }
 
-
 if ($_POST['registro'] == 'actualizar') {
   $id_registro = $_POST['id_registro'];
   try {
@@ -206,21 +205,7 @@ if ($_POST['registro'] == 'actualizar') {
       if (in_array($ext, $fileExtensionsAllowed)) {
         $validacion3 = true;
       }
-
-
-      // if (!in_array($ext, $fileExtensionsAllowed)) {
-      //   $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-      // }
-      
-      // if ($fileSize > 1572864) {
-      //   $errors[] = "File exceeds maximum size (1.5MB)";
-      // }
-      
-      // $validacion3 = empty($errors);
     } 
-    // else {      
-    //   $validacion3 = true;
-    // }
 
     $validacion4 = false;
     $sql1 = "SELECT * FROM comites";
@@ -268,7 +253,10 @@ if ($_POST['registro'] == 'actualizar') {
       if($_FILES['imagen-miembro']['name'] != null ){
         $url_anterior = $miembro['urlFoto'];
 
-        unlink($url_anterior);
+        if (file_exists($url_anterior)) {
+          unlink($url_anterior);
+        }
+       
 
         $urlFoto = 'foto_' . $primerNombre_img . '_' . $primerApellido_img . '_' . date('Ymd_his') . '.' . $ext;
 
@@ -278,7 +266,7 @@ if ($_POST['registro'] == 'actualizar') {
           mkdir($directorio, 0755, true);
         }
         
-        if (compressImage($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto,10)) {
+        if (move_uploaded_file($_FILES['imagen-miembro']['tmp_name'], $directorio . $urlFoto)) {
           $imagen_url = $directorio . $urlFoto;  //it should change when every image would be on the same path
           $imagen_resultado = "Se subió correctamente";
         } else {
@@ -449,7 +437,9 @@ if ($_POST['registro'] == 'eliminar') {
     $miembro = $resultado->fetch_assoc();
 
     $url_foto = $miembro['urlFoto'];
-    unlink($url_foto);
+    if (file_exists($url_foto)) {
+      unlink($url_foto);
+    }
 
     $stmt = $conn->prepare('DELETE FROM miembros WHERE id = ?');
     $stmt->bind_param("i", $id_borrar);
