@@ -59,8 +59,8 @@
 	</div>
 	<div class="form-group">
 		<div id="cropped-image-container">
-			<img id="cropped-image" src="#"S alt="Cropped Image">
-		</div>	
+			<img id="cropped-image" src="#" S alt="Cropped Image">
+		</div>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -102,12 +102,14 @@
 	<br>
 	<h4>Comites a los que perteneció</h4>
 	<?php
-	foreach ($array_comites as $comite) {
-		$comite_format = strtolower(quitar_tildes($comite['comite']));
+	$temp = array();
+	while ($row = $array_comites->fetch_assoc()) {
+		$temp[] = $row;
+		$comite_format = strtolower(quitar_tildes($row['comite']));
 	?>
 		<div class="form-check">
 			<input type="checkbox" class="form-check-input checkbox-comite" id="<?php echo $comite_format; ?>" name="<?php echo $comite_format; ?>" value="<?php echo $comite_format; ?>">
-			<label for="<?php echo $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
+			<label for="<?php echo $comite_format; ?>" class="form-check-label"><?php echo $row['comite']; ?></label>
 		</div>
 	<?php
 	}
@@ -116,7 +118,7 @@
 	<br>
 	<h4>Cargos que ocupó</h4>
 	<?php
-	foreach ($array_cargos as $cargo) {
+	while ($cargo = $array_cargos->fetch_assoc()) {
 		if ($cargo['id'] != 10) {
 			// Coordinador TET se convierte a coordinadorTET
 			$cargo_format = lcfirst(str_replace(' ', '', quitar_tildes($cargo['cargo'])));
@@ -133,14 +135,14 @@
 	<br>
 	<h4>Comites que Coordinó</h4>
 	<?php
-
-	foreach ($array_comites as $comite) {
-		$comite_format = strtolower(quitar_tildes($comite['comite']));
+	for ($i = 0; $i < count($temp); $i++) {
+		$comite_format = strtolower(quitar_tildes($temp[$i]['comite']));
 	?>
 		<div class="form-check">
 			<input type="checkbox" class="form-check-input checkbox-coordinador" id="<?php echo 'coord_' . $comite_format; ?>" name="<?php echo 'coord_' . $comite_format; ?>" value="<?php echo 'coord' . $comite_format; ?>" disabled>
-			<label for="<?php echo 'coord_' . $comite_format; ?>" class="form-check-label"><?php echo $comite['comite']; ?></label>
+			<label for="<?php echo 'coord_' . $comite_format; ?>" class="form-check-label"><?php echo $temp[$i]['comite']; ?></label>
 		</div>
+
 	<?php
 	}
 	?>

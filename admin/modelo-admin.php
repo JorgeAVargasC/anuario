@@ -1,55 +1,36 @@
 <?php
-
 if (isset($_POST['login-admin'])) {
-
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
-
     try {
-        //code...
         include_once "../connection/db_connection.php";
         $conn = mysqli_connect($host, $user, $pw, $db);
-        $stmt = $conn->prepare("SELECT * FROM admins WHERE usuario = ?;");
-        $stmt->bind_param("s", $usuario);
-        $stmt->execute();
-        $stmt->bind_result($id_admin, $usuario_admin, $nombre_admin, $password_admin); //bind_result retorna los resultados de usar SELECT y permite asignarle en ese retorno las variables que se desean usar
-        if ($stmt->affected_rows) {
-            # code...
-            $existe = $stmt->fetch();
-            if ($existe) {
-                # code...
-                if (password_verify($password, $password_admin)) {
-                    # code...
-                    session_start();
-                    $_SESSION['usuario'] = $usuario_admin;
-                    $_SESSION['nombre'] = $nombre_admin;
-
-                    $respuesta = array(
-                        'respuesta' => 'exitoso',
-                        'usuario' => $nombre_admin
-                    );
-                } else {
-                    $respuesta = array(
-                        'respuesta' => 'error'
-                    );
-                }
-            } else {
-                $respuesta = array(
-                    'respuesta' => 'error'
-                );
-            }
+        mysqli_set_charset($conn, "utf8");
+        $query = "SELECT * FROM admins WHERE usuario='$usuario'";
+        $result = $conn->query($query);
+        $userData = $result->fetch_assoc();
+        if (md5($password) == $userData['password']) {
+            session_start();
+            $_SESSION['usuario'] = $userData['usuario'];
+            $_SESSION['nombre'] = $userData['nombre'];
+            $respuesta = array(
+                'respuesta' => 'exitoso',
+                'usuario' => $userData['nombre']
+            );
+        } else {
+            $respuesta = array(
+                'respuesta' => 'error'
+            );
         }
-        $stmt->close();
         $conn->close();
     } catch (Exception $e) {
-        //throw $th;
-        echo "Error: " . $e->getMessage();
-    }
+        $respuesta = array(
+            'respuesta' => $e->getMessage()
 
+        );
+    }
     die(json_encode($respuesta));
 }
-
-
 
 if ($_POST['registro'] == 'nuevo') {
 
@@ -96,8 +77,6 @@ if ($_POST['registro'] == 'nuevo') {
     }
     die(json_encode($respuesta));
 }
-
-
 if ($_POST['registro'] == 'actualizar') {
 
     include_once "../connection/db_connection.php";
@@ -148,7 +127,6 @@ if ($_POST['registro'] == 'actualizar') {
     }
     die(json_encode($respuesta));
 }
-
 if ($_POST['registro'] == 'eliminar') {
 
     $id_borrar = $_POST['id'];
@@ -173,9 +151,8 @@ if ($_POST['registro'] == 'eliminar') {
             );
         }
     } catch (Exception $e) {
-
         $respuesta = array(
-            'respuesta' => $e->getMessage()
+            'respuesta' => 'error'
         );
     }
 

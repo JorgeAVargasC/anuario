@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("coord_academico").disabled = false;
       document.getElementById("coord_ludicas").disabled = false;
       document.getElementById("coord_logistica").disabled = false;
-      document.getElementById("coord_patrocinio").disabled = false;
+      document.getElementById("coord_patrocinios").disabled = false;
       document.getElementById("coord_publicidad").disabled = false;
     } else {
       document.getElementById("coord_academico").disabled = true;
       document.getElementById("coord_ludicas").disabled = true;
       document.getElementById("coord_logistica").disabled = true;
-      document.getElementById("coord_patrocinio").disabled = true;
+      document.getElementById("coord_patrocinios").disabled = true;
       document.getElementById("coord_publicidad").disabled = true;
     }
   }

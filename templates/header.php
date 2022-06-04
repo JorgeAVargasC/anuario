@@ -14,6 +14,6 @@
 
 <body>
 
-<img class="fondo" src="/anuario/img/backgrounds/popayan5.jpg"></img>
-<div class="bg"></div>
+    <img class="fondo" src="/anuario/img/backgrounds/popayan5.jpg"></img>
+    <div class="bg"></div>
     <div class="main-page">
